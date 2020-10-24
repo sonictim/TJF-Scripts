@@ -1,6 +1,6 @@
 
 --@description TJF LINK Razor Edit Selection with Folders, Item Grouping Affects Behavior
---@version 1.1
+--@version 1.11
 --@author BirdBird, Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -26,7 +26,7 @@
 --@changelog
 --   v1.0 - nothing to report
 --   v1.1 - added to reapack (adjusted headers
-
+--   v1.11- reapack test
     
     --[[------------------------------[[---
                     DEBUG               
