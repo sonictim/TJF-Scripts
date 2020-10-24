@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="452aa9815330fd896fa2c5b2c760e6e98eeaa14a">
+<index version="1" name="TJF Scripts" commit="4398c8372f2629ba49c37d5ca824392fdc415b1b">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -12,9 +12,9 @@
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/AAF/TJF%20AAF%20Remove%20Fades%20after%20AAF%20Conversion.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/AAF/TJF%20AAF%20Remove%20Fades%20after%20AAF%20Conversion.lua</source>
       </version>
     </reapack>
     <reapack name="TJF AAF Select all Split Stereo Tracks from AAF.lua" type="script" desc="TJF AAF Select all Split Stereo Tracks from AAF">
@@ -28,9 +28,9 @@
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/AAF/TJF%20AAF%20Select%20all%20Split%20Stereo%20Tracks%20from%20AAF.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/AAF/TJF%20AAF%20Select%20all%20Split%20Stereo%20Tracks%20from%20AAF.lua</source>
       </version>
     </reapack>
   </category>
@@ -49,23 +49,7 @@
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/raw/master/index.xml</link>
       </metadata>
-      <version name="1.1" author="Tim Farrell" time="2020-09-11T20:39:08Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - Remembers window position.  
-       Adjusted font in text editor to make Larger
-       Thank you SOLGER for the code updates]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Developer%20Tools/TJF%20Chunk%20Editor.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-09-12T07:30:16Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - Remembers window position.  
-       Adjusted font in text editor to make Larger
-       Thank you SOLGER for the code updates
-v2.0 - Added Support For Entire Project Chunk
-       GUI updates]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6149a60285ce31da5dace55dd90dd43f09728f8f/Developer%20Tools/TJF%20Chunk%20Editor.lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-09-25T03:08:28Z">
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - Remembers window position.  
        Adjusted font in text editor to make Larger
@@ -73,7 +57,7 @@ v1.1 - Remembers window position.
 v2.0 - Added Support For Entire Project Chunk
        GUI updates
 v2.1 - Small Bug Fix on Set Chunk Timeline Refresh]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/77856a05ba84e1b80c132436dac6f923f0cb2b23/Developer%20Tools/TJF%20Chunk%20Editor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Developer%20Tools/TJF%20Chunk%20Editor.lua</source>
       </version>
     </reapack>
   </category>
@@ -90,19 +74,16 @@ v2.1 - Small Bug Fix on Set Chunk Timeline Refresh]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-06-13T03:00:16Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/474b5069826af7a97a766af35aa456e60d5c2c8a/Editing/TJF%20Add%20Stretch%20Marker%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-09-11T20:39:08Z">
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 initial release
 v2.1 bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/TJF%20Add%20Stretch%20Marker%20(Hover%20Mode%20Dependant).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Add%20Stretch%20Marker%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Glue Item (preserve FX Chain) and then open SampleEditor.lua" type="script" desc="TJF Glue Item and then open SampleEditor">
-      <version name="1.02.3" author="EUGEN27771 &amp; TJF" time="2020-05-06T16:03:15Z">
+      <version name="1.02.3" author="EUGEN27771 &amp; TJF" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[just added this extra layer of functionality]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/580b7ba9ddd01aa68cd641cf2aeac28d851f7f3f/Editing/TJF%20Glue%20Item%20(preserve%20FX%20Chain)%20and%20then%20open%20SampleEditor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Glue%20Item%20(preserve%20FX%20Chain)%20and%20then%20open%20SampleEditor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Hover Mode Toggle.lua" type="script" desc="TJF Toggle Hover Mode">
@@ -117,14 +98,14 @@ v2.1 bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-13T03:00:16Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/474b5069826af7a97a766af35aa456e60d5c2c8a/Editing/TJF%20Hover%20Mode%20Toggle.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Hover%20Mode%20Toggle.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Split Item to Time, Glue (preserve FX Chain), and open in SampleEditor.lua" type="script" desc="TJF Glue Item and then open SampleEditor">
-      <version name="1.02.3" author="EUGEN27771 &amp; TJF" time="2020-05-04T00:59:27Z">
+      <version name="1.02.3" author="EUGEN27771 &amp; TJF" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[just added this extra layer of functionality]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c7b27d21e7aff7749c4dc80c1547cf17f7134f9f/Editing/TJF%20Split%20Item%20to%20Time,%20Glue%20(preserve%20FX%20Chain),%20and%20open%20in%20SampleEditor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Split%20Item%20to%20Time,%20Glue%20(preserve%20FX%20Chain),%20and%20open%20in%20SampleEditor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Item Lock (matches first item).lua" type="script" desc="TJF Toggle Item Lock (matches first item)">
@@ -138,9 +119,9 @@ v2.1 bug fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-26T10:49:32Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/d6b99b60b01418f5f74f39465f6ec2d2704cd162/Editing/TJF%20Toggle%20Item%20Lock%20(matches%20first%20item).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Toggle%20Item%20Lock%20(matches%20first%20item).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Move Mode.lua" type="script" desc="TJF Toggle move mode">
@@ -153,8 +134,8 @@ v2.1 bug fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.10" author="LKC" time="2020-08-08T22:16:49Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/78f2ec890fc62aba6ae2ebb739e0b30cb24f682b/Editing/TJF%20Toggle%20Move%20Mode.lua</source>
+      <version name="2.10" author="LKC" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/TJF%20Toggle%20Move%20Mode.lua</source>
       </version>
     </reapack>
   </category>
@@ -171,13 +152,10 @@ v2.1 bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Editing/Fades/TJF%20Fade%20In%20to%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-09-11T20:39:08Z">
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 initial release
 v2.1 Bug Fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/Fades/TJF%20Fade%20In%20to%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Fades/TJF%20Fade%20In%20to%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Fade Out From Edit Cursor Or Mouse (Hover Mode Dependant).lua" type="script" desc="TJF Fade Out from Edit Cursor or Mouse (Hover Mode Dependant)">
@@ -192,11 +170,8 @@ v2.1 Bug Fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Editing/Fades/TJF%20Fade%20Out%20From%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-09-11T20:39:08Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/Fades/TJF%20Fade%20Out%20From%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Fades/TJF%20Fade%20Out%20From%20Edit%20Cursor%20Or%20Mouse%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF SmartFade.lua" type="script" desc="TJF Smart Fade (similar behavior to Protools)">
@@ -212,21 +187,21 @@ v2.1 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-10-04T18:49:50Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/09429f80f2dd168e1fe8b09b163aa557c7c45f6f/Editing/Fades/TJF%20SmartFade.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
   <category name="Editing/Nudge">
     <reapack name="TJF_Nudge selected items volume +3db.eel" type="script">
-      <version name="1.0.1" author="X-Raym &amp; TJF" time="2020-04-28T17:55:37Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/dcbfa2ff0d04c7e58a5cb234df26a8a1fce55968/Editing/Nudge/TJF_Nudge%20selected%20items%20volume%20+3db.eel</source>
+      <version name="1.0.1" author="X-Raym &amp; TJF" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Nudge/TJF_Nudge%20selected%20items%20volume%20+3db.eel</source>
       </version>
     </reapack>
     <reapack name="TJF_Nudge selected items volume -3db.eel" type="script">
-      <version name="1.0.1" author="X-Raym &amp; TJF" time="2020-04-28T17:55:37Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/dcbfa2ff0d04c7e58a5cb234df26a8a1fce55968/Editing/Nudge/TJF_Nudge%20selected%20items%20volume%20-3db.eel</source>
+      <version name="1.0.1" author="X-Raym &amp; TJF" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Nudge/TJF_Nudge%20selected%20items%20volume%20-3db.eel</source>
       </version>
     </reapack>
   </category>
@@ -242,14 +217,10 @@ v2.1 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-27T20:31:48Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/5d8e6e9b1f2060548304f0724cc5ac98b361334e/Editing/Razer%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-09-02T05:31:55Z">
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added split functionality and cycle toggle]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/10702b696830559d33bb186b753753c2a8b9eb69/Editing/Razer%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit Test.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
@@ -263,10 +234,10 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-10-24T17:49:33Z">
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added split functionality and cycle toggle]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/452aa9815330fd896fa2c5b2c760e6e98eeaa14a/Editing/Razer%20Edit/TJF%20Razor%20Edit%20Test.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20Razor%20Edit%20Test.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
@@ -280,9 +251,9 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-26T10:44:10Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1ef633a310d2e9ddf656469ef9b22031ccb9290e/Editing/Razer%20Edit/TJF%20Razor%20Edit-Enclose%20Media%20Items%20(leave%20selection).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20Razor%20Edit-Enclose%20Media%20Items%20(leave%20selection).lua</source>
       </version>
     </reapack>
   </category>
@@ -299,14 +270,8 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T22:36:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/652d208b83a0119231a3867d8c35e2b416e26e94/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-05-06T16:03:15Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/580b7ba9ddd01aa68cd641cf2aeac28d851f7f3f/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Reverse Fades with Item.lua" type="script" desc="TJF Reverse Fades with Item">
@@ -321,8 +286,8 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T22:36:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/652d208b83a0119231a3867d8c35e2b416e26e94/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
       </version>
     </reapack>
   </category>
@@ -339,8 +304,8 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-01T20:42:36Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f876b41ed5187fcab18329d13055c1ad11f39fd0/Editing/Takes/TJF%20Cycle%20Through%20Take%20Channels%20(Stereo).lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Cycle%20Through%20Take%20Channels%20(Stereo).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Cycle Through Take Channels.lua" type="script" desc="TJF Cycle Through Take Channels">
@@ -355,8 +320,8 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T23:20:19Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cbccde7cf06494f8fb090600dcd2d4618912e482/Editing/Takes/TJF%20Cycle%20Through%20Take%20Channels.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Cycle%20Through%20Take%20Channels.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Rename and Format Items and SOURCE.lua" type="script" desc="TJF Rename and Format Items and SOURCE for SFX Library Cataloguing">
@@ -370,20 +335,11 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-13T03:00:16Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/474b5069826af7a97a766af35aa456e60d5c2c8a/Editing/Takes/TJF%20Rename%20and%20Format%20Items%20and%20SOURCE.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-09-14T19:00:39Z">
-        <changelog><![CDATA[v1.0  Initial release
-v2.0  Updated to process via Chunks]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/e6b5805bd539d407f18cd47d8d906b723b56965e/Editing/Takes/TJF%20Rename%20and%20Format%20Items%20and%20SOURCE.lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-10-04T19:54:02Z">
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0  Initial release
 v2.0  Updated to process via Chunks
 v2.1  User can decide if they want to rename the actual file also]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/36ac73c4c9413af8bea746e3d52d29ac26c6ab98/Editing/Takes/TJF%20Rename%20and%20Format%20Items%20and%20SOURCE.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Rename%20and%20Format%20Items%20and%20SOURCE.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Rename and Format Items.lua" type="script" desc="TJF Rename and Format Items for SFX Library Cataloguing">
@@ -397,9 +353,9 @@ v2.1  User can decide if they want to rename the actual file also]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-06T16:03:15Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/580b7ba9ddd01aa68cd641cf2aeac28d851f7f3f/Editing/Takes/TJF%20Rename%20and%20Format%20Items.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Rename%20and%20Format%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Route All Mono Sounds to Center Channel via Takes.lua" type="script" desc="TJF Route All Mono Sounds to Center Channel">
@@ -414,8 +370,8 @@ v2.1  User can decide if they want to rename the actual file also]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-26T10:44:10Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1ef633a310d2e9ddf656469ef9b22031ccb9290e/Editing/Takes/TJF%20Route%20All%20Mono%20Sounds%20to%20Center%20Channel%20via%20Takes.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Route%20All%20Mono%20Sounds%20to%20Center%20Channel%20via%20Takes.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Set Take to Mono.lua" type="script" desc="TJF Toggle Take Channel Stereo Flip">
@@ -430,8 +386,8 @@ v2.1  User can decide if they want to rename the actual file also]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Editing/Takes/TJF%20Set%20Take%20to%20Mono.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Set%20Take%20to%20Mono.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Simple UCS Format and Rename Items.lua" type="script" desc="TJF Simple UCS Format and Rename">
@@ -448,11 +404,8 @@ v2.1  User can decide if they want to rename the actual file also]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="3.0" author="Tim Farrell" time="2020-10-05T21:12:10Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/7e06078d0d2c98f229b41ebd0b0a11f1d10c2ece/Editing/Takes/TJF%20Simple%20UCS%20Format%20and%20Rename%20Items.lua</source>
-      </version>
-      <version name="3.1" author="Tim Farrell" time="2020-10-06T18:11:22Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cd9845ea8227f88163f52b002663578af81df03d/Editing/Takes/TJF%20Simple%20UCS%20Format%20and%20Rename%20Items.lua</source>
+      <version name="3.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Simple%20UCS%20Format%20and%20Rename%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Smart (or Possibly Anger Inducing) Mute Item Toggle.lua" type="script" desc="TJF Smart (or Possibly Anger Inducing) Mute Toggle">
@@ -466,20 +419,11 @@ v2.1  User can decide if they want to rename the actual file also]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-06T23:24:23Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/e8e2c942588756582b922011ae1fe9655d0d151e/Editing/Takes/TJF%20Smart%20(or%20Possibly%20Anger%20Inducing)%20Mute%20Item%20Toggle.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-05-06T23:30:32Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - speed optimizations]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/58451584e8fdb3ffe4fd4c7255fa8964cb4b0b8f/Editing/Takes/TJF%20Smart%20(or%20Possibly%20Anger%20Inducing)%20Mute%20Item%20Toggle.lua</source>
-      </version>
-      <version name="1.2" author="Tim Farrell" time="2020-05-06T23:41:06Z">
+      <version name="1.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - speed optimizations
 v1.2 - functionality improvements]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/df7ec3867977d5a08417d658fe2956c387345a5d/Editing/Takes/TJF%20Smart%20(or%20Possibly%20Anger%20Inducing)%20Mute%20Item%20Toggle.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Smart%20(or%20Possibly%20Anger%20Inducing)%20Mute%20Item%20Toggle.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Mute (Match First Selected).lua" type="script" desc="TJF Toggle Mute (Match First Selected)">
@@ -493,11 +437,11 @@ v1.2 - functionality improvements]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.5" author="Tim Farrell" time="2020-05-06T23:24:23Z">
+      <version name="2.5" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added track support
 v2.5 - will now match if any item or track is muted.. not just first]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/e8e2c942588756582b922011ae1fe9655d0d151e/Editing/Takes/TJF%20Toggle%20Mute%20(Match%20First%20Selected).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Toggle%20Mute%20(Match%20First%20Selected).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Take Channel stereo flip.lua" type="script" desc="TJF Toggle Take Channel Stereo Flip">
@@ -512,8 +456,8 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T23:20:19Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cbccde7cf06494f8fb090600dcd2d4618912e482/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
       </version>
     </reapack>
   </category>
@@ -529,9 +473,9 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/Editing/Tracks/TJF%20Merge%20selected%20tracks%20to%20Psuedo%20Stereo%20Pairs.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Tracks/TJF%20Merge%20selected%20tracks%20to%20Psuedo%20Stereo%20Pairs.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Remove any Empty Tracks Among Selected Tracks.lua" type="script" desc="TJF Remve Any Empty Tracks Among Selected Tracks">
@@ -545,9 +489,9 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/Editing/Tracks/TJF%20Remove%20any%20Empty%20Tracks%20Among%20Selected%20Tracks.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Tracks/TJF%20Remove%20any%20Empty%20Tracks%20Among%20Selected%20Tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Remove Any Empty Tracks in Session.lua" type="script" desc="TJF Remve Any Empty Tracks From Session">
@@ -561,9 +505,9 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/Editing/Tracks/TJF%20Remove%20Any%20Empty%20Tracks%20in%20Session.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Tracks/TJF%20Remove%20Any%20Empty%20Tracks%20in%20Session.lua</source>
       </version>
     </reapack>
   </category>
@@ -580,19 +524,8 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-08T21:48:36Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/31b1e4088e13364f6b3bf82d1af8bae0ce992ebe/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="1.0" author="Tim Farrell" time="2020-08-08T21:54:51Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c09dc916219fd5d0c390087644efa8b8a824fd62/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-09-11T20:39:08Z">
-        <changelog><![CDATA[v1.0 first version
-v1.1 Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.01" author="Tim Farrell" time="2020-10-04T18:49:50Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/09429f80f2dd168e1fe8b09b163aa557c7c45f6f/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
+      <version name="2.01" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF split item at time selection, otherwise mouse cursor.lua" type="script" desc="TJF Split Item at Time Selection, otherwise Mouse Cursor">
@@ -607,8 +540,8 @@ v1.1 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T23:07:46Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/37659f75703b5bd1df74806486bb97eca0167df8/Editing/Trim/TJF%20split%20item%20at%20time%20selection,%20otherwise%20mouse%20cursor.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20split%20item%20at%20time%20selection,%20otherwise%20mouse%20cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Trim and Fill to time selection Only if items are selected Selected.lua" type="script" desc="TJF Trim and Fill to time selection Only if items are selected Selected">
@@ -623,11 +556,8 @@ v1.1 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-28T18:57:26Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6b7ba9fd4543331f4e256ca186cec4b7bf6b6c7c/Editing/Trim/TJF%20Trim%20and%20Fill%20to%20time%20selection%20Only%20if%20items%20are%20selected%20Selected.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-04-28T18:58:21Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cb3c259ad6ef9091f1cffbcde3b2ab6a56dffc17/Editing/Trim/TJF%20Trim%20and%20Fill%20to%20time%20selection%20Only%20if%20items%20are%20selected%20Selected.lua</source>
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Trim%20and%20Fill%20to%20time%20selection%20Only%20if%20items%20are%20selected%20Selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Trim items left of cursor (or time selection) only if selected.lua" type="script" desc="TJF Trim Only Selected Items Left of Cursor">
@@ -642,8 +572,8 @@ v1.1 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T23:07:46Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/37659f75703b5bd1df74806486bb97eca0167df8/Editing/Trim/TJF%20Trim%20items%20left%20of%20cursor%20(or%20time%20selection)%20only%20if%20selected.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Trim%20items%20left%20of%20cursor%20(or%20time%20selection)%20only%20if%20selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Trim items right of cursor (or time selection) only if selected.lua" type="script" desc="TJF Trim Only Selected Items Right of Cursor">
@@ -658,8 +588,8 @@ v1.1 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T23:07:46Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/37659f75703b5bd1df74806486bb97eca0167df8/Editing/Trim/TJF%20Trim%20items%20right%20of%20cursor%20(or%20time%20selection)%20only%20if%20selected.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Trim%20items%20right%20of%20cursor%20(or%20time%20selection)%20only%20if%20selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Trim Left side of items (Hover Mode Dependant).lua" type="script" desc="TJF Trim Left Side of Item (Hover Mode Dependent)">
@@ -674,18 +604,12 @@ v1.1 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.5" author="Tim Farrell" time="2020-08-08T21:42:52Z">
-        <changelog><![CDATA[v1.0 first version
-v2.0 updating behavior logic
-v2.5 added Hover Mode Support]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6d289f13d1ddde05a2d9784a64376d87deaae7de/Editing/Trim/TJF%20Trim%20Left%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.6" author="Tim Farrell" time="2020-09-11T20:39:08Z">
+      <version name="2.6" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 first version
 v2.0 updating behavior logic
 v2.5 added Hover Mode Support
 v2.6 Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/Trim/TJF%20Trim%20Left%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Trim%20Left%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Trim Right side of items (Hover Mode Dependant).lua" type="script" desc="TJF Trim Right Side of Item (Hover Mode Dependant)">
@@ -700,18 +624,12 @@ v2.6 Bug fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.5" author="Tim Farrell" time="2020-08-08T21:42:52Z">
-        <changelog><![CDATA[v1.0 first version
-v2.0 updating behavior logic
-v2.5 include hover mode]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6d289f13d1ddde05a2d9784a64376d87deaae7de/Editing/Trim/TJF%20Trim%20Right%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
-      </version>
-      <version name="2.6" author="Tim Farrell" time="2020-09-11T20:39:08Z">
+      <version name="2.6" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 first version
 v2.0 updating behavior logic
 v2.5 include hover mode
 v2.6 Bug Fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/de74ebcf4085d0d17ae2d6be7a3c43781adcc50d/Editing/Trim/TJF%20Trim%20Right%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Trim%20Right%20side%20of%20items%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
   </category>
@@ -729,9 +647,9 @@ v2.6 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-10-16T17:23:00Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a517c846e32c252c520036b584bcca761ce1b465/Envelopes%20or%20Automation/TJF%20Add%204%20Envelope%20Points%20to%20ALL%20Envelopes.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Add%204%20Envelope%20Points%20to%20ALL%20Envelopes.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Add 4 Envelope Points to VISIBLE Envelopes.lua" type="script" desc="TJF Add 4 Envelope Points to VISIBLE Envelopes">
@@ -747,21 +665,21 @@ v2.6 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-10-16T17:23:00Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a517c846e32c252c520036b584bcca761ce1b465/Envelopes%20or%20Automation/TJF%20Add%204%20Envelope%20Points%20to%20VISIBLE%20Envelopes.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Add%204%20Envelope%20Points%20to%20VISIBLE%20Envelopes.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Arm ALL Envelopes Selected Tracks.lua" type="script" desc="Set ALL envelopes as active and armed">
-      <version name="1.0" author="X-Raym" time="2020-08-31T08:38:30Z">
+      <version name="1.0" author="X-Raym" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[+ Initial release]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Arm%20ALL%20Envelopes%20Selected%20Tracks.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Arm%20ALL%20Envelopes%20Selected%20Tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Arm ALL Envelopes.lua" type="script" desc="Set ALL envelopes as active and armed">
-      <version name="1.0" author="X-Raym" time="2020-08-31T08:38:30Z">
+      <version name="1.0" author="X-Raym" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[+ Initial release]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Arm%20ALL%20Envelopes.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Arm%20ALL%20Envelopes.lua</source>
       </version>
     </reapack>
     <reapack name="TJF GLIDE ALL envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF GLIDE Envelope Points to ALL Envelopes to Time Selection or Selected Items">
@@ -777,20 +695,7 @@ v2.6 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:52:09Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable
-v2.01- added option to disable edit cursor check
-v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
-v2.03- bug fix
-v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
-     - Added Smoothing Parameter to settings
-     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
-     - Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/955654f4966eb28be4d41bc302e56207bde382ab/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
-      </version>
-      <version name="2.2" author="Tim Farrell" time="2020-10-20T00:03:22Z">
+      <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added razor edit support
      - removed all BR_ENV/SWS functions as they are currently unstable
@@ -803,7 +708,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/2e3869c59c02687f9e51e6e5be9bd7023f377a91/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF GLIDE All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF GLIDE Envelope Points to all VISIBLE Envelopes to Time Selection or Selected Items">
@@ -820,20 +725,7 @@ v2.2 - Added Automation Item Support
 }
 ]]></description>
       </metadata>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:52:09Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable
-v2.01- added option to disable edit cursor check
-v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
-v2.03- bug fix
-v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
-     - Added Smoothing Parameter to settings
-     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
-     - Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/955654f4966eb28be4d41bc302e56207bde382ab/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
-      </version>
-      <version name="2.2" author="Tim Farrell" time="2020-10-20T00:03:22Z">
+      <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added razor edit support
      - removed all BR_ENV/SWS functions as they are currently unstable
@@ -846,15 +738,15 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/2e3869c59c02687f9e51e6e5be9bd7023f377a91/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF OPTIONS - Toggle Check Edit Cursor for Protools Sytle Automation Write and Glide Functions.lua" type="script" desc="TJF OPTION Toggle Check Edit Cursor for Protools Style Automation Write and Glide Functions">
       <metadata>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:52:09Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/955654f4966eb28be4d41bc302e56207bde382ab/Envelopes%20or%20Automation/TJF%20OPTIONS%20-%20Toggle%20Check%20Edit%20Cursor%20for%20Protools%20Sytle%20Automation%20Write%20and%20Glide%20Functions.lua</source>
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20OPTIONS%20-%20Toggle%20Check%20Edit%20Cursor%20for%20Protools%20Sytle%20Automation%20Write%20and%20Glide%20Functions.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Punch Visible Envelopes 2 (razor edit support).lua" type="script" desc="TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection">
@@ -870,13 +762,7 @@ v2.2 - Added Automation Item Support
 }
 ]]></description>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-10-05T05:51:25Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6d1773f5bb3fe4ecd56bfdc7fecc332a0eaf993f/Envelopes%20or%20Automation/TJF%20Punch%20Visible%20Envelopes%202%20(razor%20edit%20support).lua</source>
-      </version>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:43:23Z">
+      <version name="2.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added razor edit support
      - removed all BR_ENV/SWS functions as they are currently unstable
@@ -887,7 +773,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Added Smoothing Parameter to settings
      - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
      - Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a27f90036901b9e2540bb1dccbc410834d5e5a72/Envelopes%20or%20Automation/TJF%20Punch%20Visible%20Envelopes%202%20(razor%20edit%20support).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Punch%20Visible%20Envelopes%202%20(razor%20edit%20support).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Punch Write Envelope Points to all Visible Envelopes to Time Selection or Selected Items.lua" type="script" desc="TJF Punch Write Envelope Points to all Visible Envelopes to Time Selection or Selected Items">
@@ -901,9 +787,9 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-31T10:49:32Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1974fe78bc990d8f1b219bcfc6eb3ec0dc0fc581/Envelopes%20or%20Automation/TJF%20Punch%20Write%20Envelope%20Points%20to%20all%20Visible%20Envelopes%20to%20Time%20Selection%20or%20Selected%20Items.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Punch%20Write%20Envelope%20Points%20to%20all%20Visible%20Envelopes%20to%20Time%20Selection%20or%20Selected%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Show Last Touched FX Envelope Hide Others Deferred (stays active).lua" type="script" desc="TJF Show Last Touched FX Envelope and Hide all Others Deferred (STAYS ACTIVE)">
@@ -917,14 +803,8 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-09-02T03:38:57Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/879ec8eeb01f9cb70b091c54510fde6a4b722570/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
-      </version>
-      <version name="1.4" author="Tim Farrell" time="2020-09-09T09:54:11Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/33cfc7716fb69322401b11e73f9fe8204be44c54/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
+      <version name="1.4" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Item Pitch Envelope Visible.lua" type="script" desc="TJF Toggle Item Pitch Envelope Visible">
@@ -939,11 +819,8 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Toggle%20Item%20Pitch%20Envelope%20Visible.lua</source>
-      </version>
-      <version name="2.3" author="Tim Farrell" time="2020-10-21T19:27:39Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/adb29754550960b0f057b53cd1960415fd3125f6/Envelopes%20or%20Automation/TJF%20Toggle%20Item%20Pitch%20Envelope%20Visible.lua</source>
+      <version name="2.3" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Item%20Pitch%20Envelope%20Visible.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Last Touched FX Envelope Visible,Hide Others.lua" type="script" desc="TJF Toggle Last Touched FX Envelope Visible and Hide all Others">
@@ -957,42 +834,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-31T21:30:30Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9b10293c2dd1a918af4c75d8cf49c046406076f0/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-09-02T03:46:08Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - removed BR_Env functions for all Native Reaper API
-     - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/7a7232d723f06143a4240164558f0aec64eec633/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
-      </version>
-      <version name="1.2" author="Tim Farrell" time="2020-09-02T03:48:46Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - removed BR_Env functions for all Native Reaper API
-v1.2 - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/7e6a33190d4f8d2fa760bf318dd18dda361258b4/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
-      </version>
-      <version name="1.4" author="Tim Farrell" time="2020-09-09T09:54:11Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - removed BR_Env functions for all Native Reaper API
-v1.2 - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode
-v1.3 - updated SetEnvelopeVis() function to prevent future breaking
-v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
-       Take FX - Will also select all points also (for easy clear/deletion)]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/33cfc7716fb69322401b11e73f9fe8204be44c54/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
-      </version>
-      <version name="1.4.1" author="Tim Farrell" time="2020-09-25T03:08:28Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - removed BR_Env functions for all Native Reaper API
-v1.2 - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode
-v1.3 - updated SetEnvelopeVis() function to prevent future breaking
-v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
-       Take FX - Will also select all points also (for easy clear/deletion)
-v1.4.1 Script maintainance (removed unused functions)]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/77856a05ba84e1b80c132436dac6f923f0cb2b23/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
-      </version>
-      <version name="1.5" author="Tim Farrell" time="2020-10-21T11:55:14Z">
+      <version name="1.5" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - removed BR_Env functions for all Native Reaper API
 v1.2 - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode
@@ -1001,7 +843,7 @@ v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
        Take FX - Will also select all points also (for easy clear/deletion)
 v1.4.1 Script maintainance (removed unused functions)
 v1.5 - added support for folder trim automation visibility]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/32a3d9c01bb537b35b2e09cf19da7f090b91942a/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Pan Envelope Visible for Track or Items if Items are selected.lua" type="script" desc="TJF Toggle Pan Envelope Visible for Track or Items">
@@ -1016,28 +858,14 @@ v1.5 - added support for folder trim automation visibility]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <changelog><![CDATA[v1.2 added ability to hide ALL active envelopes for track
-v1.2.1 speed adjustments
-v2.0 logic rework]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Toggle%20Pan%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
-      </version>
-      <version name="2.2" author="Tim Farrell" time="2020-10-21T11:55:14Z">
-        <changelog><![CDATA[v1.2 added ability to hide ALL active envelopes for track
-v1.2.1 speed adjustments
-v2.0 logic rework
-v2.1 removed all SWS functions (re-coded from scratch)
-v2.2 accounts for trim volume on folders]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/32a3d9c01bb537b35b2e09cf19da7f090b91942a/Envelopes%20or%20Automation/TJF%20Toggle%20Pan%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
-      </version>
-      <version name="2.3" author="Tim Farrell" time="2020-10-21T19:27:39Z">
+      <version name="2.3" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.2 added ability to hide ALL active envelopes for track
 v1.2.1 speed adjustments
 v2.0 logic rework
 v2.1 removed all SWS functions (re-coded from scratch)
 v2.2 accounts for trim volume on folders
 v2.3 bugfix for take envelopes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/adb29754550960b0f057b53cd1960415fd3125f6/Envelopes%20or%20Automation/TJF%20Toggle%20Pan%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Pan%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Volume (preFX) Envelope Visible for Track or Items if Items are selected.lua" type="script" desc="TJF Toggle Volume Envelope Visible for Track or Items">
@@ -1052,8 +880,8 @@ v2.3 bugfix for take envelopes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Toggle%20Volume%20(preFX)%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Volume%20(preFX)%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Volume Envelope Visible for Track or Items if Items are selected.lua" type="script" desc="TJF Toggle Volume Envelope Visible for Track or Items">
@@ -1068,8 +896,8 @@ v2.3 bugfix for take envelopes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-08-31T08:38:30Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/678e98eda817a99d7da80a97f9afc3831476bce1/Envelopes%20or%20Automation/TJF%20Toggle%20Volume%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Volume%20Envelope%20Visible%20for%20Track%20or%20Items%20if%20Items%20are%20selected.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Write Punch ALL envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF Write Punch ALL envelopes to Time, RazorEdit, or Item Selection">
@@ -1085,33 +913,8 @@ v2.3 bugfix for take envelopes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:52:09Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable
-v2.01- added option to disable edit cursor check
-v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
-v2.03- bugfix
-v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
-     - Added Smoothing Parameter to settings
-     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
-     - Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/955654f4966eb28be4d41bc302e56207bde382ab/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
-      </version>
-      <version name="2.2" author="Tim Farrell" time="2020-10-20T00:03:22Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable
-v2.01- added option to disable edit cursor check
-v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
-v2.03- bugfix
-v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
-     - Added Smoothing Parameter to settings
-     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
-     - Bug fixes
-v2.2 - Added Automation Item Support
-       Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/2e3869c59c02687f9e51e6e5be9bd7023f377a91/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+      <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Write Punch All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection">
@@ -1127,20 +930,7 @@ v2.2 - Added Automation Item Support
 }
 ]]></description>
       </metadata>
-      <version name="2.1" author="Tim Farrell" time="2020-10-18T23:52:09Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added razor edit support
-     - removed all BR_ENV/SWS functions as they are currently unstable
-v2.01- added option to disable edit cursor check
-v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
-v2.03- bugfix
-v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
-     - Added Smoothing Parameter to settings
-     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
-     - Bug fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/955654f4966eb28be4d41bc302e56207bde382ab/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
-      </version>
-      <version name="2.2" author="Tim Farrell" time="2020-10-20T00:03:22Z">
+      <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added razor edit support
      - removed all BR_ENV/SWS functions as they are currently unstable
@@ -1153,7 +943,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/2e3869c59c02687f9e51e6e5be9bd7023f377a91/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
   </category>
@@ -1170,11 +960,8 @@ v2.2 - Added Automation Item Support
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T20:56:52Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b4d714ced1411e0ce09420fe161b73af92abc99d/Playback/TJF%20Playback%20at%20Half%20Speed%20once.lua</source>
-      </version>
-      <version name="1.2" author="Tim Farrell" time="2020-05-08T21:56:50Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/15cf0b7c77e69a5ac51a3cb691aac83df60ffbd3/Playback/TJF%20Playback%20at%20Half%20Speed%20once.lua</source>
+      <version name="1.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Playback/TJF%20Playback%20at%20Half%20Speed%20once.lua</source>
       </version>
     </reapack>
     <reapack name="TJF playback that reads insertion toggle.lua" type="script" desc="TJF Playback that reads &quot;Toggle Insertion Follows Playback&quot;">
@@ -1189,11 +976,8 @@ v2.2 - Added Automation Item Support
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T20:56:52Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b4d714ced1411e0ce09420fe161b73af92abc99d/Playback/TJF%20playback%20that%20reads%20insertion%20toggle.lua</source>
-      </version>
-      <version name="1.2" author="Tim Farrell" time="2020-05-08T21:56:50Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/15cf0b7c77e69a5ac51a3cb691aac83df60ffbd3/Playback/TJF%20playback%20that%20reads%20insertion%20toggle.lua</source>
+      <version name="1.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Playback/TJF%20playback%20that%20reads%20insertion%20toggle.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Insertion follows Playback.lua" type="script" desc="Toggle Insertion Follows Playback">
@@ -1208,8 +992,8 @@ v2.2 - Added Automation Item Support
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T20:56:52Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b4d714ced1411e0ce09420fe161b73af92abc99d/Playback/TJF%20Toggle%20Insertion%20follows%20Playback.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Playback/TJF%20Toggle%20Insertion%20follows%20Playback.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Link Loop Selection to Time Selection on Playback.lua" type="script" desc="TJF Toggle Link Loop Selection to Time Selection on Playback">
@@ -1224,8 +1008,8 @@ v2.2 - Added Automation Item Support
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-08T21:56:50Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/15cf0b7c77e69a5ac51a3cb691aac83df60ffbd3/Playback/TJF%20Toggle%20Link%20Loop%20Selection%20to%20Time%20Selection%20on%20Playback.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Playback/TJF%20Toggle%20Link%20Loop%20Selection%20to%20Time%20Selection%20on%20Playback.lua</source>
       </version>
     </reapack>
   </category>
@@ -1241,14 +1025,10 @@ v2.2 - Added Automation Item Support
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Plugin%20Manipulation/TJF%20TakeFX-Plugin.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-09-25T03:08:28Z">
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - now floats FX Plugin Window]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/77856a05ba84e1b80c132436dac6f923f0cb2b23/Plugin%20Manipulation/TJF%20TakeFX-Plugin.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Plugin%20Manipulation/TJF%20TakeFX-Plugin.lua</source>
       </version>
     </reapack>
   </category>
@@ -1264,23 +1044,13 @@ v1.1 - now floats FX Plugin Window]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-06T16:03:15Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/580b7ba9ddd01aa68cd641cf2aeac28d851f7f3f/Session%20Navigation/TJF%20Cycle%20Selected%20Track%20size%20(tiny,%20small,%20medium,%20large).lua</source>
-      </version>
-      <version name="1.5" author="Tim Farrell" time="2020-05-25T22:29:54Z">
-        <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
-v1.4  will now prioritize zoom to Time Selection, then Items
-v1.5  will change number of possible zooms based on how many tracks are selected]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b180f4b0a6fb60b8834c28886bb7e9d9014a638d/Session%20Navigation/TJF%20Cycle%20Selected%20Track%20size%20(tiny,%20small,%20medium,%20large).lua</source>
-      </version>
-      <version name="1.7" author="Tim Farrell" time="2020-09-09T09:54:11Z">
+      <version name="1.7" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
 v1.4  will now prioritize zoom to Time Selection, then Items
 v1.5  will change number of possible zooms based on how many tracks are selected
 v1.6  added support for envelope lanes
 v1.7  Bug Fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/33cfc7716fb69322401b11e73f9fe8204be44c54/Session%20Navigation/TJF%20Cycle%20Selected%20Track%20size%20(tiny,%20small,%20medium,%20large).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Cycle%20Selected%20Track%20size%20(tiny,%20small,%20medium,%20large).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Cycle Track size and Zoom to Selection (if any).lua" type="script" desc="TJF Minimize all and Cycle Selected Track Size (Medium, Large, Mini) and zoom in to selected items (if any)">
@@ -1294,55 +1064,13 @@ v1.7  Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0.1" author="Tim Farrell" time="2020-04-26T21:57:19Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/428e21f72041f0d996cb141094779ab7f1ed33d1/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T22:36:13Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/652d208b83a0119231a3867d8c35e2b416e26e94/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-05-02T10:15:37Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4c8b8c52727baf4905fe3b52c1b080abc191ea93/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.2" author="Tim Farrell" time="2020-05-03T17:42:02Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c697ef71026bd1ef84b8f27d30a5e64896567282/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.2.1" author="Tim Farrell" time="2020-05-03T17:50:45Z">
-        <changelog><![CDATA[none]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/d589b70d35e247e8b4c31adaa97490a4924ec617/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.3" author="Tim Farrell" time="2020-05-06T16:03:15Z">
-        <changelog><![CDATA[will now work if no tracks are selected (will minimize all)]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/580b7ba9ddd01aa68cd641cf2aeac28d851f7f3f/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.4" author="Tim Farrell" time="2020-05-08T21:56:50Z">
-        <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
-v1.4  will now prioritize zoom to Time Selection, then Items]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/15cf0b7c77e69a5ac51a3cb691aac83df60ffbd3/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.5" author="Tim Farrell" time="2020-05-25T22:29:54Z">
-        <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
-v1.4  will now prioritize zoom to Time Selection, then Items
-v1.5  will change number of possible zooms based on how many tracks are selected]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b180f4b0a6fb60b8834c28886bb7e9d9014a638d/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.6" author="Tim Farrell" time="2020-07-10T22:28:51Z">
-        <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
-v1.4  will now prioritize zoom to Time Selection, then Items
-v1.5  will change number of possible zooms based on how many tracks are selected
-v1.6  added support for envelope lanes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/52060c9161bb4de264a17ec0fbf161687bead0aa/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
-      </version>
-      <version name="1.7" author="Tim Farrell" time="2020-09-09T09:54:11Z">
+      <version name="1.7" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.3  will now work if no tracks are selected (will minimize all)
 v1.4  will now prioritize zoom to Time Selection, then Items
 v1.5  will change number of possible zooms based on how many tracks are selected
 v1.6  added support for envelope lanes
 v1.7 Bug Fixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/33cfc7716fb69322401b11e73f9fe8204be44c54/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Cycle%20Track%20size%20and%20Zoom%20to%20Selection%20(if%20any).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Decrease Selected Track Heights.lua" type="script" desc="TJF Decrease Selected Track Heights">
@@ -1356,9 +1084,9 @@ v1.7 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-26T10:44:10Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 initial version]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1ef633a310d2e9ddf656469ef9b22031ccb9290e/Session%20Navigation/TJF%20Decrease%20Selected%20Track%20Heights.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Decrease%20Selected%20Track%20Heights.lua</source>
       </version>
     </reapack>
     <reapack name="TJF ESCAPE KEY.lua" type="script" desc="TJF Escape Key">
@@ -1375,11 +1103,8 @@ v1.7 Bug Fixes]]></changelog>
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-08T21:36:41Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/d25b0297e2b67b2cc6b18a9915ee9d65ac8da252/Session%20Navigation/TJF%20ESCAPE%20KEY.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-08-26T10:44:10Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1ef633a310d2e9ddf656469ef9b22031ccb9290e/Session%20Navigation/TJF%20ESCAPE%20KEY.lua</source>
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20ESCAPE%20KEY.lua</source>
       </version>
     </reapack>
     <reapack name="TJF FOLDER Cycle Collapsed Hidden Expanded.lua" type="script" desc="TJF Cycle Folder Visibility - Expanded, Collapsed, Hidden">
@@ -1393,14 +1118,10 @@ v1.7 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-09-09T09:54:11Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/33cfc7716fb69322401b11e73f9fe8204be44c54/Session%20Navigation/TJF%20FOLDER%20Cycle%20Collapsed%20Hidden%20Expanded.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-09-25T03:08:28Z">
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - better programming on GetChildren]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/77856a05ba84e1b80c132436dac6f923f0cb2b23/Session%20Navigation/TJF%20FOLDER%20Cycle%20Collapsed%20Hidden%20Expanded.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20FOLDER%20Cycle%20Collapsed%20Hidden%20Expanded.lua</source>
       </version>
     </reapack>
     <reapack name="TJF GridLock.lua" type="script" desc="TJF Gridlock (Link Snap and Grid Visibility)">
@@ -1414,9 +1135,9 @@ v1.1 - better programming on GetChildren]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-26T00:16:56Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61afcde1c12c6fcd005edb4ec9d027e58c9c17dd/Session%20Navigation/TJF%20GridLock.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20GridLock.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Increase Selected Track Heights.lua" type="script" desc="TJF Increase Selected Track Heights">
@@ -1430,9 +1151,9 @@ v1.1 - better programming on GetChildren]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-26T10:44:10Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 initial version]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/1ef633a310d2e9ddf656469ef9b22031ccb9290e/Session%20Navigation/TJF%20Increase%20Selected%20Track%20Heights.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Increase%20Selected%20Track%20Heights.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Minimize all tracks.lua" type="script" desc="TJF Minimize All Tracks">
@@ -1446,21 +1167,13 @@ v1.1 - better programming on GetChildren]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-06-25T04:10:45Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f023583caa31bfce706b16c8f7e56e7647568e11/Session%20Navigation/TJF%20Minimize%20all%20tracks.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Minimize%20all%20tracks.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Edit Cursor to Middle of Time Selection or Selection of Items.lua" type="script" desc="Move Edit Cursor To Middle of Time Selection or Selected Items">
-      <metadata/>
-      <version name="2.0" author="Claudiohbsantos and TJF" time="2020-05-25T23:01:22Z">
-        <changelog><![CDATA[- Initial Release
-v1.1 checks for time selection  -- TJF added this
-v2.0 will also move edit cursor to center of selected items if no time selection present.  
-    Must have 2 items selected to funcion]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ebbbd6bca9f895f486c614e3b70e71c33bd487b3/Session%20Navigation/TJF%20Move%20Edit%20Cursor%20to%20Middle%20of%20Time%20Selection%20or%20Selection%20of%20Items.lua</source>
-      </version>
-      <version name="2.1" author="Claudiohbsantos and Tim Farrell" time="2020-05-25T23:45:36Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/babcbf9450b4808ca9829b77423de32d5c925984/Session%20Navigation/TJF%20Move%20Edit%20Cursor%20to%20Middle%20of%20Time%20Selection%20or%20Selection%20of%20Items.lua</source>
+      <version name="2.1" author="Claudiohbsantos and Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Move%20Edit%20Cursor%20to%20Middle%20of%20Time%20Selection%20or%20Selection%20of%20Items.lua</source>
       </version>
     </reapack>
     <reapack name="TJF OPTION TAB function similar to Pro Tools.lua" type="script" desc="TJF OPTION TAB function similar to Protools">
@@ -1475,11 +1188,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-28T18:42:19Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/543194526bd2ec8b92e7511652d01c92b635182f/Session%20Navigation/TJF%20OPTION%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-05-03T17:42:02Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c697ef71026bd1ef84b8f27d30a5e64896567282/Session%20Navigation/TJF%20OPTION%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20OPTION%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Select PIX.lua" type="script" desc="TJF Select PIX">
@@ -1494,8 +1204,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Session%20Navigation/TJF%20Select%20PIX.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Select%20PIX.lua</source>
       </version>
     </reapack>
     <reapack name="TJF set time selection to item or open item properties if time already matches.lua" type="script" desc="TJF Set Time Selection to Items, or Open Item Properties if Time is already set">
@@ -1509,8 +1219,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-26T22:36:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/652d208b83a0119231a3867d8c35e2b416e26e94/Session%20Navigation/TJF%20set%20time%20selection%20to%20item%20or%20open%20item%20properties%20if%20time%20already%20matches.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20set%20time%20selection%20to%20item%20or%20open%20item%20properties%20if%20time%20already%20matches.lua</source>
       </version>
     </reapack>
     <reapack name="TJF TAB function similar to Pro Tools.lua" type="script" desc="TJF TAB function similar to Protools">
@@ -1525,11 +1235,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-28T18:42:19Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/543194526bd2ec8b92e7511652d01c92b635182f/Session%20Navigation/TJF%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
-      </version>
-      <version name="1.1" author="Tim Farrell" time="2020-05-03T17:42:02Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c697ef71026bd1ef84b8f27d30a5e64896567282/Session%20Navigation/TJF%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Session Stereo or 6channel.lua" type="script" desc="TJF Toggle Session Stereo or X channels">
@@ -1544,11 +1251,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-05-03T17:42:02Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c697ef71026bd1ef84b8f27d30a5e64896567282/Session%20Navigation/TJF%20Toggle%20Session%20Stereo%20or%206channel.lua</source>
-      </version>
-      <version name="2.0" author="Tim Farrell" time="2020-08-08T21:28:05Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9632715d3c3cc41978ed035f77fde23a767741d9/Session%20Navigation/TJF%20Toggle%20Session%20Stereo%20or%206channel.lua</source>
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Toggle%20Session%20Stereo%20or%206channel.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Tab to Transient.lua" type="script" desc="TJF Toggle Tab to Transient">
@@ -1563,8 +1267,8 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-04-28T17:55:37Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/dcbfa2ff0d04c7e58a5cb234df26a8a1fce55968/Session%20Navigation/TJF%20Toggle%20Tab%20to%20Transient.lua</source>
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Toggle%20Tab%20to%20Transient.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Track SuperCollapsed.lua" type="script" desc="TJF Toggle Track SuperCollapsed">
@@ -1578,10 +1282,10 @@ v2.0 will also move edit cursor to center of selected items if no time selection
 }
 ]]></description>
       </metadata>
-      <version name="1.1" author="Tim Farrell" time="2020-10-10T18:07:49Z">
+      <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - better programming on GetChildren]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/af69c85f4b186f377171a57aa15aef5a60aa25f9/Session%20Navigation/TJF%20Toggle%20Track%20SuperCollapsed.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Toggle%20Track%20SuperCollapsed.lua</source>
       </version>
     </reapack>
   </category>
