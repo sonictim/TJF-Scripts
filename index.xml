@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="4398c8372f2629ba49c37d5ca824392fdc415b1b">
+<index version="1" name="TJF Scripts" commit="b0afb32bb174cb78fb9a6d97233d97f564a94365">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -205,7 +205,7 @@ v2.1 Bug Fixes]]></changelog>
       </version>
     </reapack>
   </category>
-  <category name="Editing/Razer Edit">
+  <category name="Editing/Razor Edit">
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -217,10 +217,10 @@ v2.1 Bug Fixes]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:34:07Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added split functionality and cycle toggle]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit Test.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
@@ -234,10 +234,10 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:34:07Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added split functionality and cycle toggle]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20Razor%20Edit%20Test.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20Razor%20Edit%20Test.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
@@ -251,9 +251,9 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
+      <version name="1.0" author="Tim Farrell" time="2020-10-24T18:34:07Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Razer%20Edit/TJF%20Razor%20Edit-Enclose%20Media%20Items%20(leave%20selection).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20Razor%20Edit-Enclose%20Media%20Items%20(leave%20selection).lua</source>
       </version>
     </reapack>
   </category>
