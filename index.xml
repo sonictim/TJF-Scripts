@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="b0afb32bb174cb78fb9a6d97233d97f564a94365">
+<index version="1" name="TJF Scripts" commit="2f06c4430f252f532b7a8acab7b1bca24812de22">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -221,23 +221,6 @@ v2.1 Bug Fixes]]></changelog>
         <changelog><![CDATA[v1.0 - nothing to report
 v2.0 - added split functionality and cycle toggle]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20LINK%20Razor%20Edit%20and%20Item%20Selection.lua</source>
-      </version>
-    </reapack>
-    <reapack name="TJF Razor Edit Test.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF LINK Razor Edit with Item Selection\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Runs in Background When enabled will select any items in your razor edit selection This will select the entirety of the item New Secondary Toggle that will split your items and select only the items inside razor edit When running for the first time, run twice and BE SURE to chose START NEW INSTANCE (NOT terminate) for cycle to behave properly\par}
-}
-]]></description>
-      </metadata>
-      <version name="2.0" author="Tim Farrell" time="2020-10-24T18:34:07Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v2.0 - added split functionality and cycle toggle]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20Razor%20Edit%20Test.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
