@@ -1,0 +1,61 @@
+--[[
+@description CS_Go To Time
+@version 1.999
+@author Claudiohbsantos
+@link http://claudiohbsantos.com
+@date 2017 06 13
+@about
+  # CS_Go To Time
+  Go to Time input
+  Press + or - to change to subtration  or Addition Mode. Press Spacebar to reset default timecode to zero. 
+@changelog
+  - Fixed plus and minus mode when timeline doesnt start at 0
+@provides
+  ../Libraries/TimecodeInput_Module.lua > ../Libraries/Go To Time/TimecodeInput_Module.lua  
+  ../Libraries/CS_Library.lua > ../Libraries/Go To Time/CS_Library.lua  
+--]]
+
+function msg(s) reaper.ShowConsoleMsg(tostring(s)..'\n') end
+
+function get_script_path()
+  local info = debug.getinfo(1,'S');
+  local script_path = info.source:match[[^@?(.*[\/])[^\/]-$]]
+  return script_path
+end
+
+function goToTimecode(inputInSeconds)
+  reaper.SetEditCurPos2(0,inputInSeconds,false,false)
+  reaper.Main_OnCommand(41205, 0) --------Move Items to EDIT CURSOR
+end
+
+function onSuccessfulInput(inputInSeconds) 
+  if inputInSeconds then
+    goToTimecode(inputInSeconds)
+  end
+  
+end
+
+function prequire(...)
+    local status, lib = pcall(require, ...)
+
+    if (status) then return lib end
+    --Library failed to load, so perhaps return `nil` or something?
+    return nil
+end
+
+local script_path = get_script_path()
+local libraryPath = string.match(script_path,"(.*/).*/$").."Libraries/"
+package.path = package.path .. ";" .. libraryPath .. "?.lua;".. libraryPath .."Go To Time/?.lua"
+
+local requireStatus = prequire("CS_Library")
+requireStatus = prequire("TimecodeInput_Module")
+
+if requireStatus then
+  initGUI(130,"Go To Time")
+
+  defaulTimeInSeconds = reaper.GetCursorPositionEx(0)
+  runTimecodeInputBox()
+   
+else
+  reaper.ShowMessageBox("The script is missing the TimecodeInput_Module to function. Please reinstall this script from Reapack","Error: Library Missing",0)
+end

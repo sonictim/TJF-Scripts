@@ -1,0 +1,57 @@
+
+track = GetMasterTrack(0);
+channels =  GetMediaTrackInfo_Value( track, "I_NCHAN" );
+
+
+channels == 2 ? (
+    channels = 6;
+    enable = 1;)
+:
+    (channels = 2;
+    enable = 0;
+);
+
+
+        SetMediaTrackInfo_Value(track, "I_NCHAN", channels);
+        fx =  TrackFX_AddByName( track, "ReaSurround", false, 0);
+        fx >= 0 ? TrackFX_SetEnabled( track, fx, enable );
+        fx =  TrackFX_AddByName( track, "Surround Pan 2.1", false, 0);
+        fx >= 0 ? TrackFX_SetEnabled( track, fx, enable );
+        
+        
+   i=0;
+   while (i<CountTracks(0)) (
+   
+   track = GetTrack(0,i);
+   SetMediaTrackInfo_Value(track, "I_NCHAN", channels);
+
+   fx = TrackFX_AddByName( track, "ReaSurround", false, 0);
+   fx >= 0 ? TrackFX_SetEnabled( track, fx, enable );
+   fx = TrackFX_AddByName( track, "Surround Pan 2.1", false, 0);
+   fx >= 0 ? TrackFX_SetEnabled( track, fx, enable );
+   i=i+1
+   
+   );
+   
+   
+
+  i=0;
+  while (i<CountMediaItems(0)) (
+
+        take = GetActiveTake(GetMediaItem(0,i));
+        fx =  TakeFX_AddByName( take, "ReaSurround", 0);
+        fx >= 0 ? TakeFX_SetEnabled( take, fx, enable );
+        fx =  TakeFX_AddByName( take, "Surround Pan 2.1", 0);
+        fx >= 0 ? TakeFX_SetEnabled( take, fx, enable );
+        i=i+1;
+    
+  );
+    
+
+SetExtState("section", "key", state, 0 );
+    
+UpdateArrange();
+SetToggleCommandState( 0, cmd_id, state);
+RefreshToolbar2(0, cmd_id);
+
+
