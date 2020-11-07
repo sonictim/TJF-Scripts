@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="ea3689b7e96c4fb5b08f9ac8dfad359c9fba3717">
+<index version="1" name="TJF Scripts" commit="61c80ce1e4050ae708691eb78ceba1ffe8e32e9e">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -229,6 +229,38 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </metadata>
       <version name="2.0" author="BirdBird, Tim Farrell" time="2020-10-24T18:51:48Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ea3689b7e96c4fb5b08f9ac8dfad359c9fba3717/Editing/Razor%20Edit/TJF%20LINK%20Razor%20Edit%20Selection%20with%20Folders,%20Item%20Grouping%20Affects%20Behavior2(reapacktest).lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Left Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Left Edge of Razor Edits to Edit Cursor">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Left Edge of Razor Edits to Edit Cursor\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. Mimics Protools Control Click Behavior\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T11:42:36Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Right Edge of Razor Edits to Edit Cursor\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. Mimics Protools Control + CMD + Click Behavior\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T11:42:36Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
