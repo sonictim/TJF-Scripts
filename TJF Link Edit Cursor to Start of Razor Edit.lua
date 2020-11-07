@@ -1,31 +1,37 @@
 
 
-function GetRazorEditStart()
-          retval = false  
-          position = ""
+function GetRazorEditBounds()
+          local retval = false  
+          local aStart = ""
+          local aEnd = ""
 
           for i=0, reaper.CountTracks(0)-1 do
-              _, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
-              if x ~= "" then 
+              local _, str = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "", false)
+              if str ~= "" then 
                   retval = true
-                  x = x:match "%d+.%d+"
+                  local x = str:match "%d+.%d+"
                   
-                  if position == "" then position = x
-                  elseif position > x then position = x
+                  if aStart == "" then aStart = x
+                  elseif aStart > x then aStart = x
+                  end
+              
+                  x = str:match('.+%s(%d+%.%d+).*$')
+              
+                  if aEnd == "" then aEnd = x
+                  elseif aEnd < x then aEnd = x
                   end
               
               end
               
           end
           
-          return retval, position
-
+          return retval, aStart, aEnd
 end
 
 
 
 function Main()
-    test, position = GetRazorEditStart()
+    test, position, endpos = GetRazorEditBounds()
 
     if    test
     then
