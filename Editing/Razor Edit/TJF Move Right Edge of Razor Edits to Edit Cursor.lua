@@ -1,5 +1,5 @@
 --@description TJF Move Right Edge of Razor Edits to Edit Cursor
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -20,6 +20,7 @@
 
 --@changelog
 --  v1.0 - nothing to report
+--  v1.1 - Envelope Bugfix
 
     
     --[[------------------------------[[---
@@ -52,7 +53,6 @@ function CheckItem(item, table)
 
 end
 
-
 function GetItemsInRange(track, areaStart, areaEnd)
     local items = {}
     local itemCount = reaper.CountTrackMediaItems(track)
@@ -72,6 +72,44 @@ function GetItemsInRange(track, areaStart, areaEnd)
 
     return items
 end
+
+function literalize(str)
+    return str:gsub("[%(%)%.%%%+%-%*%?%[%]%^%$]", function(c) return "%" .. c end)
+end
+
+function GetEnvelopeByGUID(track, GUID)
+    for j = 1, reaper.CountTrackEnvelopes(track) do
+        local envelope = reaper.GetTrackEnvelope(track, j - 1)
+        local ret2, envelopeChunk = reaper.GetEnvelopeStateChunk(envelope, "")
+        local retval, buf = reaper.GetEnvelopeName( envelope )
+                
+        if string.match(envelopeChunk, literalize(GUID:sub(2, -2))) then
+            return buf,envelope
+        end
+    end
+end
+
+function GetEnvelopePointsInRange(envelopeTrack, areaStart, areaEnd)
+    local envelopePoints = {}
+
+    for i = 1, reaper.CountEnvelopePoints(envelopeTrack) do
+        local retval, time, value, shape, tension, selected = reaper.GetEnvelopePoint(envelopeTrack, i - 1)
+
+        if time >= areaStart and time <= areaEnd then --point is in range
+            envelopePoints[#envelopePoints + 1] = {
+                id = i-1 ,
+                time = time,
+                value = value,
+                shape = shape,
+                tension = tension,
+                selected = selected
+            }
+        end
+    end
+
+    return envelopePoints
+end
+
 
 
 function GetRazorEdits()

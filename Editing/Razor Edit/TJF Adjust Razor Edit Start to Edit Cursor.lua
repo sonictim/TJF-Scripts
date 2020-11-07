@@ -1,13 +1,13 @@
---@description TJF Move Left Edge of Razor Edits to Edit Cursor
---@version 1.1
+--@description TJF Adjust Razor Edit Start to Edit Cursor
+--@version 1.0
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
 --
 --@about
---  # TJF Move Left Edge of Razor Edits to Edit Cursor
+--  # TJF Adjust Razor Edit Start to Edit Cursor
 --
---  Title is pretty self explanatory.  Mimics Protools Control Click Behavior
+--  Title is pretty self explanatory. If Edit Cursor is later than Razor Edit Selection End, will remove Razor Edit 
 
 
 --  DISCLAIMER:
@@ -20,7 +20,6 @@
 
 --@changelog
 --  v1.0 - nothing to report
---  v1.1 - Envelope Bugfix
 
     
     --[[------------------------------[[---
@@ -38,20 +37,6 @@
                     FUNCTIONS               
     ---]]------------------------------]]--
 
-function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end  -- DEBUG
-reaper.ClearConsole()
-
-
-function CheckItem(item, table)
-
-    for i=1, #table do
-    
-        if item == table[i] then return false end
-    end
-
-    return true
-
-end
 
 function GetItemsInRange(track, areaStart, areaEnd)
     local items = {}
@@ -109,7 +94,6 @@ function GetEnvelopePointsInRange(envelopeTrack, areaStart, areaEnd)
 
     return envelopePoints
 end
-
 
 function GetRazorEdits()
     local trackCount = reaper.CountTracks(0)
@@ -184,57 +168,14 @@ function SetRazorEdit(track, areaStart, areaEnd, GUID)
 end
 
 
-function SplitRazorEdits(razorEdits)
-    local areaItems = {}
-    
-    reaper.PreventUIRefresh(1)
-    for i = 1, #razorEdits do
-        local areaData = razorEdits[i]
-        if not areaData.isEnvelope then
-            local items = areaData.items
-            for j = 1, #items do 
-                local item = items[j]
-    
-                --split items 
-                local newItem = reaper.SplitMediaItem(item, areaData.areaStart)
-                if newItem == nil then
-                    reaper.SplitMediaItem(item, areaData.areaEnd)
-                    table.insert(areaItems, item)
-                else
-                    reaper.SplitMediaItem(newItem, areaData.areaEnd)
-                    table.insert(areaItems, newItem)
-                end
-            end
-        end
-    end
-    reaper.PreventUIRefresh(-1)
-    
-    return areaItems
-end
-
-
-
-function GetRazorEditStart()
-          local retval = false  
-          local position = ""
-
+function RazorEditSelectionExists()
           for i=0, reaper.CountTracks(0)-1 do
-              local _, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
-              if x ~= "" then 
-                  retval = true
-                  x = x:match "%d+.%d+"
-                  
-                  if position == "" then position = x
-                  elseif position > x then position = x
-                  end
-              
-              end
-              
+              local retval, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
+              if x ~= "" then return true end
           end
-          
-          return retval, position
-
-end
+    return false
+    
+end--AreaSelectionExists()
 
 
         --[[------------------------------[[--
@@ -243,54 +184,24 @@ end
 
 function Main()
 
-    local test, position = GetRazorEditStart()
 
-    if    test
+    if    RazorEditSelectionExists()
     then
-          local offset = position - reaper.GetCursorPosition()
+          local position = reaper.GetCursorPosition()
           local areas = GetRazorEdits()
           
           reaper.Main_OnCommand(42406,0) -- Remove all Razor Edits
-          reaper.Main_OnCommand(40289,0) -- Unselect all items
           
-          
-          --SET NEW AREAS
+          --SET RAZOR EDITS
           
           for i=1, #areas do
               local atrack = areas[i].track
-              local aStart = areas[i].areaStart - offset
-              local aEnd = areas[i].areaEnd - offset
+              local aStart = position
+              local aEnd = areas[i].areaEnd
               local aguid = areas[i].GUID
 
-              SetRazorEdit(atrack, aStart, aEnd )
+              if aStart <= aEnd then SetRazorEdit(atrack, aStart, aEnd ) end
           end
-          
-          --MOVE ITEMS IN ORIGINAL RAZOR EDIT TO NEW POSITION
-          
-          areas = SplitRazorEdits(areas)  -- returns only the remaining items after splitting them
-          
-          for i=1, #areas do
-          
-              position =  reaper.GetMediaItemInfo_Value( areas[i], "D_POSITION" ) - offset
-              reaper.SetMediaItemInfo_Value( areas[i], "D_POSITION", position )
-          
-          end
-          
-          --Remove Items that are being replaced with Razor Edit
-          
-          if OVERWRITE then
-          
-                local clear = SplitRazorEdits(GetRazorEdits())
-                
-                for i=1, #clear do
-                
-                    if    CheckItem(clear[i], areas) 
-                    then  reaper.DeleteTrackMediaItem(  reaper.GetMediaItem_Track( clear[i] ), clear[i] )
-                    end
-      
-                end
-          end
-    
     end
 
 end--Main()
@@ -300,8 +211,6 @@ end--Main()
                    CALL THE SCRIPT          
         --]]------------------------------]]--
 
-
-reaper.Undo_BeginBlock()
 Main()
 reaper.UpdateArrange()
-reaper.Undo_EndBlock("Move Razor Edit to Edit Cursor", -1)
+
