@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="8139e1115f7c6584a687ec5d24e9693f2aad49ce">
+<index version="1" name="TJF Scripts" commit="ddd679481d02d494b5c0d2c6aaab56a6775f449b">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -214,12 +214,14 @@ v2.1 Bug Fixes]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Adjust Razor Edit End to Edit Cursor\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. If Edit Cursor is earlier than Razor Edit Selection Start, will remove Razor Edit\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20End%20to%20Edit%20Cursor.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20End%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Adjust Razor Edit Start to Edit Cursor.lua" type="script" desc="TJF Adjust Razor Edit Start to Edit Cursor">
@@ -230,12 +232,14 @@ v2.1 Bug Fixes]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Adjust Razor Edit Start to Edit Cursor\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. If Edit Cursor is later than Razor Edit Selection End, will remove Razor Edit\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20Start%20to%20Edit%20Cursor.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20Start%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
@@ -271,12 +275,14 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Edit Cursor to End of Razor Edits\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. There is a setting inside the script that will change the function to automatically move the cursor upon razor edit creation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20End%20of%20Razor%20Edits.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20End%20of%20Razor%20Edits.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Edit Cursor to Start of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to Start of Razor Edits">
@@ -287,12 +293,14 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Edit Cursor to Start of Razor Edits\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. There is a setting inside the script that will change the function to automatically move the cursor upon razor edit creation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20Start%20of%20Razor%20Edits.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20Start%20of%20Razor%20Edits.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Left Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Left Edge of Razor Edits to Edit Cursor">
@@ -303,6 +311,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Left Edge of Razor Edits to Edit Cursor\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. Mimics Protools Control Click Behavior\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
@@ -311,7 +320,9 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - Envelope Bugfix]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
@@ -322,6 +333,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Right Edge of Razor Edits to Edit Cursor\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. Mimics Protools Control + CMD + Click Behavior\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
@@ -330,7 +342,9 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - Envelope Bugfix]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
