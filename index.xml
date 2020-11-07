@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="61c80ce1e4050ae708691eb78ceba1ffe8e32e9e">
+<index version="1" name="TJF Scripts" commit="06ad9ea334095c8cfef82274cfbdd0599c336602">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -229,6 +229,38 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </metadata>
       <version name="2.0" author="BirdBird, Tim Farrell" time="2020-10-24T18:51:48Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ea3689b7e96c4fb5b08f9ac8dfad359c9fba3717/Editing/Razor%20Edit/TJF%20LINK%20Razor%20Edit%20Selection%20with%20Folders,%20Item%20Grouping%20Affects%20Behavior2(reapacktest).lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Edit Cursor to End of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to End of Razor Edits">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Edit Cursor to End of Razor Edits\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. There is a setting inside the script that will change the function to automatically move the cursor upon razor edit creation\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20End%20of%20Razor%20Edits.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Edit Cursor to Start of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to Start of Razor Edits">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Edit Cursor to Start of Razor Edits\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Title is pretty self explanatory. There is a setting inside the script that will change the function to automatically move the cursor upon razor edit creation\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20Start%20of%20Razor%20Edits.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Left Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Left Edge of Razor Edits to Edit Cursor">
@@ -1244,6 +1276,38 @@ v1.1 - better programming on GetChildren]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20set%20time%20selection%20to%20item%20or%20open%20item%20properties%20if%20time%20already%20matches.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Smart Move Edit Cursor to End.lua" type="script" desc="TJF Smart Move Edit Cursor to End">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Smart Move Edit Cursor to End\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Moves Edit Cursor to the End of Time Selection, Razor Edits, Items in that order of priority Additional Setting: PROJECT Edit Script to adjust this variable. If TRUE and no selection, will move cursor to End of Project\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Session%20Navigation/TJF%20Smart%20Move%20Edit%20Cursor%20to%20End.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Smart Move Edit Cursor to Start.lua" type="script" desc="TJF Smart Move Edit Cursor to Start">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Smart Move Edit Cursor to Start\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Moves Edit Cursor to the Start of Time Selection, Razor Edits, Items in that order of priority Additional Setting: PROJECT Edit Script to adjust this variable. If TRUE and no selection, will move cursor to Start of Project\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Session%20Navigation/TJF%20Smart%20Move%20Edit%20Cursor%20to%20Start.lua</source>
       </version>
     </reapack>
     <reapack name="TJF TAB function similar to Pro Tools.lua" type="script" desc="TJF TAB function similar to Protools">
