@@ -8,16 +8,15 @@
 --  # TJF Adjust Razor Edit End to Edit Cursor
 --
 --  Title is pretty self explanatory. If Edit Cursor is earlier than Razor Edit Selection Start, will remove Razor Edit 
-
-
+--
+--
 --  DISCLAIMER:
 --  This script was written for my own personal use and therefore I offer no support of any kind.
 --  Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them.
 --  I strongly recommend never to run this or any other script I've written for any reason what so ever.
 --  Ignore this advice at your own peril!
-  
-  
-
+--  
+--
 --@changelog
 --  v1.0 - nothing to report
 
