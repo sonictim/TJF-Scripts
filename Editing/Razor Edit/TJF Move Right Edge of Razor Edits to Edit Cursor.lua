@@ -1,7 +1,7 @@
 --[[
 
 @noindex
-  NoIndex: true
+  NoIndex: false
 @description TJF Move Right Edge of Razor Edits to Edit Cursor
 @version 1.0
 @author Tim Farrell
