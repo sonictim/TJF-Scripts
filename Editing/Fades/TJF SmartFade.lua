@@ -1,5 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --
 --@about
@@ -16,6 +16,7 @@
 --
 --@changelog
 --  v1.0 - nothing to report
+--  v1.1 - bugfix - fixes error with default fade of last item in a series.
 
 
 
@@ -250,7 +251,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
 
 
         ---++=<{[ LOOK AHEAD TO NEXT ITEM TO SEE IF CROSSFADES ARE REQUIRED ]}>=++---
-      
+      --
         local nextitem = items[j+1]  -- process next item to see if a crossfade is required
         if    nextitem           -- if next item doesn't exist, don't bother with the rest
         then
@@ -261,6 +262,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
               if    itemstart < starttime and itemend > starttime and itemend < endtime       --checks to see if we want to just create a big crossfade the size of the boundry
                     and nextstart > starttime and nextstart < endtime and nextend > endtime
                     and starttime ~= endtime
+                    and #items == 2
               then
                     reaper.BR_SetItemEdges( item, itemstart, endtime )      -- Do the big crossfade set to the length of the boundry  -- exploits the auto crossfade which we turned on
                     reaper.BR_SetItemEdges( nextitem, starttime, nextend )
@@ -279,7 +281,15 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                       reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultCrossfadeShape )
                       reaper.SetMediaItemInfo_Value( nextitem, "C_FADEINSHAPE", defaultCrossfadeShape )
                       --Crossfade(item, nextitem, itemend - defaultfade/2, itemend - defaultfade/2 + defaultfade)  -- crossfades to the default length  function no longer used.. exploiting auto crossfade instead 
-              end          
+              end
+        
+        elseif #items > 2  -- othgerwise, if it's the last item and there are more than 2 items in the list
+        then
+                      --reaper.BR_SetItemEdges( item, itemstart, nextstart - defaultfade/2 + defaultfade )  -- Crossfade these items the length of the default crossfade
+                      reaper.BR_SetItemEdges( item, itemstart - defaultfade/2, itemend )  -- Crossfade these items the length of the default crossfade
+
+                      reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultCrossfadeShape )                
+             
         end -- if    
   end -- for J
 end -- ProcessFades ()
