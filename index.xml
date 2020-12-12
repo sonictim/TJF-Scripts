@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="ddd679481d02d494b5c0d2c6aaab56a6775f449b">
+<index version="1" name="TJF Scripts" commit="93fa63ee24b4dd44a3b5ac32e214c5939b111d81">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -190,6 +190,11 @@ v2.1 Bug Fixes]]></changelog>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Fades/TJF%20SmartFade.lua</source>
+      </version>
+      <version name="1.1" author="Tim Farrell" time="2020-12-12T21:32:53Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - bugfix - fixes error with default fade of last item in a series.]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/93fa63ee24b4dd44a3b5ac32e214c5939b111d81/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
