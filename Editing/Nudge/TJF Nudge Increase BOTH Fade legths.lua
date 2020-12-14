@@ -11,7 +11,7 @@
 --  v1.0 - nothing to report
 
 
-local nudge = 0.0105 -- 1 frame = .042
+local nudge = 0.042 -- 1 frame = .042
 
 
 
