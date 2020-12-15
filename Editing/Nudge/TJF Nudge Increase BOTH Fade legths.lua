@@ -1,5 +1,5 @@
 --@description TJF Nudge Increase Both Fade Lengths
---@version 1.0
+--@version 1.01
 --@author Tim Farrell
 --
 --@about
@@ -9,7 +9,7 @@
 --
 --@changelog
 --  v1.0 - nothing to report
-
+--  v1.01 - refresh arrange view after processing fades
 
 local nudge = 0.042 -- 1 frame = .042
 
