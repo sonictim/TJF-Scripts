@@ -37,3 +37,5 @@ if count > 0 then
     end--for
     
 end
+
+reaper.UpdateArrange()
