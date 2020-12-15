@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="f81621210a691f661d39b2f6c223040257706abe">
+<index version="1" name="TJF Scripts" commit="ae6f71936122451602db362084185b9ade681e3f">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -222,6 +222,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20BOTH%20Fade%20legths.lua</source>
       </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Decrease%20BOTH%20Fade%20legths.lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Nudge Decrease Fade IN legth.lua" type="script" desc="TJF Nudge Decrease Fade IN Length">
       <metadata>
@@ -237,6 +242,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20IN%20legth.lua</source>
+      </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20IN%20legth.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Nudge Decrease Fade OUT legth.lua" type="script" desc="TJF Nudge Decrease Fade OUT Length">
@@ -254,6 +264,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20OUT%20legth.lua</source>
       </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20OUT%20legth.lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Nudge Increase BOTH Fade legths.lua" type="script" desc="TJF Nudge Increase Both Fade Lengths">
       <metadata>
@@ -269,6 +284,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20BOTH%20Fade%20legths.lua</source>
+      </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Increase%20BOTH%20Fade%20legths.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Nudge Increase Fade IN legth.lua" type="script" desc="TJF Nudge Increase Fade IN Length">
@@ -286,6 +306,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20IN%20legth.lua</source>
       </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20IN%20legth.lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Nudge Increase Fade OUT legth.lua" type="script" desc="TJF Nudge Increase Fade OUT Length">
       <metadata>
@@ -301,6 +326,11 @@ v1.3 - logic rework - time selection is now processed per track for better cross
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20OUT%20legth.lua</source>
+      </version>
+      <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.01 - refresh arrange view after processing fades]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ae6f71936122451602db362084185b9ade681e3f/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20OUT%20legth.lua</source>
       </version>
     </reapack>
     <reapack name="TJF_Nudge selected items volume +3db.eel" type="script">
