@@ -1,5 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@version 1.3
+--@version 1.4
 --@author Tim Farrell
 --
 --@about
@@ -20,6 +20,7 @@
 --  v1.2 - bugfix - repeated use was creating undesirable behavior
 --  v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
 --       - new feature - Crossfade size can now be decreased.
+--  v1.4 - bigfix - can now fade out length of item if time selection is set to exactly the end of the item
 
 
 
@@ -235,7 +236,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                   
                   reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", endtime - itemstart )  --  fade item from start to end boundry 
             
-            elseif itemstart < starttime and itemend > starttime and itemend < endtime and #items == 1  -- if the item starts outside of bounds, but ends within them  *** commented section allows multiple files on same lane to adjust to razor edit
+            elseif itemstart < starttime and itemend > starttime and itemend <= endtime and #items == 1  -- if the item starts outside of bounds, but ends within them  *** commented section allows multiple files on same lane to adjust to razor edit
             then
                  local fadeinlen = reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO")   -- if the boundry falls in the middle of a fade in........
                  if    fadeinlen > starttime - itemstart
