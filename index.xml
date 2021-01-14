@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="ae6f71936122451602db362084185b9ade681e3f">
+<index version="1" name="TJF Scripts" commit="f62c892851135be7056ae16b52de0235ea6e8bcb">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -203,6 +203,15 @@ v1.2 - bugfix - repeated use was creating undesirable behavior
 v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
      - new feature - Crossfade size can now be decreased.]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Fades/TJF%20SmartFade.lua</source>
+      </version>
+      <version name="1.4" author="Tim Farrell" time="2021-01-14T20:13:40Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - bugfix - fixes error with default fade of last item in a series.
+v1.2 - bugfix - repeated use was creating undesirable behavior
+v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
+     - new feature - Crossfade size can now be decreased.
+v1.4 - bigfix - can now fade out length of item if time selection is set to exactly the end of the item]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f62c892851135be7056ae16b52de0235ea6e8bcb/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
