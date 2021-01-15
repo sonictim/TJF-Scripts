@@ -1,5 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@version 1.5
+--@version 1.6
 --@author Tim Farrell
 --
 --@about
@@ -22,6 +22,7 @@
 --       - new feature - Crossfade size can now be decreased.
 --  v1.4 - bigfix - can now fade out length of item if time selection is set to exactly the end of the item
 --  v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
+--  v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
 
 
 
@@ -32,6 +33,7 @@
 local defaultfade = 0.084  -- Set is Seconds:  1 frame = .042
 local defaultFadeShape = 0 --  0 = equal gain (straight line) 1 = equal power (curved)
 local defaultCrossfadeShape = 1 --  0 = equal gain (straight line) 1 = equal power (curved)
+local prespliceCrossfade = true -- if true, default crossfade will occur before the edit point, not across it.  If false, it will fade on either side of the split
 local removeSelection = false -- if true will remove the time selection/razor edit selection after running the script
 
 
@@ -310,8 +312,12 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                       and (reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN") < defaultfade-.001 or reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN_AUTO") < defaultfade-.001)     --and the current fadeout length of the first item is smaller than the default fade length
                       and (reaper.GetMediaItemInfo_Value(nextitem, "D_FADEINLEN") < defaultfade-.001 or reaper.GetMediaItemInfo_Value(nextitem, "D_FADEINLEN_AUTO") < defaultfade-.001)    --and the current fadein length of the second item is less than the default fade length
               then 
-                      reaper.BR_SetItemEdges( item, itemstart, itemend - defaultfade/2 + defaultfade )  -- Crossfade these items the length of the default crossfade
-                      reaper.BR_SetItemEdges( nextitem, nextstart - defaultfade/2, nextend )
+                      if prespliceCrossfade then
+                            reaper.BR_SetItemEdges( nextitem, nextstart - defaultfade, nextend )
+                      else
+                            reaper.BR_SetItemEdges( item, itemstart, itemend - defaultfade/2 + defaultfade )  -- Crossfade these items the length of the default crossfade
+                            reaper.BR_SetItemEdges( nextitem, nextstart - defaultfade/2, nextend )
+                      end
                     
                       reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultCrossfadeShape )
                       reaper.SetMediaItemInfo_Value( nextitem, "C_FADEINSHAPE", defaultCrossfadeShape )
