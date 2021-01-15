@@ -1,5 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@version 1.4
+--@version 1.5
 --@author Tim Farrell
 --
 --@about
@@ -21,6 +21,7 @@
 --  v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
 --       - new feature - Crossfade size can now be decreased.
 --  v1.4 - bigfix - can now fade out length of item if time selection is set to exactly the end of the item
+--  v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 
 
 
@@ -31,6 +32,7 @@
 local defaultfade = 0.084  -- Set is Seconds:  1 frame = .042
 local defaultFadeShape = 0 --  0 = equal gain (straight line) 1 = equal power (curved)
 local defaultCrossfadeShape = 1 --  0 = equal gain (straight line) 1 = equal power (curved)
+local removeSelection = false -- if true will remove the time selection/razor edit selection after running the script
 
 
 
@@ -399,6 +401,7 @@ function Main()
                     if      #items > 0                                   -- if there are selected items, process them
                     then  
                             ProccessFades(items, start_time, end_time)
+                            if removeSelection then reaper.Main_OnCommand(40635, 0) end -- remove time selection
                     end
             end--for t
                   
@@ -431,6 +434,7 @@ function Main()
                     ]]
                     
                     ProccessFades(areaData.items, areaData.areaStart, areaData.areaEnd)
+                    if removeSelection then reaper.Main_OnCommand(42406, 0) end -- remove razor edit selection selection 
               end -- for(i)
               
               --ProccessFades(items, start_time, end_time)
@@ -449,6 +453,7 @@ function Main()
               end
           
               ProccessFades(items, 1, 1)  -- setting the last 2 variables to match changes the behavior of the processing function.  In theory, could leave these blank
+              if removeSelection then reaper.Main_OnCommand(40289, 0) end -- remove item selections    
       end
                                            
       --------------------------------------------------------------------------++=<{[ RESTORE TRIM/AutoCrossfade STATE ]}>=++---     
