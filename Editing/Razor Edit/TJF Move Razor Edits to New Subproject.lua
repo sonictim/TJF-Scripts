@@ -1,5 +1,3 @@
---@noindex
---  NoIndex: false
 --@description TJF Move Razor Edit Selection to New Subproject
 --@version 0.2
 --@author Tim Farrell
