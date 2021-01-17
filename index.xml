@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="70a314bbf3a926ad782138dd5fedd2510e854dad">
+<index version="1" name="TJF Scripts" commit="06c60106e38ddbd23664bdf610efe6a5d45cb76c">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -505,6 +505,12 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       <version name="0.2" author="Tim Farrell" time="2021-01-17T22:50:19Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/70a314bbf3a926ad782138dd5fedd2510e854dad/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.3" author="Tim Farrell" time="2021-01-17T23:57:08Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06c60106e38ddbd23664bdf610efe6a5d45cb76c/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
