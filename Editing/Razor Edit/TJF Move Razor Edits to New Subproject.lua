@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.2
+--@version 0.3
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -24,6 +24,8 @@
 --  
 --@changelog
 --  v0.1 - initial version nothing to report
+--  v0.2 - bugfixes and cleanup
+--  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
 
 
 
@@ -32,9 +34,14 @@
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
 
-CopyVideo = true  --  If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
-EndInSubproject = true -- If true, script will complete with the subproject tab selected.  If true, the original project will be selected 
+EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If true, the original project will be selected 
 
+CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes) will be copied into the subproject tracks
+
+PreserveRelativeProjectLocation = true    -- if true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This PRESERVES TIMECODE
+  
+CopyVideo = true                          --  If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
+                                          -- ***NOTE:  if COPY VIDEO is enable (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE 
 
 
     --[[------------------------------[[---
@@ -85,11 +92,12 @@ function Main()
             if    CopyVideo                                                                                -- Copy Video Tracks (if option is enabled)
             then
                   local _, name = reaper.GetTrackName( track )
-                  if    string.upper(name) == "VIDEO" or string.upper(name) == PIX 
+                  if    string.upper(name) == "VIDEO" or string.upper(name) == "PIX" 
                   then
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
                       table.insert(tracks, str)
                       video = video + 1
+                      PreserveRelativeProjectLocation = true
                   end
             end
            
@@ -141,16 +149,29 @@ function Main()
               for i=1, #tracks                                                                            --  Build empty tracks in new subproject --
               do
                   reaper.InsertTrackAtIndex( i-1, true )
-                  local track = reaper.GetTrack(0,i-1)
-                  reaper.SetTrackStateChunk( track, tracks[i], true )
+                  if  CopyTrackInfo
+                  then
+                      local track = reaper.GetTrack(0,i-1)
+                      reaper.SetTrackStateChunk( track, tracks[i], true )
+                  end
               end
               
+              
               reaper.SetOnlyTrackSelected( reaper.GetTrack(0,0+video), true )                             -- Select first track to initiate paste
-              reaper.SetEditCurPos(startPos, true, true)                                                  -- Set Edit Cursor to start of where items should go
+              if  PreserveRelativeProjectLocation 
+              then 
+                  reaper.SetEditCurPos(startPos, true, true)                                               -- Set Edit Cursor to start of where items should go
+              end
+              
               reaper.Main_OnCommand(42398, 0)                                                             -- Paste Items from source project
                
-              reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                                  -- Adjust Subproject Markers
-              reaper.SetProjectMarker( 2, false, endPos, 0, "=END" )
+              if  PreserveRelativeProjectLocation 
+              then
+                  reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
+                  reaper.SetProjectMarker( 2, false, endPos, 0, "=END" )
+              else
+                  reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
+              end
                
               
               --reaper.SelectProjectInstance(source_proj)
