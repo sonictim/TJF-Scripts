@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="0a1c77963dd332638de336d47cab75dc8e79c1d1">
+<index version="1" name="TJF Scripts" commit="70a314bbf3a926ad782138dd5fedd2510e854dad">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -486,6 +486,25 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Razor Edits to New Subproject.lua" type="script" desc="TJF Move Razor Edit Selection to New Subproject">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Razor Edit Selection to New Subproject\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will Prompt for a new Subproject name and MOVE your current razor edits to the newsubproject. Destination Subproject behavior is different. Items will be at the same timecode as original project. If no razor selection is visible, no action will be taken\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Editable Options: Ability to Copy a Video Track along with Items - ENABLED by default Option to Choose what is in view when scripts completes - Original Project is Default setting\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="0.2" author="Tim Farrell" time="2021-01-17T22:50:19Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/70a314bbf3a926ad782138dd5fedd2510e854dad/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
