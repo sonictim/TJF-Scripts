@@ -250,7 +250,7 @@ v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"]]></chan
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20BOTH%20Fade%20legths.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Decrease%20BOTH%20Fade%20legths.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -271,7 +271,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20IN%20legth.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20IN%20legth.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -292,7 +292,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20OUT%20legth.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Decrease%20Fade%20OUT%20legth.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -313,7 +313,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20BOTH%20Fade%20legths.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Increase%20BOTH%20Fade%20legths.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -334,7 +334,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20IN%20legth.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20IN%20legth.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -355,7 +355,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-12-13T23:31:36Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f81621210a691f661d39b2f6c223040257706abe/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20OUT%20legth.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3542db0774c9c7e7997f1cf9b76a520baae0d7bb/Editing/Nudge/TJF%20Nudge%20Increase%20Fade%20OUT%20legth.lua</source>
       </version>
       <version name="1.01" author="Tim Farrell" time="2020-12-15T22:21:45Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -389,8 +389,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20End%20to%20Edit%20Cursor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20End%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Adjust Razor Edit Start to Edit Cursor.lua" type="script" desc="TJF Adjust Razor Edit Start to Edit Cursor">
@@ -407,8 +406,7 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20Start%20to%20Edit%20Cursor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20Start%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
@@ -450,8 +448,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20End%20of%20Razor%20Edits.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20End%20of%20Razor%20Edits.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Edit Cursor to Start of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to Start of Razor Edits">
@@ -468,8 +465,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T20:45:10Z">
-        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20Start%20of%20Razor%20Edits.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06ad9ea334095c8cfef82274cfbdd0599c336602/Editing/Razor%20Edit/TJF%20Move%20Edit%20Cursor%20to%20Start%20of%20Razor%20Edits.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Left Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Left Edge of Razor Edits to Edit Cursor">
@@ -489,9 +485,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - Envelope Bugfix]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
@@ -511,9 +505,7 @@ v1.1 - Envelope Bugfix]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/61c80ce1e4050ae708691eb78ceba1ffe8e32e9e/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
-        <changelog><![CDATA[v1.0 - nothing to report
-v1.1 - Envelope Bugfix]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ddd679481d02d494b5c0d2c6aaab56a6775f449b/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Right%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Razor Edit-Enclose Media Items (leave selection).lua" type="script" desc="TJF Razor Edit - Enclose Media Items (leave selection)">
