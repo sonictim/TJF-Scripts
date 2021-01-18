@@ -48,7 +48,7 @@ AlsoCopyMaster = true                     -- If true, will also copy the master 
 
 PreserveRelativeProjectLocation = true    -- If true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This should PRESERVE TIMECODE as long as your default project settings match your original session
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
-                                          -- ***NOTE:  if COPY VIDEO is enable (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE 
+                                          -- ***NOTE:  if COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE if a video track is found
 
 
     --[[------------------------------[[---
