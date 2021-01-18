@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.5
+--@version 0.6
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -31,6 +31,7 @@
 --  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
 --  v0.4 - added option close subproject
 --  v0.5 - added support for master track copy
+--  v0.6 - added support to match timecode start of sessions
 
 
 
@@ -38,17 +39,20 @@
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
 
-EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If true, the original project will be selected 
+EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
 
-CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes) will be copied into the subproject tracks
+CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes,etc) will be copied into the subproject tracks
 AlsoCopyMaster = true                     -- If true, will also copy the master track IF CopyTrackInfo is enabled
 
 
-PreserveRelativeProjectLocation = true    -- If true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This should PRESERVE TIMECODE as long as your default project settings match your original session
+PreserveRelativeProjectLocation = true    -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
+TimecodeStartMatch = true                 -- If true, script will make sure the subproject starts at the same timecode as the source project.
+                                          -- ***NOTE: If BOTH are true, project will preserve timecode values from source to subproject
+
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
-                                          -- ***NOTE:  if COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE if a video track is found
+                                          -- ***NOTE: If COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeProjectLocation and TimecodeStartMatch variable will be overridden to TRUE
 
 
     --[[------------------------------[[---
@@ -90,7 +94,7 @@ function Main()
       local source_start, source_end = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0, false)          -- Get current start and end time selection value in seconds of current project
       
       local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )
-      
+      local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )
       
                         --==//[[    GET SOURCE TRACK AND RAZOR EDIT DATA   ]]\\==--
       
@@ -106,7 +110,8 @@ function Main()
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
                       table.insert(tracks, str)
                       video = video + 1
-                      PreserveRelativeProjectLocation = true
+                      PreserveRelativeProjectLocation = true                                                -- Overriding these variables ensures timecode match
+                      TimecodeStartMatch = true
                   end
             end
            
@@ -154,6 +159,12 @@ function Main()
               
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
               reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
+              
+              if    TimecodeStartMatch
+              then
+                    reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset)
+                    reaper.UpdateTimeline()
+              end
               
               if  CopyTrackInfo and AlsoCopyMaster                                                        -- match master track to source session
               then
