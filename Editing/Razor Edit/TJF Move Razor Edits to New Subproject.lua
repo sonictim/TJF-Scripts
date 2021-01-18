@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.4
+--@version 0.5
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -12,8 +12,11 @@
 --  If no razor selection is visible, no action will be taken
 --  
 --  Editable Options:
+--    Choose which project (source or subproject) is in view at the completion of the script
+--    Close new subproject upon completion of the script
+--    Copy all Track info into subproject (master too) or create blank tracks for the move
+--    Maintain Relative Positiion in Timeline (will preserve timecode position and embed into RPP-PROX)
 --    Ability to Copy a Video Track along with Items - ENABLED by default
---    Option to Choose what is in view when scripts completes - Original Project is Default setting
 --    
 --    
 --  DISCLAIMER:
@@ -27,7 +30,7 @@
 --  v0.2 - bugfixes and cleanup
 --  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
 --  v0.4 - added option close subproject
-
+--  v0.5 - added support for master track copy
 
 
 
@@ -36,14 +39,14 @@
     ---]]------------------------------]]--
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If true, the original project will be selected 
-
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
-                                          -- ***NOTE: End In Subproject will override this variable.
+                                          -- ***NOTE: if EndInSubproject is true, it will override this variable.
 
 CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes) will be copied into the subproject tracks
+AlsoCopyMaster = true                     -- If true, will also copy the master track IF CopyTrackInfo is enabled
 
-PreserveRelativeProjectLocation = true    -- If true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This PRESERVES TIMECODE
-  
+
+PreserveRelativeProjectLocation = true    -- If true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This should PRESERVE TIMECODE as long as your default project settings match your original session
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
                                           -- ***NOTE:  if COPY VIDEO is enable (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE 
 
@@ -85,10 +88,12 @@ function Main()
       
       local source_proj, source_proj_fn = reaper.EnumProjects( -1, "" )                                    -- Get the Current Project's Project info
       local source_start, source_end = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0, false)          -- Get current start and end time selection value in seconds of current project
-
+      
+      local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )
       
       
                         --==//[[    GET SOURCE TRACK AND RAZOR EDIT DATA   ]]\\==--
+      
       for i=1, reaper.CountTracks(0)                                                                       -- Cycle through each track and check to see if anything needs processing
       do
             local track = reaper.GetTrack(0,i-1)
@@ -149,6 +154,11 @@ function Main()
               
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
               reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
+              
+              if  CopyTrackInfo and AlsoCopyMaster                                                        -- match master track to source session
+              then
+                  reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
+              end
               
               for i=1, #tracks                                                                            --  Build empty tracks in new subproject --
               do
