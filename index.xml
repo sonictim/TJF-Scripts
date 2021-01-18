@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="32315c8c093abc3a65d7a53e8da50f0ed4765e1d">
+<index version="1" name="TJF Scripts" commit="fbd1c5016ce23e42679aedac6b6105c4a988211e">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -537,6 +537,16 @@ v0.4 - added option close subproject
 v0.5 - added support for master track copy
 v0.6 - added support to match timecode start of sessions]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/32315c8c093abc3a65d7a53e8da50f0ed4765e1d/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.7" author="Tim Farrell" time="2021-01-18T16:25:50Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fbd1c5016ce23e42679aedac6b6105c4a988211e/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
