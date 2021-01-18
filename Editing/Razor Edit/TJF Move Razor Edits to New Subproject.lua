@@ -1,11 +1,11 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.3
+--@version 0.4
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
 --
 --@about
---  # TJF Move Razor Edit Selection to New Subproject
+--  # TJF Move Razor Edit Selection to New Subproject 
 --
 --  Will Prompt for a new Subproject name and MOVE your current razor edits to the newsubproject.
 --  Destination Subproject behavior is different.  Items will be at the same timecode as original project.
@@ -26,6 +26,7 @@
 --  v0.1 - initial version nothing to report
 --  v0.2 - bugfixes and cleanup
 --  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
+--  v0.4 - added option close subproject
 
 
 
@@ -36,11 +37,14 @@
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If true, the original project will be selected 
 
+CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
+                                          -- ***NOTE: End In Subproject will override this variable.
+
 CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes) will be copied into the subproject tracks
 
-PreserveRelativeProjectLocation = true    -- if true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This PRESERVES TIMECODE
+PreserveRelativeProjectLocation = true    -- If true items will be pasted in the subproject equidistant from the project start as they were in the original project.  This PRESERVES TIMECODE
   
-CopyVideo = true                          --  If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
+CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
                                           -- ***NOTE:  if COPY VIDEO is enable (TRUE), then if video is found, the PreserveRelativeProjectLocation variable will be overridden to TRUE 
 
 
@@ -174,8 +178,12 @@ function Main()
               end
                
               
-              --reaper.SelectProjectInstance(source_proj)
               reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
+              if    not EndInSubproject and CloseSubproject
+              then
+                    reaper.Main_OnCommand(40860, 0)                                                       -- Close Current Tab
+              end
+              
               
               reaper.SelectProjectInstance(source_proj)
               reaper.Main_OnCommand(40441,0)                                                              -- rebuild peaks for selected items (new subproject)
