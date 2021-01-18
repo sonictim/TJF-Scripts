@@ -12,6 +12,8 @@
 --  If no razor selection is visible, no action will be taken
 --
 --  ** REQUIRES SWS extension for complete feature compatibility.  If you are experiencing issues, please make sure you have SWS installed and updated to latest version
+--
+--  ** Thank you to Edgemeal for helping me solve how to set the project time offset
 --  
 --  Editable Options:
 --    Choose which project (source or subproject) is in view at the completion of the script
