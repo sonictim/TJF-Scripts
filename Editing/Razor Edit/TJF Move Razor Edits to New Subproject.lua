@@ -7,6 +7,7 @@
 --@about
 --  # TJF Move Razor Edit Selection to New Subproject 
 --
+--  ******RAZOR EDITS ARE OFFICIALLY UNSUPPORTED AND EXPERIMENTAL. AS A RESULT, THIS CODE COULD BREAK AT ANY TIME*********
 --  Will Prompt for a new Subproject name and MOVE your current razor edits to the newsubproject.
 --  Destination Subproject behavior is different.  Items will be at the same timecode as original project.
 --  If no razor selection is visible, no action will be taken
