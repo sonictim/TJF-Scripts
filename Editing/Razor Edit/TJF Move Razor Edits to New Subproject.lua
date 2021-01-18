@@ -10,12 +10,14 @@
 --  Will Prompt for a new Subproject name and MOVE your current razor edits to the newsubproject.
 --  Destination Subproject behavior is different.  Items will be at the same timecode as original project.
 --  If no razor selection is visible, no action will be taken
+--
+--  ** REQUIRES SWS extension for complete feature compatibility.  If you are experiencing issues, please make sure you have SWS installed and updated to latest version
 --  
 --  Editable Options:
 --    Choose which project (source or subproject) is in view at the completion of the script
 --    Close new subproject upon completion of the script
 --    Copy all Track info into subproject (master too) or create blank tracks for the move
---    Maintain Relative Positiion in Timeline (will preserve timecode position and embed into RPP-PROX)
+--    Maintain Relative Positiion and Match Timecode start times in Timeline (will preserve timecode and embed into RPP-PROX)
 --    Ability to Copy a Video Track along with Items - ENABLED by default
 --    
 --    
