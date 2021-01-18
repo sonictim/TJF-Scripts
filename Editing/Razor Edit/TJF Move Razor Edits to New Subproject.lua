@@ -200,6 +200,9 @@ function Main()
               
               reaper.Main_OnCommand(42398, 0)                                                             -- Paste Items from source project
                
+              reaper.Main_OnCommand(40020, 0)                                                             -- clear any time selection in subproject
+              
+              
               if  PreserveRelativeTimelinePosition 
               then
                   reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
@@ -207,8 +210,9 @@ function Main()
               else
                   reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
               end
-               
               
+             
+                
               reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
               if    not EndInSubproject and CloseSubproject
               then
