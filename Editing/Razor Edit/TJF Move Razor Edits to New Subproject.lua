@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.7
+--@version 0.8
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -8,8 +8,9 @@
 --  # TJF Move Razor Edit Selection to New Subproject 
 --
 --  ******RAZOR EDITS ARE OFFICIALLY UNSUPPORTED AND EXPERIMENTAL. AS A RESULT, THIS CODE COULD BREAK AT ANY TIME*********
---  Will Prompt for a new Subproject name and MOVE your current razor edits to the newsubproject.
---  Destination Subproject behavior is different.  Items will be at the same timecode as original project.
+--  Will create a new Subproject name and move your current razor edit selection to this new subproject.
+--  There are various options the user can set that affect how the razor edits are placed in the Destination Subproject
+--  Timecode copy and Video Track Copy are both supported.  
 --  If no razor selection is visible, no action will be taken
 --
 --  ** REQUIRES SWS extension for complete feature compatibility.  If you are experiencing issues, please make sure you have SWS installed and updated to latest version
@@ -38,12 +39,14 @@
 --  v0.5 - added support for master track copy
 --  v0.6 - added support to match timecode start of sessions
 --  v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
-
+--  v.08 - added Prompt for Subproject Filename Option
 
 
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
+
+PromptForFilename = false                 -- If true, script will ask user to name the subproject being created
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
@@ -98,12 +101,19 @@ function Main()
       local source_proj, source_proj_fn = reaper.EnumProjects( -1, "" )                                    -- Get the Current Project's Project info
       local source_start, source_end = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0, false)          -- Get current start and end time selection value in seconds of current project
       
-      local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )
-      local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )
+      local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )     -- Store Current Master Track settings into a variable
+      local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )                             -- Save Current Project Start time to Variable
+      local source_trackCount = reaper.CountTracks(source_proj)
+      
+      
+      
+      local projectTabOptions = reaper.SNM_GetIntConfigVar( "multiprojopt", 0 )                            -- Save Current Project MultiTab Options
+      local lastTouched =  reaper.GetLastTouchedTrack()
+      
       
                         --==//[[    GET SOURCE TRACK AND RAZOR EDIT DATA   ]]\\==--
       
-      for i=1, reaper.CountTracks(0)                                                                       -- Cycle through each track and check to see if anything needs processing
+      for i=1, source_trackCount                                                                       -- Cycle through each track and check to see if anything needs processing
       do
             local track = reaper.GetTrack(0,i-1)
             
@@ -156,14 +166,33 @@ function Main()
      
     if       #tracks > video                                                                              -- if the table has been filled
     then  
-              reaper.Main_OnCommand(41384, 0)                                                             -- CUT razor edits
+              reaper.SNM_SetIntConfigVar(  "multiprojopt", 4096)                                          -- Disable Automatic Subproject Rendering
+              
+              reaper.Main_OnCommandEx(41384, 0, source_proj)                                              -- CUT razor edits
               reaper.GetSet_LoopTimeRange2( source_proj, true, false, startPos, endPos, false )           -- set time selection to length of razor edits      
-              reaper.Main_OnCommand(41049, 0)                                                             -- insert new subproject
+              
+              if PromptForFilename
+              then
+                   reaper.Main_OnCommandEx(41049, 0, source_proj)                                              -- insert new subproject
+              else
+                   reaper.InsertTrackAtIndex( source_trackCount, true )
+                   reaper.SetOnlyTrackSelected( reaper.GetTrack(source_proj,source_trackCount), true )
+                   reaper.Main_OnCommandEx(41997, 0, source_proj)
+              end
+              
+              
               reaper.GetSet_LoopTimeRange2( source_proj, true, false, source_start, source_end, false )   -- Restore Original Time Selection
               
               
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
               reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
+              
+              if not PromptForFilename 
+              then 
+                     reaper.DeleteTrack(  reaper.GetTrack( dest_proj, 0 ) )
+              end
+              
+              
               
               if    TimecodeMatch                                                                         
               then
@@ -186,21 +215,21 @@ function Main()
                   reaper.InsertTrackAtIndex( i-1, true )
                   if  CopyTrackInfo
                   then
-                      local track = reaper.GetTrack(0,i-1)
+                      local track = reaper.GetTrack(dest_proj,i-1)
                       reaper.SetTrackStateChunk( track, tracks[i], true )
                   end
               end
               
               
-              reaper.SetOnlyTrackSelected( reaper.GetTrack(0,0+video), true )                             -- Select first track to initiate paste
+              reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+video), true )                     -- Select first track to initiate paste
               if  PreserveRelativeTimelinePosition 
               then 
-                  reaper.SetEditCurPos(startPos, true, true)                                               -- Set Edit Cursor to start of where items should go
+                  reaper.SetEditCurPos(startPos, true, true)                                              -- Set Edit Cursor to start of where items should go
               end
               
-              reaper.Main_OnCommand(42398, 0)                                                             -- Paste Items from source project
+              reaper.Main_OnCommandEx(42398, 0, dest_proj)                                                -- Paste Items from source project
                
-              reaper.Main_OnCommand(40020, 0)                                                             -- clear any time selection in subproject
+              reaper.Main_OnCommandEx(40020, 0, dest_proj)                                                -- clear any time selection in subproject
               
               
               if  PreserveRelativeTimelinePosition 
@@ -211,20 +240,32 @@ function Main()
                   reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
               end
               
-             
+             reaper.SNM_SetIntConfigVar(  "multiprojopt", 0)                                              -- Enable Automatic Subproject Rendering                                                           -- Toggle Automatic subproject rendering
                 
               reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
               if    not EndInSubproject and CloseSubproject
               then
-                    reaper.Main_OnCommand(40860, 0)                                                       -- Close Current Tab
+                    reaper.Main_OnCommandEx(40860, 0, dest_proj)                                          -- Close Current Tab
               end
               
               
               reaper.SelectProjectInstance(source_proj)
-              reaper.Main_OnCommand(40441,0)                                                              -- rebuild peaks for selected items (new subproject)
+              
+              
+              reaper.Main_OnCommandEx(40441,0, source_proj)                                               -- rebuild peaks for selected items (new subproject)
+              
+              
+              if not PromptForFilename
+              then
+                      reaper.MoveMediaItemToTrack( reaper.GetSelectedMediaItem(source_proj,0), lastTouched )
+                      reaper.DeleteTrack(  reaper.GetTrack( source_proj, source_trackCount ) )
+              end
+              
               
               
               if EndInSubproject then reaper.SelectProjectInstance(dest_proj) end                         -- switch back to subproject if option is enabled
+      
+              reaper.SNM_SetIntConfigVar(  "multiprojopt", projectTabOptions)                             -- Restore Project Tab Settings
       end
 
 end--Main()
