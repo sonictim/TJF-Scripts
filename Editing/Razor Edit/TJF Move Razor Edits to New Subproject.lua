@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.6
+--@version 0.7
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -33,10 +33,11 @@
 --@changelog
 --  v0.1 - initial version nothing to report
 --  v0.2 - bugfixes and cleanup
---  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
+--  v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
 --  v0.4 - added option close subproject
 --  v0.5 - added support for master track copy
 --  v0.6 - added support to match timecode start of sessions
+--  v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
 
 
 
@@ -48,16 +49,15 @@ EndInSubproject = false                   -- If true, script will complete with 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
 
-CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, plugins, envelopes,etc) will be copied into the subproject tracks
-AlsoCopyMaster = true                     -- If true, will also copy the master track IF CopyTrackInfo is enabled
+CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
+AlsoCopyMaster = true                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
 
 
-PreserveRelativeProjectLocation = true    -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
-TimecodeStartMatch = true                 -- If true, script will make sure the subproject starts at the same timecode as the source project.
-                                          -- ***NOTE: If BOTH are true, project will preserve timecode values from source to subproject
+TimecodeMatch = true                      -- If true, script will adjust the subproject session start time so your moved edits will be placed at the same timecode as the source project.
+PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
 
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
-                                          -- ***NOTE: If COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeProjectLocation and TimecodeStartMatch variable will be overridden to TRUE
+                                          -- ***NOTE: If COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeTimelinePosition and TimecodeMatch variables will be overridden to match Video
 
 
     --[[------------------------------[[---
@@ -115,8 +115,8 @@ function Main()
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
                       table.insert(tracks, str)
                       video = video + 1
-                      PreserveRelativeProjectLocation = true                                                -- Overriding these variables ensures timecode match
-                      TimecodeStartMatch = true
+                      PreserveRelativeTimelinePosition = true                                                -- Overriding these variables ensures timecode match
+                      TimecodeMatch = true
                   end
             end
            
@@ -165,9 +165,14 @@ function Main()
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
               reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
               
-              if    TimecodeStartMatch
+              if    TimecodeMatch                                                                         
               then
-                    reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset)
+                    if  PreserveRelativeTimelinePosition                                                  -- Logic for adjusting timecode of subproject to match source based on user prefs
+                    then
+                        reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset)                       
+                    else
+                        reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset+startPos)
+                    end
                     reaper.UpdateTimeline()
               end
               
@@ -188,14 +193,14 @@ function Main()
               
               
               reaper.SetOnlyTrackSelected( reaper.GetTrack(0,0+video), true )                             -- Select first track to initiate paste
-              if  PreserveRelativeProjectLocation 
+              if  PreserveRelativeTimelinePosition 
               then 
                   reaper.SetEditCurPos(startPos, true, true)                                               -- Set Edit Cursor to start of where items should go
               end
               
               reaper.Main_OnCommand(42398, 0)                                                             -- Paste Items from source project
                
-              if  PreserveRelativeProjectLocation 
+              if  PreserveRelativeTimelinePosition 
               then
                   reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
                   reaper.SetProjectMarker( 2, false, endPos, 0, "=END" )
