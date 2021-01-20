@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.8
+--@version 0.9
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -39,7 +39,8 @@
 --  v0.5 - added support for master track copy
 --  v0.6 - added support to match timecode start of sessions
 --  v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
---  v.08 - added Prompt for Subproject Filename Option
+--  v0.8 - added Prompt for Subproject Filename Option
+--  v0.9 - added render subproject option
 
 
     --[[------------------------------[[---
@@ -47,6 +48,7 @@
     ---]]------------------------------]]--
 
 PromptForFilename = false                 -- If true, script will ask user to name the subproject being created
+RenderSubproject = true                   -- If true, script will render the subproject.  False will leave it unrendered          
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
@@ -181,11 +183,14 @@ function Main()
               end
               
               
+              
               reaper.GetSet_LoopTimeRange2( source_proj, true, false, source_start, source_end, false )   -- Restore Original Time Selection
               
               
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
               reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
+              
+              
               
               if not PromptForFilename 
               then 
@@ -205,6 +210,8 @@ function Main()
                     reaper.UpdateTimeline()
               end
               
+              
+              
               if  CopyTrackInfo and AlsoCopyMaster                                                        -- match master track to source session
               then
                   reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
@@ -222,14 +229,21 @@ function Main()
               
               
               reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+video), true )                     -- Select first track to initiate paste
+              
+              
+              
               if  PreserveRelativeTimelinePosition 
               then 
                   reaper.SetEditCurPos(startPos, true, true)                                              -- Set Edit Cursor to start of where items should go
               end
               
+              
+              
               reaper.Main_OnCommandEx(42398, 0, dest_proj)                                                -- Paste Items from source project
                
               reaper.Main_OnCommandEx(40020, 0, dest_proj)                                                -- clear any time selection in subproject
+              
+              
               
               
               if  PreserveRelativeTimelinePosition 
@@ -240,12 +254,22 @@ function Main()
                   reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
               end
               
-             reaper.SNM_SetIntConfigVar(  "multiprojopt", 0)                                              -- Enable Automatic Subproject Rendering                                                           -- Toggle Automatic subproject rendering
-                
-              reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
-              if    not EndInSubproject and CloseSubproject
+             
+             
+              if   RenderSubproject
               then
-                    reaper.Main_OnCommandEx(40860, 0, dest_proj)                                          -- Close Current Tab
+                   reaper.SNM_SetIntConfigVar(  "multiprojopt", 0)                                        -- Enable Automatic Subproject Rendering                                                           -- Toggle Automatic subproject rendering
+              end
+             
+             
+             
+              reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
+             
+              
+              
+              if not  EndInSubproject and CloseSubproject
+              then
+                      reaper.Main_OnCommandEx(40860, 0, dest_proj)                                          -- Close Current Tab
               end
               
               
@@ -255,7 +279,7 @@ function Main()
               reaper.Main_OnCommandEx(40441,0, source_proj)                                               -- rebuild peaks for selected items (new subproject)
               
               
-              if not PromptForFilename
+              if not  PromptForFilename
               then
                       reaper.MoveMediaItemToTrack( reaper.GetSelectedMediaItem(source_proj,0), lastTouched )
                       reaper.DeleteTrack(  reaper.GetTrack( source_proj, source_trackCount ) )
@@ -263,8 +287,12 @@ function Main()
               
               
               
-              if EndInSubproject then reaper.SelectProjectInstance(dest_proj) end                         -- switch back to subproject if option is enabled
-      
+              if    EndInSubproject 
+              then 
+                    reaper.SelectProjectInstance(dest_proj)                                               -- switch back to subproject if option is enabled
+              end
+              
+              
               reaper.SNM_SetIntConfigVar(  "multiprojopt", projectTabOptions)                             -- Restore Project Tab Settings
       end
 
