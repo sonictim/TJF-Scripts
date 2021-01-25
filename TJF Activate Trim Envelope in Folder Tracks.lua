@@ -113,5 +113,6 @@ function Main()
 end--Main()
 
 
-
+reaper.PreventUIRefresh(1)
 Main()
+reaper.PreventUIRefresh(-11)

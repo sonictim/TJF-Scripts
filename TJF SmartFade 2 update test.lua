@@ -1,7 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@noindex
---  NoIndex: true
---@version 1.6
+--@version 1.7
 --@author Tim Farrell
 --
 --@about
@@ -22,9 +20,10 @@
 --  v1.2 - bugfix - repeated use was creating undesirable behavior
 --  v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
 --       - new feature - Crossfade size can now be decreased.
---  v1.4 - bigfix - can now fade out length of item if time selection is set to exactly the end of the item
+--  v1.4 - bugfix - can now fade out length of item if time selection is set to exactly the end of the item
 --  v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 --  v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
+--  v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items
 
 
 
@@ -44,7 +43,10 @@ local removeSelection = false -- if true will remove the time selection/razor ed
                 DEBUG         
 --]]------------------------------]]--
 
+reaper.ClearConsole()
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
+
+
 
 
 
@@ -125,37 +127,6 @@ function GetRazorEdits()  -- Function Written by BirdBird on reaper forums
         return areaMap
 end
 
-
---[[      FUNCTION NO LONGER USED  -- exploiting auto crossfade instead.. retaining for later reference
-function Crossfade(item1, item2, fadestart, fadeend)
-
-
-     local item1start =  reaper.GetMediaItemInfo_Value( item1, "D_POSITION" )
-     local item1end = item1start + reaper.GetMediaItemInfo_Value( item1, "D_LENGTH" )
-
-     local item2start = reaper.GetMediaItemInfo_Value( item2, "D_POSITION" )
-     local item2end = item2start + reaper.GetMediaItemInfo_Value( item2, "D_LENGTH" )
-     
-     if item1start < fadestart and item2end > fadeend
-     then
-       
-       reaper.BR_SetItemEdges( item1, item1start, fadeend )
-       reaper.SetMediaItemInfo_Value( item1, "D_FADEOUTLEN_AUTO", fadeend - fadestart )
-       reaper.SetMediaItemInfo_Value( item1, "C_FADEOUTSHAPE", defaultCrossfadeShape )
-       
-       reaper.BR_SetItemEdges( item2, fadestart, item2end)
-       reaper.SetMediaItemInfo_Value( item2, "D_FADEINLEN_AUTO",  fadeend - fadestart )
-       reaper.SetMediaItemInfo_Value( item2, "C_FADEINSHAPE", defaultCrossfadeShape )
-       
-       return true
-     
-     else
-     
-       return false
-     
-     end
-end
-]]
 
 function FadeInExists(item)
     if    reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO") > 0 or reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN") > 0
@@ -258,8 +229,12 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                ApplyDefaultFades(item)  -- if no time parameters have been set, just apply the default fadein and fade out
         end -- if
 
+
+
         
         ---++=<{[ LOOK AHEAD TO NEXT ITEM TO SEE IF CROSSFADES ARE REQUIRED ]}>=++---
+ 
+        
         
         local nextitem = items[j+1]  -- process next item to see if a crossfade is required
         if    nextitem          -- if next item doesn't exist, don't bother with the rest
@@ -289,13 +264,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                     reaper.SetMediaItemInfo_Value( nextitem, "C_FADEINSHAPE", defaultCrossfadeShape )
                     --Crossfade(item, nextitem, starttime, endtime)                             --sets the crossfade to the function bounds  -- function no longer used.. exploiting auto crossfade instead
             
-             
-             
-             
-             
-             
-             
-             
+      
              --  This prevents creep from reuse
              
              elseif  itemend > endtime and #items > 2 and starttime ~= endtime
@@ -306,10 +275,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
              
              
               
- 
-                      
-                      
-              
+
               elseif  math.abs(nextstart - itemend) < defaultfade - .001                              --if the overlap between two items is less than the default fade length
                       and (reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN") < defaultfade-.001 or reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN_AUTO") < defaultfade-.001)     --and the current fadeout length of the first item is smaller than the default fade length
                       and (reaper.GetMediaItemInfo_Value(nextitem, "D_FADEINLEN") < defaultfade-.001 or reaper.GetMediaItemInfo_Value(nextitem, "D_FADEINLEN_AUTO") < defaultfade-.001)    --and the current fadein length of the second item is less than the default fade length
@@ -323,20 +289,34 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                     
                       reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultCrossfadeShape )
                       reaper.SetMediaItemInfo_Value( nextitem, "C_FADEINSHAPE", defaultCrossfadeShape )
-                      --Crossfade(item, nextitem, itemend - defaultfade/2, itemend - defaultfade/2 + defaultfade)  -- crossfades to the default length  function no longer used.. exploiting auto crossfade instead 
               
 
               end
               
-              
-              
         end -- if    
       
-        reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO") )
-        reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", reaper.GetMediaItemInfo_Value(item, "D_FADEOUTNLEN_AUTO") )
   end -- for J
 end -- ProcessFades ()
 
+
+function DisplayFadeInfo()
+
+
+for i=0, reaper.CountSelectedMediaItems(0)-1 do
+    local item = reaper.GetSelectedMediaItem(0,i)
+    Msg(" Item #" .. i+1)
+    Msg("D_FADEINLEN: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN" ))
+    Msg("D_FADEINLEN_AUTO: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO" ))
+    Msg("D_FADEINDIR: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINDIR" ))
+    Msg("C_FADEINSHAPE: " ..  reaper.GetMediaItemInfo_Value( item, "C_FADEINSHAPE" ))
+    Msg("D_FADEOUTLEN: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTLEN" ))
+    Msg("D_FADEOUTLEN_AUTO: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO" ))
+    Msg("D_FADEOUTDIR: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTDIR" ))
+    Msg("C_FADEOUTSHAPE: " ..  reaper.GetMediaItemInfo_Value( item, "C_FADEOUTSHAPE" ))
+end
+
+
+end
 
 
 --[[------------------------------[[--
@@ -344,6 +324,7 @@ end -- ProcessFades ()
 --]]------------------------------]]--
 
 function Main()
+      DisplayFadeInfo()
 
       -------------------------------------------------------------------------++=<{[ CHECK TRIM/AutoCrossfade STATE ]]--
       
@@ -418,35 +399,16 @@ function Main()
       
       elseif  RazorEditSelectionExists()
       then
-             --items = {}
-             --local start_time
-             --local end_time
+
               local selections = GetRazorEdits()            -- returns razor edits in an array by track
 
               for   i = 1, #selections                      --  for each track, process any razor edits on it              
               do
                     areaData = selections[i]                                       
-                    --[[
-                    for _,v in ipairs(areaData.items) do 
-                        table.insert(items, v)
-                    end
-                    
-                    if i==1 
-                    then
-                          start_time = areaData.areaStart
-                          end_time = areaData.areaEnd
-                    else
-                          if start_time > areaData.areaStart then start_time = areaData.areaStart end
-                          if end_time < areaData.areaEnd then end_time = areaData.areaEnd end
-                    end
-                    ]]
                     
                     ProccessFades(areaData.items, areaData.areaStart, areaData.areaEnd)
                     if removeSelection then reaper.Main_OnCommand(42406, 0) end -- remove razor edit selection selection 
               end -- for(i)
-              
-              --ProccessFades(items, start_time, end_time)
-
 
 
       -------------------------------------------------------------------------++=<{[ THIRD PRIORITY: SELECTED ITEMS ]}>=++---

@@ -1,4 +1,57 @@
-source_proj, source_proj_fn = reaper.EnumProjects( -1, "" )
+reaper.ClearConsole()
+function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
+
+
+item = reaper.GetSelectedMediaItem(0, 0)
+
+Msg( reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO"))
+Msg(reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN"))
+
+
+        reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", .3 )
+        reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", .002 )
+
+
+
+function FadeInExists(item)
+    if    reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO") > 0 or reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN") > 0
+    then  return true
+    else  return false
+    end
+end -- function
+
+
+function FadeOutExists(item)
+    if  reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN_AUTO") > 0 or reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN") > 0
+    then  return true
+    else  return false
+    end
+end -- function
+
+
+
+
+--source_proj, source_proj_fn = reaper.EnumProjects( -1, "" )
+
+--offset =  reaper.GetProjectTimeOffset( 0, false )
+
+--reaper.SNM_SetDoubleConfigVar("projtimeoffs",offset * 2)
+
+--reaper.UpdateTimeline(0)
+
+
+--toggle =  reaper.SNM_GetIntConfigVar( "multiprojopt", 0 )
+
+-- reaper.SNM_SetIntConfigVar(  "multiprojopt", 4096)
+
+
+
+
+--track =  reaper.GetMasterTrack( 0 )
+ --retval, str = reaper.GetTrackStateChunk( track, "", false )
+
+--Msg(str)
+
 --[[
 projIdx = 0
 proj = source_proj
@@ -19,7 +72,7 @@ reaper.SelectProjectInstance(dest_proj)
 -- reaper.SetProjectMarker( 2, isrgn, 25, rgnend, "TIM" )
 
 
- reaper.Main_SaveProject( 0, false )
+ --reaper.Main_SaveProject( 0, false )
 
 
  --reaper.SetProjectMarkerByIndex( source_proj, 0, false, 25, 25, 1, "=START", 1 )
