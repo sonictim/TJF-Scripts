@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="0a1c77963dd332638de336d47cab75dc8e79c1d1">
+<index version="1" name="TJF Scripts" commit="c88bf9cb99fd1fd97db6cb3eda2b0e23461016a8">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -233,6 +233,18 @@ v1.4 - bigfix - can now fade out length of item if time selection is set to exac
 v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0a1c77963dd332638de336d47cab75dc8e79c1d1/Editing/Fades/TJF%20SmartFade.lua</source>
+      </version>
+      <version name="1.7" author="Tim Farrell" time="2021-01-19T01:21:36Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - bugfix - fixes error with default fade of last item in a series.
+v1.2 - bugfix - repeated use was creating undesirable behavior
+v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
+     - new feature - Crossfade size can now be decreased.
+v1.4 - bugfix - can now fade out length of item if time selection is set to exactly the end of the item
+v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
+v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
+v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f4f16f5c3055a7b99f890c1fb3dfc3619bb73099/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
@@ -486,6 +498,90 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </version>
       <version name="1.1" author="Tim Farrell" time="2020-11-07T21:33:13Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Move%20Left%20Edge%20of%20Razor%20Edits%20to%20Edit%20Cursor.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Razor Edits to New Subproject.lua" type="script" desc="TJF Move Razor Edit Selection to New Subproject">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Razor Edit Selection to New Subproject\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b {\b {\b RAZOR EDITS ARE OFFICIALLY UNSUPPORTED AND EXPERIMENTAL. AS A RESULT, THIS CODE COULD BREAK AT ANY TIME}}}*** Will create a new Subproject name and move your current razor edit selection to this new subproject. There are various options the user can set that affect how the razor edits are placed in the Destination Subproject Timecode copy and Video Track Copy are both supported.\line If no razor selection is visible, no action will be taken\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ** REQUIRES SWS extension for complete feature compatibility. If you are experiencing issues, please make sure you have SWS installed and updated to latest version\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ** Thank you to Edgemeal for helping me solve how to set the project time offset\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Editable Options: Choose which project (source or subproject) is in view at the completion of the script Close new subproject upon completion of the script Copy all Track info into subproject (master too) or create blank tracks for the move Maintain Relative Positiion and Match Timecode start times in Timeline (will preserve timecode and embed into RPP-PROX) Ability to Copy a Video Track along with Items - ENABLED by default\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="0.2" author="Tim Farrell" time="2021-01-17T22:50:19Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/70a314bbf3a926ad782138dd5fedd2510e854dad/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.3" author="Tim Farrell" time="2021-01-17T23:57:08Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/06c60106e38ddbd23664bdf610efe6a5d45cb76c/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.4" author="Tim Farrell" time="2021-01-18T01:26:56Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
+v0.4 - added option close subproject]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f04cc0abfad29af71c4463af1019da2984ec3518/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.5" author="Tim Farrell" time="2021-01-18T01:49:46Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/5c23cc9fd0bb92dfa6cf702408ddbcd2d0f266d9/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.6" author="Tim Farrell" time="2021-01-18T07:07:44Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/32315c8c093abc3a65d7a53e8da50f0ed4765e1d/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.7" author="Tim Farrell" time="2021-01-18T16:25:50Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/358467028c33480b418a6a38358c0f1553c6177c/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.8" author="Tim Farrell" time="2021-01-18T21:29:23Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v.08 - added Prompt for Subproject Filename Option]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/e3d6c9554d04e62657b53291fad7a8be2b10d1f8/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="0.9" author="Tim Farrell" time="2021-01-20T19:06:44Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c88bf9cb99fd1fd97db6cb3eda2b0e23461016a8/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
