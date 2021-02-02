@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="3fd62f4510b12acf62bda6954a054334cbb98e79">
+<index version="1" name="TJF Scripts" commit="cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -244,7 +244,7 @@ v1.4 - bugfix - can now fade out length of item if time selection is set to exac
 v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
 v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3fd62f4510b12acf62bda6954a054334cbb98e79/Editing/Fades/TJF%20SmartFade.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f4f16f5c3055a7b99f890c1fb3dfc3619bb73099/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
@@ -581,7 +581,20 @@ v0.6 - added support to match timecode start of sessions
 v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
 v0.8 - added Prompt for Subproject Filename Option
 v0.9 - added render subproject option]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3fd62f4510b12acf62bda6954a054334cbb98e79/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c88bf9cb99fd1fd97db6cb3eda2b0e23461016a8/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="1.0" author="Tim Farrell" time="2021-02-02T10:16:42Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option
+v1.0 - added option to sum final RPP-PROX to mono in original timeline]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
@@ -821,7 +834,7 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
       </version>
     </reapack>
   </category>
