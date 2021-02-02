@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 0.9
+--@version 1.0
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -41,6 +41,7 @@
 --  v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
 --  v0.8 - added Prompt for Subproject Filename Option
 --  v0.9 - added render subproject option
+--  v1.0 - added option to sum final RPP-PROX to mono in original timeline
 
 
     --[[------------------------------[[---
@@ -48,7 +49,8 @@
     ---]]------------------------------]]--
 
 PromptForFilename = false                 -- If true, script will ask user to name the subproject being created
-RenderSubproject = true                   -- If true, script will render the subproject.  False will leave it unrendered          
+RenderSubproject = true                   -- If true, script will render the subproject.  False will leave it unrendered
+SumToMono = true                          -- If true, will set the resulting subproject file to take mode MONO DOWNMIX.  Requires RenderSubproject = true 
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
@@ -92,8 +94,8 @@ CopyVideo = true                          -- If true, script will look for any t
     ---]]------------------------------]]--
 function Main()
 
-
                           --==//[[    DECLARE VARIABLES   ]]\\==--
+
       local startPos=nil  --will eventually be the subproject Start Time
       local endPos=nil    --will eventually be the subproject End Time
       local video=0       --Keeps track of how many video tracks are copied
@@ -285,7 +287,10 @@ function Main()
                       reaper.DeleteTrack(  reaper.GetTrack( source_proj, source_trackCount ) )
               end
               
-              
+              if    SumToMono and RenderSubproject
+              then
+                    reaper.Main_OnCommand(40178, 0)                                                       -- Item properties: Set take channel mode to mono (downmix)
+              end
               
               if    EndInSubproject 
               then 

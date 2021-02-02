@@ -13,6 +13,7 @@ local channels = 6
 
 local olditems = {}
 local lastProjectChangeCount = reaper.GetProjectStateChangeCount(0)
+local maxitems = 400
 
 local cmd_id = ({reaper.get_action_context()})[4] -- gets command ID for this script
 
@@ -32,9 +33,9 @@ local function shallow_equal(t1, t2)
 end
 
 
-  --------========<<<<<<<<++++++++>>>>>>>>========--------
---[[                    ADD PLUGIN                    ]]--
-  --------========<<<<<<<<++++++++>>>>>>>>========--------
+  --[[------========<<<<<<<<++++++++>>>>>>>>========-----[[---
+                          ADD PLUGIN                 
+  ---]]-----========<<<<<<<<++++++++>>>>>>>>========------]]--
 function AddPlugin(item)
 
 local fxheader = [[
@@ -108,12 +109,14 @@ function ProcessItems(item)
                           local sourcechan = reaper.GetMediaSourceNumChannels(source)
                           local takemode = reaper.GetMediaItemTakeInfo_Value(take, "I_CHANMODE")
                           
-                          if    trackchan > 2 and (sourcechan == 1 or (takemode > 1 and takemode < 65)) 
+                          if    trackchan > 2 and (sourcechan == 1 or (takemode > 1 and takemode < 65))
                           then  AddPlugin(item)
                           else  DeletePlugin(item)
                           end
                   end
-                  --reaper.UpdateArrange()
+                  
+                  
+                  reaper.UpdateArrange()
             end
             
 end--function
@@ -176,22 +179,22 @@ function Main()
 
      if reaper.GetSelectedMediaItem(0,0) 
      then
-          
+          reaper.PreventUIRefresh(1)
           for   i=1, reaper.CountSelectedMediaItems(0) 
           do    items[i] = reaper.GetSelectedMediaItem(0,i-1) 
           end
           
           if    not shallow_equal(items, olditems) or (lastProjectChangeCount < projectChangeCount)
           then  
-                if #items < 400 
+                if #items < maxitems 
                 then
                     for i=1, #items
                     do ProcessItems(items[i]) 
                     end
-                    reaper.UpdateArrange()
+                    --reaper.UpdateArrange()
                 end--if
           end--if
-          
+          reaper.PreventUIRefresh(-1)
     end--if
           
     olditems = items

@@ -9,6 +9,9 @@
   Will Flip L and R Channels of all selected items
 --]]
 
+
+reaper.Undo_BeginBlock()
+
 local itemcount = reaper.CountSelectedMediaItems(0)
 
 if itemcount > 0 then
@@ -33,5 +36,7 @@ if itemcount > 0 then
 
 
 end--if
+
+reaper.Undo_EndBlock("Toggle Take Channel Stereo Flip",-1)
 
 reaper.UpdateArrange()
