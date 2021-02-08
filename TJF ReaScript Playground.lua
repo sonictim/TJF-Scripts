@@ -90,9 +90,11 @@ function AddReaSurround2ToEverything()
           local track = reaper.GetTrack(0,i)
           local fx = reaper.TrackFX_AddByName(track, "ReaSurround2", false, 1)
           reaper.TrackFX_SetPreset( track, fx, "5.1 Default - 6 channels" )
+          --reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMCHANNELS", 6 )
+          --reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMSPEAKERS", 6)
       end
       
-      for i=0, reaper.CountMediaItems(0)-1
+      --[[for i=0, reaper.CountMediaItems(0)-1
       do
           local item = reaper.GetMediaItem(0, i)
           local take = reaper.GetActiveTake(item)
@@ -108,9 +110,80 @@ function AddReaSurround2ToEverything()
           end
           
       end
-
+      ]]
 
 end
+
+
+function RS2test()
+    
+    local track = reaper.GetSelectedTrack(0,0)
+    
+    if track
+    then
+            local fx = reaper.TrackFX_AddByName(track, "ReaSurround2", false, 1)
+            local _, channels = reaper.TrackFX_GetNamedConfigParm( track, fx, "NUMCHANNELS" )
+            local _, speakers = reaper.TrackFX_GetNamedConfigParm( track, fx, "NUMSPEAKERS" )
+        
+        
+            local retval, userinput = reaper.GetUserInputs( "ADJUST REASUROUND2", 2, "Number of Input Channels, Number of Speakers", channels..", "..speakers )
+            if retval
+            then
+                      channels, speakers  = userinput:match("(.-),(.*)")
+                      
+                      for i=0, reaper.CountSelectedTracks(0)-1
+                      do
+                      
+                            track = reaper.GetSelectedTrack(0,i)
+                            fx = reaper.TrackFX_AddByName(track, "ReaSurround2", false, 1)
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMCHANNELS", channels)
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMSPEAKERS", speakers )
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "RESETCHANNELS", channels )
+                      end
+                      reaper.UpdateArrange()
+            end 
+      end
+end
+
+
+function RS2test2()
+    
+    local item = reaper.GetSelectedMediaItem(0,0)
+    local take = reaper.GetActiveTake(item)
+    local fx = reaper.TakeFX_AddByName(take, "ReaSurround2", 1)
+    reaper.TakeFX_SetNamedConfigParm( take, fx, "NUMCHANNELS", 6)
+    reaper.TakeFX_SetNamedConfigParm( take, fx, "NUMSPEAKERS", 6 )
+    reaper.TakeFX_SetNamedConfigParm( take, fx, "RESETCHANNELS", 6 )
+    
+    if item
+    then
+            local take = reaper.GetActiveTake(item)
+            local fx = reaper.TakeFX_AddByName(take, "ReaSurround2", 1)
+             _, channels = reaper.TakeFX_GetNamedConfigParm( take, fx, "NUMCHANNELS" )
+             _, speakers = reaper.TakeFX_GetNamedConfigParm( take, fx, "NUMSPEAKERS" )
+        
+        
+            local retval, userinput = reaper.GetUserInputs( "ADJUST REASUROUND2", 2, "Number of Input Channels, Number of Speakers", channels..", "..speakers )
+            if retval
+            then
+                      channels, speakers  = userinput:match("(.-),(.*)")
+                      
+                      for i=0, reaper.CountSelectedTracks(0)-1
+                      do
+                      
+                            track = reaper.GetSelectedTrack(0,i)
+                            fx = reaper.TrackFX_AddByName(track, "ReaSurround2", false, 1)
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMCHANNELS", channels)
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMSPEAKERS", speakers )
+                            reaper.TrackFX_SetNamedConfigParm( track, fx, "RESETCHANNELS", channels )
+                      end
+                      reaper.UpdateArrange()
+            end 
+      end
+end
+
+
+
 
 
     --[[------------------------------[[---
@@ -119,8 +192,8 @@ end
 function Main()
 
 --InsertFXBeforeReaSurround()
-AddReaSurround2ToEverything()
-
+--AddReaSurround2ToEverything()
+RS2test2()
 
 end--Main()
 

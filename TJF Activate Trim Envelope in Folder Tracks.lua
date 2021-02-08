@@ -115,4 +115,4 @@ end--Main()
 
 reaper.PreventUIRefresh(1)
 Main()
-reaper.PreventUIRefresh(-11)
+reaper.PreventUIRefresh(-1)
