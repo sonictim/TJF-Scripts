@@ -1,7 +1,5 @@
---@noindex
---  NoIndex: false
 --@description TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks
---@version 0.2
+--@version 1.0
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -22,7 +20,7 @@
 --  
 --  
 --@changelog
---  v0.2 - nothing to report
+--  v1.0 - nothing to report
 
     --[[------------------------------[[---
               GLOBAL VARIABLES              
