@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f">
+<index version="1" name="TJF Scripts" commit="f713077806c7e0c5dd17fc51d0468f76272eeee4">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1406,6 +1406,26 @@ v2.2 - Added Automation Item Support
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - now floats FX Plugin Window]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Plugin%20Manipulation/TJF%20TakeFX-Plugin.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Plugin Manipulation/ReaSurround2">
+    <reapack name="TJF Add Adjust Reset ReaSurround2 Settings for selected items or tracks.lua" type="script" desc="TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will go through each Selected Items/Track, add ReaSurround2 if missing, and set the number of inputs/speakers according to the user input Will run reset on each item/take (can be disabled via Global Variable). If you do not have automation written it will adjust your puck positions If You do not enter any Input for a field, it will not be adjusted in ReaSurround2. Leave both fields blank to simply run RESET PUCKS on all selected items/tracks There are a few Global Variables you may want to adjust to you liking. I strongly suggest you investigate these and their descriptions Note: If you cancel at the input section, it will not add ReaSurround2 to your item/track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-02-08T07:04:19Z">
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f713077806c7e0c5dd17fc51d0468f76272eeee4/Plugin%20Manipulation/ReaSurround2/TJF%20Add%20Adjust%20Reset%20ReaSurround2%20Settings%20for%20selected%20items%20or%20tracks.lua</source>
       </version>
     </reapack>
   </category>
