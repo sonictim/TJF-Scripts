@@ -1,4 +1,5 @@
-   
+--@noindex
+--  NoIndex: true   
    local fxname = "Surround Pan 3.0 Nick"
    local presetname = "Mono -> 5.1"
 
