@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="f713077806c7e0c5dd17fc51d0468f76272eeee4">
+<index version="1" name="TJF Scripts" commit="4443c6fe0a7dcf6a21388197b684b9af8ad97bc9">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1183,6 +1183,9 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
       <version name="1.4" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
+      <version name="1.5" author="Tim Farrell" time="2021-02-13T01:30:45Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4443c6fe0a7dcf6a21388197b684b9af8ad97bc9/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Toggle Item Pitch Envelope Visible.lua" type="script" desc="TJF Toggle Item Pitch Envelope Visible">
       <metadata>
@@ -1221,6 +1224,18 @@ v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
 v1.4.1 Script maintainance (removed unused functions)
 v1.5 - added support for folder trim automation visibility]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
+      </version>
+      <version name="1.6" author="Tim Farrell" time="2021-02-13T01:30:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - removed BR_Env functions for all Native Reaper API
+v1.2 - Added Ability to update value after adjusting TAKEFX - Track FX depends on automation mode
+v1.3 - updated SetEnvelopeVis() function to prevent future breaking
+v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
+       Take FX - Will also select all points also (for easy clear/deletion)
+v1.4.1 Script maintainance (removed unused functions)
+v1.5 - added support for folder trim automation visibility
+v1.6 - added X,Y,Z support for ReaSurround2]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4443c6fe0a7dcf6a21388197b684b9af8ad97bc9/Envelopes%20or%20Automation/TJF%20Toggle%20Last%20Touched%20FX%20Envelope%20Visible,Hide%20Others.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Pan Envelope Visible for Track or Items if Items are selected.lua" type="script" desc="TJF Toggle Pan Envelope Visible for Track or Items">
@@ -1417,7 +1432,7 @@ v1.1 - now floats FX Plugin Window]]></changelog>
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Will go through each Selected Items/Track, add ReaSurround2 if missing, and set the number of inputs/speakers according to the user input Will run reset on each item/take (can be disabled via Global Variable). If you do not have automation written it will adjust your puck positions If You do not enter any Input for a field, it will not be adjusted in ReaSurround2. Leave both fields blank to simply run RESET PUCKS on all selected items/tracks There are a few Global Variables you may want to adjust to you liking. I strongly suggest you investigate these and their descriptions Note: If you cancel at the input section, it will not add ReaSurround2 to your item/track\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will go through each Selected Items/Track, add ReaSurround2 if missing, and set the number of inputs/speakers according to the user input Will run reset on each item/take (can be disabled via Global Variable). If you do not have automation written it will adjust your puck positions If You do not enter any Input for a field, it will not be adjusted in ReaSurround2 and will remain as is Leave both fields blank to simply run RESET PUCKS and ADD TO TCP on all selected items/tracks (Variable dependent) There are a few Global Variables you may want to adjust to you liking. I strongly suggest you investigate these and their descriptions Note: If you cancel at the input section, it will not add ReaSurround2 to your item/track\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
 }
 ]]></description>
@@ -1426,6 +1441,12 @@ v1.1 - now floats FX Plugin Window]]></changelog>
       <version name="1.0" author="Tim Farrell" time="2021-02-08T07:04:19Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f713077806c7e0c5dd17fc51d0468f76272eeee4/Plugin%20Manipulation/ReaSurround2/TJF%20Add%20Adjust%20Reset%20ReaSurround2%20Settings%20for%20selected%20items%20or%20tracks.lua</source>
+      </version>
+      <version name="1.2" author="Tim Farrell" time="2021-02-13T01:30:45Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - added Embed to TCP global variable/support
+v1.2 - added 4=LFE support via global variable]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4443c6fe0a7dcf6a21388197b684b9af8ad97bc9/Plugin%20Manipulation/ReaSurround2/TJF%20Add%20Adjust%20Reset%20ReaSurround2%20Settings%20for%20selected%20items%20or%20tracks.lua</source>
       </version>
     </reapack>
   </category>
