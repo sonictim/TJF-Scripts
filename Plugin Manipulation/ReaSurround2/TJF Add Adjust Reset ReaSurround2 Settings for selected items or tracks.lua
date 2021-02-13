@@ -1,5 +1,5 @@
 --@description TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks
---@version 1.0
+--@version 1.2
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -8,7 +8,8 @@
 --  # TJF Add/Adjust/Reset ReaSurround2 Settings for selected items or tracks
 --  Will go through each Selected Items/Track, add ReaSurround2 if missing, and set the number of inputs/speakers according to the user input
 --  Will run reset on each item/take (can be disabled via Global Variable).  If you do not have automation written it will adjust your puck positions
---  If You do not enter any Input for a field, it will not be adjusted in ReaSurround2. Leave both fields blank to simply run RESET PUCKS on all selected items/tracks
+--  If You do not enter any Input for a field, it will not be adjusted in ReaSurround2 and will remain as is
+--  Leave both fields blank to simply run RESET PUCKS and ADD TO TCP on all selected items/tracks (Variable dependent)
 --  There are a few Global Variables you may want to adjust to you liking.  I strongly suggest you investigate these and their descriptions
 --  Note: If you cancel at the input section, it will not add ReaSurround2 to your item/track
 --
@@ -21,15 +22,22 @@
 --  
 --@changelog
 --  v1.0 - nothing to report
+--  v1.1 - added Embed to TCP global variable/support
+--  v1.2 - added 4=LFE support via global variable
+
 
     --[[------------------------------[[---
               GLOBAL VARIABLES              
     ---]]------------------------------]]--    
 
-ResetPucks = true        --if true will run ReaSurround2 Reset on each selected item or track
+
+ResetPucks = true        --if true will run ReaSurround2 Reset on each selected item or track ** Also adjusts 4=LFE setting
+LFE = "LFE"              --The string "!LFE" will disable 4=LFE, "LFE" will enable it
+AddToTCP = true          --if true will make sure ReaSurround2 UI is embedded into the TCP
 TracksOnly = false       --if true will only attempt to process only tracks and ignore any selected items
 ProcessBoth = false      --if true, script will attempt to process both items and tracks
                          --if false will look first for selected items to process, if none are found, it will try to process tracks.
+                         
                                                 
 
     
@@ -65,7 +73,7 @@ function UpdateItems(item)
                             fx = reaper.TakeFX_AddByName(take, "ReaSurround2", 1)
                             reaper.TakeFX_SetNamedConfigParm( take, fx, "NUMCHANNELS", channels)
                             reaper.TakeFX_SetNamedConfigParm( take, fx, "NUMSPEAKERS", string.upper(speakers) )
-                            if ResetPucks then reaper.TakeFX_SetNamedConfigParm( take, fx, "RESETCHANNELS", channels ) end
+                            if ResetPucks then reaper.TakeFX_SetNamedConfigParm( take, fx, "RESETCHANNELS", LFE ) end
                       end
             end 
 end    
@@ -90,8 +98,18 @@ function UpdateTracks(track)
                             fx = reaper.TrackFX_AddByName(track, "ReaSurround2", false, 1)
                             reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMCHANNELS", channels)
                             reaper.TrackFX_SetNamedConfigParm( track, fx, "NUMSPEAKERS", string.upper(speakers) )
-                            if ResetPucks then reaper.TrackFX_SetNamedConfigParm( track, fx, "RESETCHANNELS", channels ) end
+                            if ResetPucks then reaper.TrackFX_SetNamedConfigParm( track, fx, "RESETCHANNELS", LFE ) end
+                            
+                            if AddToTCP
+                            then
+                                local retval, str = reaper.GetTrackStateChunk( track, "", false )
+                                local str2 = string.match(str, "<FXCHAIN.-reasurround2.-WAK %d %d")
+                                str2 = string.gsub(str2, "\nWAK %d %d", "\nWAK 0 1")
+                                str = string.gsub(str, "<FXCHAIN.-reasurround2.-WAK %d %d", str2)
+                                reaper.SetTrackStateChunk( track, str, false )
+                            end
                       end
+                      
                       reaper.UpdateArrange()
             end 
 end

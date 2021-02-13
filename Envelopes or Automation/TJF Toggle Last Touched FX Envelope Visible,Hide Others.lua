@@ -1,5 +1,5 @@
 --@description TJF Toggle Last Touched FX Envelope Visible and Hide all Others
---@version 1.5
+--@version 1.6
 --@author Tim Farrell
 --
 --@about
@@ -18,6 +18,9 @@
 --         Take FX - Will also select all points also (for easy clear/deletion)
 --  v1.4.1 Script maintainance (removed unused functions)
 --  v1.5 - added support for folder trim automation visibility
+--  v1.6 - added X,Y,Z support for ReaSurround2
+
+local EnableZ = true
 
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
 
@@ -53,6 +56,31 @@ function SetEnvelopeVis(envelope, bool)
 end--EnvelopeVis()
 
 
+function ReaSurround2(CurrentEnv, MasterEnvelope, speakers)
+    
+    if speakers=="" then speakers = 0 end
+    
+    speakers = tonumber(string.match(speakers, "%d+"))
+    
+    local _, MasterName = reaper.GetEnvelopeName( MasterEnvelope )
+    if string.find(MasterName, "ReaSurround2" )
+    then
+        local channel = string.match(MasterName, "%d+")
+        if channel
+        then
+            local _, CurrentName = reaper.GetEnvelopeName( CurrentEnv )
+            
+            if      string.find(CurrentName, "in "..channel.." X ") or string.find(CurrentName, "in "..channel.." Y ")
+            then    return true
+            elseif  EnableZ and speakers > 8 and string.find(CurrentName, "in "..channel.." Z ")
+            then    return true
+            end
+        end
+    end
+    return false
+end
+
+
 
 function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
               local track = reaper.CSurf_TrackFromID(tracknumber, false)
@@ -64,6 +92,8 @@ function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
                   created = true
               end
               local visible = not GetEnvelopeVis(envelope)
+              --retval, name = reaper.TrackFX_GetFXName( track, fxnumber, "" )
+              local _, speakers = reaper.TrackFX_GetNamedConfigParm( track, fxnumber, "NUMSPEAKERS" )
 
               --[[        ---------ADJUST VALUE
               if  reaper.CountEnvelopePoints( envelope ) < 2 then
@@ -84,11 +114,14 @@ function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
                     local _, name = reaper.GetEnvelopeName( env )
                     local _, trackname = reaper.GetTrackName(track)
                     
-                    if (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1 and trackname ~= "PIX" ) then SetEnvelopeVis(env, true)
+                    if (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1 and trackname ~= "PIX" )
                     
+                    then SetEnvelopeVis(env, true)
                     
+                    elseif ReaSurround2(env, envelope, speakers) then SetEnvelopeVis(env, visible)
                     elseif env~=envelope then SetEnvelopeVis(env, false)
                     elseif created then SetEnvelopeVis(env, true)
+                    
                     else SetEnvelopeVis(env, visible)
                     end
                     
@@ -118,6 +151,7 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
               end
               
               local visible = not GetEnvelopeVis(envelope)
+              local _, speakers = reaper.TakeFX_GetNamedConfigParm( take, fxnumber, "NUMSPEAKERS" )
               
                       ---------ADJUST VALUE
               if  reaper.CountEnvelopePoints( envelope ) < 2 then
@@ -135,7 +169,8 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
               for i=0,  reaper.CountTakeEnvelopes( take )  - 1 do
               
                     local env = reaper.GetTakeEnvelope( take, i )
-                    if env~=envelope then SetEnvelopeVis(env, false)
+                    if ReaSurround2(env, envelope, speakers) then SetEnvelopeVis(env, visible)
+                    elseif env~=envelope then SetEnvelopeVis(env, false)
                     elseif created then --SetEnvelopeVis(env, true)
                     else SetEnvelopeVis(env, visible)
                     end

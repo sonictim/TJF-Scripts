@@ -1,5 +1,5 @@
 --@description TJF Envelope Visibility Behavior
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --
 --@about
@@ -14,6 +14,12 @@
 --
 --@changelog
 --  v1.0 - nothing to report
+--  v1.1 - added X,Y,Z support for ReaSurround2
+
+
+local EnableZ = true
+
+
 
 ----------------------------------DEBUG FUNCTIONS
 
@@ -91,15 +97,29 @@ function isFolder(track)
 end -- isFolder()
 
 
-
-
-
-
-
-
-
-
-
+function ReaSurround2(CurrentEnv, MasterEnvelope, speakers)
+    
+    if speakers=="" then speakers = 0 end
+    
+    speakers = tonumber(string.match(speakers, "%d+"))
+    
+    local _, MasterName = reaper.GetEnvelopeName( MasterEnvelope )
+    if string.find(MasterName, "ReaSurround2" )
+    then
+        local channel = string.match(MasterName, "%d+")
+        if channel
+        then
+            local _, CurrentName = reaper.GetEnvelopeName( CurrentEnv )
+            
+            if      string.find(CurrentName, "in "..channel.." X ") or string.find(CurrentName, "in "..channel.." Y ")
+            then    return true
+            elseif  EnableZ and speakers > 8 and string.find(CurrentName, "in "..channel.." Z ")
+            then    return true
+            end
+        end
+    end
+    return false
+end
 
 
 
@@ -124,6 +144,8 @@ end--SetEnvelopeVis()
 function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
               local track = reaper.CSurf_TrackFromID(tracknumber, false)
               local fxvalue, minval, maxval = reaper.TrackFX_GetParam( track, fxnumber, paramnumber )
+              local _, speakers = reaper.TrackFX_GetNamedConfigParm( track, fxnumber, "NUMSPEAKERS" )              
+              
               if fxvalue ~= oldvalue then
              
                     envelope = reaper.GetFXEnvelope( track, fxnumber, paramnumber, true )
@@ -135,7 +157,7 @@ function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
                                   local _, trackname = reaper.GetTrackName(track)
                                   if env~=envelope  
                                   then 
-                                        if (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1 and trackname ~= "PIX" )
+                                        if (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1 and trackname ~= "PIX" ) or ReaSurround2(env, envelope, speakers)
                                         then
                                             SetEnvelopeVis(env, true)
                                         else
@@ -180,6 +202,7 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
               local item = reaper.GetTrackMediaItem(track, item_index)
               local take = reaper.GetTake(item, takenumber)
               local fxvalue, minval, maxval = reaper.TakeFX_GetParam( take, fxnumber, paramnumber )
+              local _, speakers = reaper.TakeFX_GetNamedConfigParm( take, fxnumber, "NUMSPEAKERS" )
   
               if fxvalue ~= oldvalue then
                   --reaper.SelectAllMediaItems( 0, false )  --  These two will change your selection to just the media item you are adjusting
@@ -192,7 +215,9 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
                           for i=0,  reaper.CountTakeEnvelopes( take )  - 1 do
                           
                                 local env = reaper.GetTakeEnvelope( take, i )
-                                if env~=envelope  
+                                if   ReaSurround2(env, envelope, speakers) 
+                                then SetEnvelopeVis(env, true)
+                                elseif env~=envelope  
                                 then SetEnvelopeVis(env, false)  
                                 else SetEnvelopeVis(env, true)
                                         if  reaper.CountEnvelopePoints( envelope ) < 2 then
@@ -210,7 +235,7 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
                           reaper.Main_OnCommand(40332,0) -- Envelope:  Select all points
                       end--if
                       oldvalue = fxvalue
-                      reaper.UpdateArrange()
+                      --reaper.UpdateArrange()
                   end--if
                   
               

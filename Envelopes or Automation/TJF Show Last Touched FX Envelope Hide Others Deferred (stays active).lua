@@ -1,5 +1,5 @@
 --@description TJF Show Last Touched FX Envelope and Hide all Others Deferred (STAYS ACTIVE)
---@version 1.4
+--@version 1.5
 --@author Tim Farrell
 --
 --@about
@@ -17,7 +17,10 @@
 --  v1.3 - updated SetEnvelopeVis() function to prevent future breaking
 --  v1.4 - Sets Last Touched Envelope as Selected when adjusting parameter
 --         Take FX - Will also select all points also (for easy clear/deletion)
+--  v1.5 - Added X,Y,Z Support for ReaSurround2
 
+
+local EnableZ = true
 
 
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
@@ -36,11 +39,36 @@ end--SetEnvelopeVis()
 
 
 
+function ReaSurround2(CurrentEnv, MasterEnvelope, speakers)
+    
+    if speakers=="" then speakers = 0 end
+    
+    speakers = tonumber(string.match(speakers, "%d+"))
+    
+    local _, MasterName = reaper.GetEnvelopeName( MasterEnvelope )
+    if string.find(MasterName, "ReaSurround2" )
+    then
+        local channel = string.match(MasterName, "%d+")
+        if channel
+        then
+            local _, CurrentName = reaper.GetEnvelopeName( CurrentEnv )
+            
+            if      string.find(CurrentName, "in "..channel.." X ") or string.find(CurrentName, "in "..channel.." Y ")
+            then    return true
+            elseif  EnableZ and speakers > 8 and string.find(CurrentName, "in "..channel.." Z ")
+            then    return true
+            end
+        end
+    end
+    return false
+end
+
 
 
 function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
               local track = reaper.CSurf_TrackFromID(tracknumber, false)
               local fxvalue, minval, maxval = reaper.TrackFX_GetParam( track, fxnumber, paramnumber )
+              local _, speakers = reaper.TrackFX_GetNamedConfigParm( track, fxnumber, "NUMSPEAKERS" )
               if fxvalue ~= oldvalue then
              
                     envelope = reaper.GetFXEnvelope( track, fxnumber, paramnumber, true )
@@ -49,7 +77,8 @@ function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
                             
                                   local env = reaper.GetTrackEnvelope( track, i )
                                   local _, name = reaper.GetEnvelopeName( env )
-                                  if env==envelope or (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1) 
+                                  
+                                  if env==envelope or (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1) or ReaSurround2(env, envelope, speakers)
                                   
                                   then SetEnvelopeVis(env, true)
                                         if  reaper.CountEnvelopePoints( envelope ) < 2 then
@@ -74,6 +103,7 @@ function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
 
                     oldvalue = fxvalue
                     reaper.TrackList_AdjustWindows(false)
+                    reaper.UpdateArrange()
                     
               end--if
               
@@ -89,6 +119,7 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
               local item = reaper.GetTrackMediaItem(track, item_index)
               local take = reaper.GetTake(item, takenumber)
               local fxvalue, minval, maxval = reaper.TakeFX_GetParam( take, fxnumber, paramnumber )
+              local _, speakers = reaper.TakeFX_GetNamedConfigParm( take, fxnumber, "NUMSPEAKERS" )
   
               if fxvalue ~= oldvalue then
                   --reaper.SelectAllMediaItems( 0, false )  --  These two will change your selection to just the media item you are adjusting
@@ -101,7 +132,9 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
                           for i=0,  reaper.CountTakeEnvelopes( take )  - 1 do
                           
                                 local env = reaper.GetTakeEnvelope( take, i )
-                                if env~=envelope  
+                                if   ReaSurround2(env, envelope, speakers) 
+                                then SetEnvelopeVis(env, true)
+                                elseif env~=envelope  
                                 then SetEnvelopeVis(env, false)  
                                 else SetEnvelopeVis(env, true)
                                         if  reaper.CountEnvelopePoints( envelope ) < 2 then
