@@ -126,7 +126,8 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
                   --reaper.SetMediaItemSelected( item, true )
 
                   local envelope = reaper.TakeFX_GetEnvelope( take, fxnumber, paramnumber, true )
-    
+                  reaper.ClearConsole()
+                  Msg(envelope)
                       if envelope ~= nil then
                           
                           for i=0,  reaper.CountTakeEnvelopes( take )  - 1 do

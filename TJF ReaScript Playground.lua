@@ -182,9 +182,18 @@ function RS2test2()
       end
 end
 
-
-
-
+function SelectTrackofLastTouchFX()
+      local retval, tracknumber, fxnumber, paramnumber = reaper.GetLastTouchedFX()
+        Msg(tracknumber)    
+      if retval then
+      
+           if (tracknumber >> 16) == 0 -- Track FX or Input FX
+           then
+                   local track = reaper.CSurf_TrackFromID(tracknumber, false)
+                   reaper.SetOnlyTrackSelected( track )
+           end
+      end
+end
 
     --[[------------------------------[[---
                     MAIN              
@@ -193,7 +202,8 @@ function Main()
 
 --InsertFXBeforeReaSurround()
 --AddReaSurround2ToEverything()
-RS2test2()
+--RS2test2()
+SelectTrackofLastTouchFX()
 
 end--Main()
 

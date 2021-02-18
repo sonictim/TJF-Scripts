@@ -104,7 +104,7 @@ function ReaSurround2(CurrentEnv, MasterEnvelope, speakers)
     speakers = tonumber(string.match(speakers, "%d+"))
     
     local _, MasterName = reaper.GetEnvelopeName( MasterEnvelope )
-    if string.find(MasterName, "ReaSurround2" )
+    if string.match(MasterName, "ReaSurround2" )
     then
         local channel = string.match(MasterName, "%d+")
         if channel
@@ -215,10 +215,14 @@ function TakeFXLastTouched(tracknumber, fxnumber, paramnumber)
                           for i=0,  reaper.CountTakeEnvelopes( take )  - 1 do
                           
                                 local env = reaper.GetTakeEnvelope( take, i )
-                                if   ReaSurround2(env, envelope, speakers) 
-                                then SetEnvelopeVis(env, true)
-                                elseif env~=envelope  
-                                then SetEnvelopeVis(env, false)  
+                                if env~=envelope  
+                                then 
+                                      if   ReaSurround2(env, envelope, speakers)
+                                      then SetEnvelopeVis(env, true)
+                                      else SetEnvelopeVis(env, false)
+                                      end
+                                
+                                
                                 else SetEnvelopeVis(env, true)
                                         if  reaper.CountEnvelopePoints( envelope ) < 2 then
                                                     if reaper.CountEnvelopePoints(envelope) < 1  
