@@ -32,6 +32,15 @@ local lastProjectChangeCount = reaper.GetProjectStateChangeCount(0)
 
 
     --[[------------------------------[[---
+                    DEBUG               
+    ---]]------------------------------]]--
+
+reaper.ClearConsole()
+function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
+
+
+
+    --[[------------------------------[[---
               Set Time Selection              
     ---]]------------------------------]]-- 
 
@@ -113,4 +122,23 @@ end -- Main()
                 CALL THE SCRIPT               
     ---]]------------------------------]]--
 
+    
+----------------------------------FUNCTION SETS COMMAND STATE FOR THIS FUNCTION
+(function()
+  local _, _, sectionId, cmdId = reaper.get_action_context()
+
+  if sectionId ~= -1 then
+    reaper.SetToggleCommandState(sectionId, cmdId, 1)
+    reaper.RefreshToolbar2(sectionId, cmdId)
+
+    reaper.atexit(function()
+      reaper.SetToggleCommandState(sectionId, cmdId, 0)
+      reaper.RefreshToolbar2(sectionId, cmdId)
+    end)
+  end
+end)()
+    
+
+
 Main()
+
