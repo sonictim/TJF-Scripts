@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="4443c6fe0a7dcf6a21388197b684b9af8ad97bc9">
+<index version="1" name="TJF Scripts" commit="add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -446,6 +446,24 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ea3689b7e96c4fb5b08f9ac8dfad359c9fba3717/Editing/Razor%20Edit/TJF%20LINK%20Razor%20Edit%20Selection%20with%20Folders,%20Item%20Grouping%20Affects%20Behavior2(reapacktest).lua</source>
       </version>
     </reapack>
+    <reapack name="TJF Link Time Selection to Razor Edits (deferred script).lua" type="script" desc="TJF Link Time Selection to Razor Edits (deferred script)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Link Time Selection to Razor Edits (deferred script)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Self Explanatory. Global Variable "isLoop" determines if the time selection is a loop or not For best results, choose "terminate instance" when running a second time to enable toggling on/off\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-02-18T07:50:18Z">
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728/Editing/Razor%20Edit/TJF%20Link%20Time%20Selection%20to%20Razor%20Edits%20(deferred%20script).lua</source>
+      </version>
+    </reapack>
     <reapack name="TJF Move Edit Cursor to End of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to End of Razor Edits">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -631,6 +649,24 @@ v1.0 - added option to sum final RPP-PROX to mono in original timeline]]></chang
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:34:07Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b0afb32bb174cb78fb9a6d97233d97f564a94365/Editing/Razor%20Edit/TJF%20Razor%20Edit-Enclose%20Media%20Items%20(leave%20selection).lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Set Time Selection to Razor Edits.lua" type="script" desc="TJF Set Time Selection to Razor Edits">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Set Time Selection to Razor Edits\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Self Explanatory. Global Variable "isLoop" determines if the time selection is a loop or not\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-02-18T07:50:18Z">
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728/Editing/Razor%20Edit/TJF%20Set%20Time%20Selection%20to%20Razor%20Edits.lua</source>
       </version>
     </reapack>
   </category>
@@ -1184,7 +1220,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
       <version name="1.5" author="Tim Farrell" time="2021-02-13T01:30:45Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4443c6fe0a7dcf6a21388197b684b9af8ad97bc9/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9e1e2b553090cbf81b16dc8317e52b065014acd7/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Item Pitch Envelope Visible.lua" type="script" desc="TJF Toggle Item Pitch Envelope Visible">
