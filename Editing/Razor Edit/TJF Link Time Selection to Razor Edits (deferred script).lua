@@ -1,5 +1,3 @@
---@noindex
---  NoIndex: false
 --@description TJF Link Time Selection to Razor Edits (deferred script)
 --@version 1.0
 --@author Tim Farrell

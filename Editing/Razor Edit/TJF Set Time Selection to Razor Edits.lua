@@ -1,5 +1,3 @@
---@noindex
---  NoIndex: false
 --@description TJF Set Time Selection to Razor Edits
 --@version 1.0
 --@author Tim Farrell
