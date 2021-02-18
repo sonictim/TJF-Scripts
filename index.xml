@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728">
+<index version="1" name="TJF Scripts" commit="6efe515d592c4bf8b8ce976903c6c168c249ff5a">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -461,7 +461,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2021-02-18T07:50:18Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728/Editing/Razor%20Edit/TJF%20Link%20Time%20Selection%20to%20Razor%20Edits%20(deferred%20script).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6efe515d592c4bf8b8ce976903c6c168c249ff5a/Editing/Razor%20Edit/TJF%20Link%20Time%20Selection%20to%20Razor%20Edits%20(deferred%20script).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Edit Cursor to End of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to End of Razor Edits">
