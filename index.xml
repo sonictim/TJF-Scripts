@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="6efe515d592c4bf8b8ce976903c6c168c249ff5a">
+<index version="1" name="TJF Scripts" commit="18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -686,21 +686,24 @@ v1.0 - added option to sum final RPP-PROX to mono in original timeline]]></chang
       <version name="2.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
       </version>
+      <version name="2.1" author="Tim Farrell" time="2021-02-24T01:44:13Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058/Editing/Reverse/TJF%20Non%20Destructive%20Reverse%20Time%20selection.lua</source>
+      </version>
     </reapack>
-    <reapack name="TJF Reverse Fades with Item.lua" type="script" desc="TJF Reverse Fades with Item">
+    <reapack name="TJF Reverse Fades with Item.lua" type="script" desc="TJF Reverse Fades with Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Reverse fades with item\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Mimics Pro Tools Reverse This will also swap your fades when you reverse and item\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF TJF Reverse Fades with Selected Items\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Reverses Fades along with Selected Items.\par}
 }
 ]]></description>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
       </version>
     </reapack>
   </category>
@@ -735,6 +738,25 @@ v1.0 - added option to sum final RPP-PROX to mono in original timeline]]></chang
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Cycle%20Through%20Take%20Channels.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Explode Media Items into new Mono Items for each Channel of Source Media.lua" type="script" desc="TJF Explode Media Items into new Mono Items for each Channel of Source Media">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Explode Media Items into new Mono Items for each Channel of Source Media\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will create new 1 channel media items for each channel in your media item source across your current tracks Will create a new track to expand to if necessary Option Variable to group all items together.\line Option Variable to create all new items on current track or "explode" across existing tracks.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 TO DO: adjust pan... will likely use new Media item channel mapping funciton. Waiting for further development\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="0.1" author="Tim Farrell" time="2021-02-24T01:44:13Z">
+        <changelog><![CDATA[v0.1 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058/Editing/Takes/TJF%20Explode%20Media%20Items%20into%20new%20Mono%20Items%20for%20each%20Channel%20of%20Source%20Media.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Rename and Format Items and SOURCE.lua" type="script" desc="TJF Rename and Format Items and SOURCE for SFX Library Cataloguing">
