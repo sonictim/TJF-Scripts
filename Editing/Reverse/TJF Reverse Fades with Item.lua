@@ -1,13 +1,12 @@
 --[[
-@description TJF Reverse Fades with Item
+@description TJF Reverse Fades with Selected Items
 @version 1.0
 @author Tim Farrell
 @link http://github.com/sonictim/TJF-Scripts/
 @date 2020 04 26
 @about
-  # TJF Reverse fades with item
-  Mimics Pro Tools Reverse
-  This will also swap your fades when you reverse and item
+  # TJF TJF Reverse Fades with Selected Items
+  Reverses Fades along with Selected Items.
 --]]
 
 
@@ -50,11 +49,11 @@ function main()
 
 end
 
-
+reaper.PreventUIRefresh(1)
 reaper.Undo_BeginBlock()
-reaper.ShowConsoleMsg("")
 
 main()
 
 reaper.UpdateArrange()
 reaper.Undo_EndBlock("Reverse Fades with Item", 0)
+reaper.PreventUIRefresh(-1)

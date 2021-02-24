@@ -1,6 +1,6 @@
 --[[
 @description TJF Non Destructive Timeline reverse of Time selection or Items
-@version 2.0
+@version 2.1
 @author Tim Farrell
 @link http://github.com/sonictim/TJF-Scripts/
 @date 2020 04 26
@@ -12,6 +12,7 @@
 @changelog
   v1.1 speed improvements
   v2.0 Added BASIC Support for Razor Edits (ONLY RECTANGLES FOR NOW)
+  v2.1 Updated support for Razor Edits
 --]]
 
 
@@ -28,7 +29,6 @@ function RazorEditSelectionExists()
 end--AreaSelectionExists()
 
 
-   
     
 function GetRazorEdits()  -- Function Written by BirdBird on reaper forums
         local trackCount = reaper.CountTracks(0)
@@ -95,7 +95,6 @@ end
 function SplitRazorEdits(razorEdits)
     local areaItems = {}
     
-    reaper.PreventUIRefresh(1)
     for i = 1, #razorEdits do
         local areaData = razorEdits[i]
         if not areaData.isEnvelope then
@@ -115,43 +114,49 @@ function SplitRazorEdits(razorEdits)
             end
         end
     end
-    reaper.PreventUIRefresh(-1)
     
     return areaItems
 end
 
 
 
-function main() --thank you reaper forum
+function main()
       local item = {}
       local itemcount =  reaper.CountSelectedMediaItems(0)
       local start_time, end_time = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0, false)
 
-      if RazorEditSelectionExists() then
+
+      if start_time ~= end_time then
+
+            reaper.Main_OnCommand(40061, 0)  --split items at time selection
+            for i=1, itemcount do
+                item[i] = reaper.GetSelectedMediaItem(0, i-1)
+            end
+      
+      
+      elseif RazorEditSelectionExists() then
               local selections = GetRazorEdits()
-              local item = SplitRazorEdits(selections)
+              item = SplitRazorEdits(selections)
+              
+              for i = reaper.CountSelectedMediaItems(0) - 1, 0, -1 do
+                  reaper.SetMediaItemSelected(reaper.GetSelectedMediaItem(0, i), false)
+              end
+              
               for i = 1, #item do
                   reaper.SetMediaItemSelected(item[i], true)
               end--for
 
               start_time = selections[1].areaStart
               end_time = selections[1].areaEnd
-
-          
-      elseif start_time ~= end_time then
-
-            reaper.Main_OnCommand(40061, 0)  --split items at time selection
-
-      else
-
-            if itemcount > 0 then
+      
+      elseif itemcount > 0 then
 
             start_time = reaper.GetMediaItemInfo_Value(reaper.GetSelectedMediaItem(0, 0), "D_POSITION")
             end_time = start_time + reaper.GetMediaItemInfo_Value(reaper.GetSelectedMediaItem(0, 0), "D_LENGTH")
 
-             for i = 0, itemcount - 1 do
+             for i = 1, itemcount do
 
-                 item[i] = reaper.GetSelectedMediaItem(0, i)
+                 item[i] = reaper.GetSelectedMediaItem(0, i-1)
                  local item_start = reaper.GetMediaItemInfo_Value(item[i], "D_POSITION")
                  local item_end = item_start + reaper.GetMediaItemInfo_Value(item[i], "D_LENGTH")
 
@@ -161,20 +166,11 @@ function main() --thank you reaper forum
 
               end--for
 
-              end--if
-
         end--if
 
 
 
-      reaper.Main_OnCommand(41051, 0)  -- Reverse Takes
-
-
-      for i = 1, itemcount do
-        item[i] = reaper.GetSelectedMediaItem(0, i-1)
-      end--for
-
-      for i = 1, itemcount do
+      for i = 1, #item do
         local item_pos = reaper.GetMediaItemInfo_Value(item[i], "D_POSITION")
         local item_len = reaper.GetMediaItemInfo_Value(item[i], "D_LENGTH")
         local new_pos = end_time - item_len - item_pos + start_time
@@ -205,16 +201,19 @@ function main() --thank you reaper forum
         end--if
 
       end--for
+      
+      
+      reaper.Main_OnCommand(41051, 0)  -- Reverse Takes
 
 end--function
 
 
-
-
+reaper.PreventUIRefresh(1)
 reaper.Undo_BeginBlock()
-reaper.ShowConsoleMsg("")
+
 
 main()
 
 reaper.UpdateArrange()
 reaper.Undo_EndBlock("Reverse Fades with Items in Time TJF", 0)
+reaper.PreventUIRefresh(-1)
