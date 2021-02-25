@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058">
+<index version="1" name="TJF Scripts" commit="8106bebf8644f4df42e271c6ab0a5366f2dc3710">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1117,6 +1117,44 @@ v2.6 Bug Fixes]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Arm%20ALL%20Envelopes.lua</source>
       </version>
     </reapack>
+    <reapack name="TJF Coalesce Take Volume to Track Volume.lua" type="script" desc="TJF Coalesce Take Volume to Track Volume">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Coalesce Take Volume to Track Volume\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Functions similar to Protools Coalesce Clip Gain to Volume Automation Option to set wether to use the PreFX volume or regular Volume in Global Variables Option to set Glide Amount in Global Variables Option to set both source and destination envelopes visible (false leaves them as they currently are)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Known issues: If two selected items are overlapping on the same track, could have unexpected coalesce results Automation Item support is in the very early stages of development and is off by default. I strongly suggest not turning this feature on.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="0.1" author="Tim Farrell" time="2021-02-25T01:39:18Z">
+        <changelog><![CDATA[v0.1 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Coalesce%20Take%20Volume%20to%20Track%20Volume.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Coalesce Track Volume to Take Volume.lua" type="script" desc="TJF Coalesce Track Volume to Take Volume">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Coalesce Track Volume to Take Volume\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Functions similar to Protools Coalesce Volume Automation to Clip Gain Option to set wether to use the PreFX volume or regular Volume in Global Variables Option to set Glide Amount in Global Variables Option to set both source and destination envelopes visible (false leaves them as they currently are)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Known issues: If two selected items are overlapping on the same track, could have unexpected coalesce results NO AUTOMATION ITEM SUPPORT as of now\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="0.1" author="Tim Farrell" time="2021-02-25T01:39:18Z">
+        <changelog><![CDATA[v0.1 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Coalesce%20Track%20Volume%20to%20Take%20Volume.lua</source>
+      </version>
+    </reapack>
     <reapack name="TJF GLIDE ALL envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF GLIDE Envelope Points to ALL Envelopes to Time Selection or Selected Items">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
@@ -1143,7 +1181,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF GLIDE All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF GLIDE Envelope Points to all VISIBLE Envelopes to Time Selection or Selected Items">
@@ -1173,7 +1211,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF OPTIONS - Toggle Check Edit Cursor for Protools Sytle Automation Write and Glide Functions.lua" type="script" desc="TJF OPTION Toggle Check Edit Cursor for Protools Style Automation Write and Glide Functions">
@@ -1364,7 +1402,7 @@ v2.3 bugfix for take envelopes]]></changelog>
 ]]></description>
       </metadata>
       <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Write Punch All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection">
@@ -1393,7 +1431,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
   </category>
