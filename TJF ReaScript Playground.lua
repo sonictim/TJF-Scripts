@@ -30,6 +30,8 @@
 reaper.ClearConsole()
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
 
+function Nsg(param) reaper.ShowConsoleMsg(param.."\n") end
+
 
 
     --[[------------------------------[[---
@@ -195,6 +197,58 @@ function SelectTrackofLastTouchFX()
       end
 end
 
+
+
+function VolEnvelopeMath()
+
+    samplerate = reaper.GetSetProjectInfo( 0, "PROJECT_SRATE", 0, false )
+
+    Msg(reaper.SNM_GetDoubleConfigVar( "projgriddiv", 0 ))
+    
+
+    envelope = reaper.GetSelectedEnvelope(0)
+    
+    if envelope then
+            
+            env_scale = reaper.GetEnvelopeScalingMode(envelope)
+            
+            for i=0,  reaper.CountEnvelopePoints( envelope )-1 do
+                  retval, time, value, shape, tension, selected = reaper.GetEnvelopePoint( envelope, i )
+                  
+                  
+                  Nsg(value)
+                  
+                  if env_scale == 1 then value = reaper.ScaleFromEnvelopeMode(1, value) end
+                  
+                  
+                  Nsg(value)
+                  
+                  
+                  --retval, Evalue, dVdS, ddVdS, dddVdS = reaper.Envelope_Evaluate( envelope, time, samplerate, 0 )
+                  
+                  
+                  --Msg(Evalue)
+                  
+                  
+                  valueDB = 20*(math.log(value, 10))
+                  
+                  Nsg(valueDB)
+                  
+                  value2 = math.exp(valueDB*0.115129254)
+                  
+                  --Msg(value2)
+         
+            
+            
+            end
+    end
+            
+    
+
+
+end
+
+
     --[[------------------------------[[---
                     MAIN              
     ---]]------------------------------]]--
@@ -203,8 +257,10 @@ function Main()
 --InsertFXBeforeReaSurround()
 --AddReaSurround2ToEverything()
 --RS2test2()
-SelectTrackofLastTouchFX()
-
+--SelectTrackofLastTouchFX()
+ VolEnvelopeMath()
+ 
+ 
 end--Main()
 
 

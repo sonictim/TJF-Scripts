@@ -279,18 +279,19 @@ function ProcessEnvelope(envelope, pointstart, pointend, curpos, value)
     
     if CheckEnvelope(envelope)
     then
-
-       local _, startvalue = reaper.Envelope_Evaluate( envelope, pointstart, 48000, 0 )
-       local _, endvalue = reaper.Envelope_Evaluate( envelope, pointend, 48000, 0 )
-       local _, smoothstart = reaper.Envelope_Evaluate( envelope, pointstart-Smoothing, 48000, 0 )
-       local _, smoothend = reaper.Envelope_Evaluate( envelope, pointend+Smoothing, 48000, 0 )
+       local samplerate = reaper.GetSetProjectInfo( 0, "PROJECT_SRATE", 0, false )
+       
+       local _, startvalue = reaper.Envelope_Evaluate( envelope, pointstart, samplerate, 0 )
+       local _, endvalue = reaper.Envelope_Evaluate( envelope, pointend, samplerate, 0 )
+       local _, smoothstart = reaper.Envelope_Evaluate( envelope, pointstart-Smoothing, samplerate, 0 )
+       local _, smoothend = reaper.Envelope_Evaluate( envelope, pointend+Smoothing, samplerate, 0 )
 
        if not value 
        then   
        
               if    CheckEditCursor --and curpos >= pointstart and curpos <= pointend 
               then
-                    _, value = reaper.Envelope_Evaluate( envelope, curpos, 48000, 0 )
+                    _, value = reaper.Envelope_Evaluate( envelope, curpos, samplerate, 0 )
 
               else
                     value = endvalue
