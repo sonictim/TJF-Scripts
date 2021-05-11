@@ -201,9 +201,13 @@ end
 
 function VolEnvelopeMath()
 
+    
+
     samplerate = reaper.GetSetProjectInfo( 0, "PROJECT_SRATE", 0, false )
 
     Msg(reaper.SNM_GetDoubleConfigVar( "projgriddiv", 0 ))
+    
+    Msg( reaper.SnapToGrid( 0, 5 ))
     
 
     envelope = reaper.GetSelectedEnvelope(0)

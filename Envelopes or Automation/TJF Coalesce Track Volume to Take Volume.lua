@@ -281,6 +281,9 @@ function Main()
       else  trackEnvName = "Volume"
       end
 
+      
+      
+      
       local itemcount = reaper.CountSelectedMediaItems(0)
       
       if itemcount then

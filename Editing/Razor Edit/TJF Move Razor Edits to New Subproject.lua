@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -7,8 +7,8 @@
 --@about
 --  # TJF Move Razor Edit Selection to New Subproject 
 --
---  ******RAZOR EDITS ARE OFFICIALLY UNSUPPORTED AND EXPERIMENTAL. AS A RESULT, THIS CODE COULD BREAK AT ANY TIME*********
 --  Will create a new Subproject name and move your current razor edit selection to this new subproject.
+--  NEW SUBPROJECT WILL BE CREATED ON FIRST SELECTED TRACK (not necessarily razor edit tracks)
 --  There are various options the user can set that affect how the razor edits are placed in the Destination Subproject
 --  Timecode copy and Video Track Copy are both supported.  
 --  If no razor selection is visible, no action will be taken
@@ -42,23 +42,26 @@
 --  v0.8 - added Prompt for Subproject Filename Option
 --  v0.9 - added render subproject option
 --  v1.0 - added option to sum final RPP-PROX to mono in original timeline
+--  v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
+--  v1.2 - EXPORT ONLY - Replacing razor edit with new subproject is now optional via Global Variable 
 
 
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
 
+ReplaceRazorEditWithSubproject = true     -- If false, will create the subproject but not replace the contents of the razor edit on the timeline - EXPORT MODE
+
 PromptForFilename = false                 -- If true, script will ask user to name the subproject being created
+
 RenderSubproject = true                   -- If true, script will render the subproject.  False will leave it unrendered
-SumToMono = true                          -- If true, will set the resulting subproject file to take mode MONO DOWNMIX.  Requires RenderSubproject = true 
+SumToMono = false                         -- If true, will set the resulting subproject file to take mode MONO DOWNMIX.  Requires RenderSubproject = true 
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
-CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
+CloseSubproject = false                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
-
 CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
 AlsoCopyMaster = true                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
-
 
 TimecodeMatch = true                      -- If true, script will adjust the subproject session start time so your moved edits will be placed at the same timecode as the source project.
 PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
@@ -96,6 +99,8 @@ function Main()
 
                           --==//[[    DECLARE VARIABLES   ]]\\==--
 
+      local curpos =  reaper.GetCursorPosition()  --Get current cursor position
+      
       local startPos=nil  --will eventually be the subproject Start Time
       local endPos=nil    --will eventually be the subproject End Time
       local video=0       --Keeps track of how many video tracks are copied
@@ -172,16 +177,26 @@ function Main()
     then  
               reaper.SNM_SetIntConfigVar(  "multiprojopt", 4096)                                          -- Disable Automatic Subproject Rendering
               
-              reaper.Main_OnCommandEx(41384, 0, source_proj)                                              -- CUT razor edits
+              reaper.SetEditCurPos(startPos, true, true)
+              
+              if ReplaceRazorEditWithSubproject
+              then
+                  reaper.Main_OnCommandEx(41384, 0, source_proj)                                          -- CUT razor edits
+              else
+                  reaper.Main_OnCommandEx(41383, 0, source_proj)                                          -- COPY razor edits
+              end
+              
+              
               reaper.GetSet_LoopTimeRange2( source_proj, true, false, startPos, endPos, false )           -- set time selection to length of razor edits      
               
+
               if PromptForFilename
               then
-                   reaper.Main_OnCommandEx(41049, 0, source_proj)                                              -- insert new subproject
+                   reaper.Main_OnCommandEx(41049, 0, source_proj)                                         -- insert new subproject
               else
-                   reaper.InsertTrackAtIndex( source_trackCount, true )
-                   reaper.SetOnlyTrackSelected( reaper.GetTrack(source_proj,source_trackCount), true )
-                   reaper.Main_OnCommandEx(41997, 0, source_proj)
+                   reaper.InsertTrackAtIndex( source_trackCount, true )                                   -- insert blank track
+                   reaper.SetOnlyTrackSelected( reaper.GetTrack(source_proj,source_trackCount), true )    -- select this track
+                   reaper.Main_OnCommandEx(41997, 0, source_proj)                                         -- Move blank track to subproject
               end
               
               
@@ -190,7 +205,9 @@ function Main()
               
               
               local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
-              reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destinatin subproject
+              
+              
+              reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destination subproject
               
               
               
@@ -237,6 +254,8 @@ function Main()
               if  PreserveRelativeTimelinePosition 
               then 
                   reaper.SetEditCurPos(startPos, true, true)                                              -- Set Edit Cursor to start of where items should go
+              else
+                  reaper.SetEditCurPos(0, true, true)                                                     -- Set Edit Cursor to 0
               end
               
               
@@ -253,6 +272,7 @@ function Main()
                   reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
                   reaper.SetProjectMarker( 2, false, endPos, 0, "=END" )
               else
+                  reaper.SetProjectMarker( 1, false, 0, 0, "=START" ) 
                   reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
               end
               
@@ -283,14 +303,22 @@ function Main()
               
               if not  PromptForFilename
               then
-                      reaper.MoveMediaItemToTrack( reaper.GetSelectedMediaItem(source_proj,0), lastTouched )
+                      if ReplaceRazorEditWithSubproject then reaper.MoveMediaItemToTrack( reaper.GetSelectedMediaItem(source_proj,0), lastTouched ) end
                       reaper.DeleteTrack(  reaper.GetTrack( source_proj, source_trackCount ) )
+              end
+              
+              if not ReplaceRazorEditWithSubproject and PromptForFilename
+              then
+                  reaper.Main_OnCommandEx(40697, 0, source_proj) -- remove
+                  reaper.Main_OnCommandEx(42398, 0, source_proj) -- paste              
               end
               
               if    SumToMono and RenderSubproject
               then
                     reaper.Main_OnCommand(40178, 0)                                                       -- Item properties: Set take channel mode to mono (downmix)
               end
+              
+              reaper.SetEditCurPos(curpos, true, true)
               
               if    EndInSubproject 
               then 
