@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="92ec4b218a578a470b16d8bc3d73ed48efb51203">
+<index version="1" name="TJF Scripts" commit="6d68739e9f86a511410b3a1f02df93afb2437f71">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -628,6 +628,21 @@ v1.0 - added option to sum final RPP-PROX to mono in original timeline
 v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
 v1.2 - EXPORT ONLY - Replacing razor edit with new subproject is now optional via Global Variable ]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/92ec4b218a578a470b16d8bc3d73ed48efb51203/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="1.2" author="Tim Farrell" time="2021-05-11T18:03:55Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option
+v1.0 - added option to sum final RPP-PROX to mono in original timeline
+v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
+v1.2 - EXPORT ONLY - Replacing razor edit with new subproject is now optional via Global Variable ]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6d68739e9f86a511410b3a1f02df93afb2437f71/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
