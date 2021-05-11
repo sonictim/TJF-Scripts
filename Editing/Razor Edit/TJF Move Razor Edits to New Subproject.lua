@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 1.2
+--@version 1.4
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -43,7 +43,9 @@
 --  v0.9 - added render subproject option
 --  v1.0 - added option to sum final RPP-PROX to mono in original timeline
 --  v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
---  v1.2 - EXPORT ONLY - Replacing razor edit with new subproject is now optional via Global Variable 
+--  v1.2 - Replacing razor edit with new subproject is now optional via Global Variable
+--  v1.3 - add EXPORT option to export the newly created subproject
+--  v1.4 - added optional user variable for picture track name
 
 
     --[[------------------------------[[---
@@ -58,7 +60,7 @@ RenderSubproject = true                   -- If true, script will render the sub
 SumToMono = false                         -- If true, will set the resulting subproject file to take mode MONO DOWNMIX.  Requires RenderSubproject = true 
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
-CloseSubproject = false                    -- If true, the newly created subproject tab will be closed at the end of the script.  
+CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
 CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
 AlsoCopyMaster = true                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
@@ -68,6 +70,9 @@ PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in th
 
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
                                           -- ***NOTE: If COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeTimelinePosition and TimecodeMatch variables will be overridden to match Video
+UserVideoTrackName = "PIC CUT"           -- optional custom video track name for user - NEEDS QUOTATION MARKS
+
+ExportSubproject = false                  -- If true, will also prompt user to export Subproject
 
 
     --[[------------------------------[[---
@@ -129,7 +134,7 @@ function Main()
             if    CopyVideo                                                                                -- Copy Video Tracks (if option is enabled)
             then
                   local _, name = reaper.GetTrackName( track )
-                  if    string.upper(name) == "VIDEO" or string.upper(name) == "PIX" 
+                  if    string.upper(name) == "VIDEO" or string.upper(name) == "PIX" or string.upper(name) == string.upper(UserVideoTrackName)
                   then
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
                       table.insert(tracks, str)
@@ -281,11 +286,12 @@ function Main()
               if   RenderSubproject
               then
                    reaper.SNM_SetIntConfigVar(  "multiprojopt", 0)                                        -- Enable Automatic Subproject Rendering                                                           -- Toggle Automatic subproject rendering
+                   if ExportSubproject then reaper.Main_SaveProject( dest_proj, false ) end
               end
              
              
              
-              reaper.Main_SaveProject( dest_proj, false )                                                 -- Save Subproject
+              reaper.Main_SaveProject( dest_proj, ExportSubproject )                                      -- Save Subproject
              
               
               
