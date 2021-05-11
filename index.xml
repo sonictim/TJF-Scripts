@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="8106bebf8644f4df42e271c6ab0a5366f2dc3710">
+<index version="1" name="TJF Scripts" commit="92ec4b218a578a470b16d8bc3d73ed48efb51203">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -525,7 +525,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Move Razor Edit Selection to New Subproject\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\b {\b {\b RAZOR EDITS ARE OFFICIALLY UNSUPPORTED AND EXPERIMENTAL. AS A RESULT, THIS CODE COULD BREAK AT ANY TIME}}}*** Will create a new Subproject name and move your current razor edit selection to this new subproject. There are various options the user can set that affect how the razor edits are placed in the Destination Subproject Timecode copy and Video Track Copy are both supported.\line If no razor selection is visible, no action will be taken\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will create a new Subproject name and move your current razor edit selection to this new subproject. NEW SUBPROJECT WILL BE CREATED ON FIRST SELECTED TRACK (not necessarily razor edit tracks) There are various options the user can set that affect how the razor edits are placed in the Destination Subproject Timecode copy and Video Track Copy are both supported.\line If no razor selection is visible, no action will be taken\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 ** REQUIRES SWS extension for complete feature compatibility. If you are experiencing issues, please make sure you have SWS installed and updated to latest version\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 ** Thank you to Edgemeal for helping me solve how to set the project time offset\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Editable Options: Choose which project (source or subproject) is in view at the completion of the script Close new subproject upon completion of the script Copy all Track info into subproject (master too) or create blank tracks for the move Maintain Relative Positiion and Match Timecode start times in Timeline (will preserve timecode and embed into RPP-PROX) Ability to Copy a Video Track along with Items - ENABLED by default\par}
@@ -613,6 +613,21 @@ v0.8 - added Prompt for Subproject Filename Option
 v0.9 - added render subproject option
 v1.0 - added option to sum final RPP-PROX to mono in original timeline]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="1.1" author="Tim Farrell" time="2021-05-11T17:43:55Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option
+v1.0 - added option to sum final RPP-PROX to mono in original timeline
+v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
+v1.2 - EXPORT ONLY - Replacing razor edit with new subproject is now optional via Global Variable ]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/92ec4b218a578a470b16d8bc3d73ed48efb51203/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
