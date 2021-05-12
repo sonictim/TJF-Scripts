@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -33,6 +33,7 @@
 --  
 --@changelog
 --  v1.0 - initial version nothing to report
+--  v1.1 - bugfix
 
 
     --[[------------------------------[[---
@@ -226,7 +227,7 @@ function Main()
               end
               
               
-              reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+video), true )                     -- Select first track to initiate paste
+              reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+#vtracks), true )                     -- Select first track to initiate paste
               
               
               
