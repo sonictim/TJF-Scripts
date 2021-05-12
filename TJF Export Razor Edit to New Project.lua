@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 1.01
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -33,7 +33,7 @@
 --  
 --@changelog
 --  v1.0 - initial version nothing to report
---  v1.01 - minor bugfix
+--  v1.1 - minor bugfix
 
 
     --[[------------------------------[[---

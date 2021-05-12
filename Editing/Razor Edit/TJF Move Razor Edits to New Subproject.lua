@@ -1,5 +1,5 @@
 --@description TJF Move Razor Edit Selection to New Subproject
---@version 1.4
+--@version 1.5
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -46,6 +46,7 @@
 --  v1.2 - Replacing razor edit with new subproject is now optional via Global Variable
 --  v1.3 - add EXPORT option to export the newly created subproject
 --  v1.4 - added optional user variable for picture track name
+--  v1.5 - bugfix
 
 
     --[[------------------------------[[---
@@ -62,8 +63,8 @@ SumToMono = false                         -- If true, will set the resulting sub
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
-CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
-AlsoCopyMaster = true                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
+CopyTrackInfo = false                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
+AlsoCopyMaster = false                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
 
 TimecodeMatch = true                      -- If true, script will adjust the subproject session start time so your moved edits will be placed at the same timecode as the source project.
 PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
@@ -108,9 +109,9 @@ function Main()
       
       local startPos=nil  --will eventually be the subproject Start Time
       local endPos=nil    --will eventually be the subproject End Time
-      local video=0       --Keeps track of how many video tracks are copied
       
-      local tracks = {}   --Table will be filled with 
+      local tracks = {}    
+      local vtracks = {}
       
       local source_proj, source_proj_fn = reaper.EnumProjects( -1, "" )                                    -- Get the Current Project's Project info
       local source_start, source_end = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0, false)          -- Get current start and end time selection value in seconds of current project
@@ -137,8 +138,7 @@ function Main()
                   if    string.upper(name) == "VIDEO" or string.upper(name) == "PIX" or string.upper(name) == string.upper(UserVideoTrackName)
                   then
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
-                      table.insert(tracks, str)
-                      video = video + 1
+                      table.insert(vtracks, str)
                       PreserveRelativeTimelinePosition = true                                                -- Overriding these variables ensures timecode match
                       TimecodeMatch = true
                   end
@@ -178,7 +178,7 @@ function Main()
       
                       --==//[[   CREATE SUBPROJECT AND MOVE ITEMS TO NEW SUBPROJECT   ]]\\==-- 
      
-    if       #tracks > video                                                                              -- if the table has been filled
+    if       #tracks > 0                                                                              -- if the table has been filled
     then  
               reaper.SNM_SetIntConfigVar(  "multiprojopt", 4096)                                          -- Disable Automatic Subproject Rendering
               
@@ -241,18 +241,30 @@ function Main()
                   reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
               end
               
+              
+              if #vtracks > 0
+              then
+                  for i=1, #vtracks
+                  do
+                        reaper.InsertTrackAtIndex( i-1, true )
+                        local track = reaper.GetTrack(dest_proj,i-1)
+                        reaper.SetTrackStateChunk( track, vtracks[i], true )
+                  end
+              end
+              
+              
               for i=1, #tracks                                                                            --  Build empty tracks in new subproject --
               do
-                  reaper.InsertTrackAtIndex( i-1, true )
+                  reaper.InsertTrackAtIndex( #vtracks+i-1, true )
                   if  CopyTrackInfo
                   then
-                      local track = reaper.GetTrack(dest_proj,i-1)
+                      local track = reaper.GetTrack(dest_proj,#vtracks+i-1)
                       reaper.SetTrackStateChunk( track, tracks[i], true )
                   end
               end
               
               
-              reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+video), true )                     -- Select first track to initiate paste
+              reaper.SetOnlyTrackSelected( reaper.GetTrack(dest_proj,0+#vtracks), true )                     -- Select first track to initiate paste
               
               
               
