@@ -11,6 +11,8 @@ sessionpath = string.gsub(fullrecordpath, recordpathshort, "") .. name .. "-PROX
 
 Msg(sessionpath)
 
+Msg(reaper.GetTrackMediaItem(reaper.GetTrack(0,2),0))
+
 
 
 
