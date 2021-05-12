@@ -2,6 +2,27 @@ reaper.ClearConsole()
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
 
 
+name = reaper.GetProjectName( 0, "" )
+fullrecordpath = reaper.GetProjectPath("Audio Files" )
+
+retval, recordpathshort = reaper.GetSetProjectInfo_String( 0, "RECORD_PATH", "", false )
+
+sessionpath = string.gsub(fullrecordpath, recordpathshort, "") .. name .. "-PROX"
+
+Msg(sessionpath)
+
+
+
+
+testpath = "/Users/tfarrell/TEMP/REAPER/SUB PROJECT TEST/carolina/carolina.RPP"
+
+
+
+reaper.InsertMedia( testpath, 0 )
+reaper.Main_OnCommandEx(40441,0, 0) 
+
+
+--[[
 item = reaper.GetSelectedMediaItem(0, 0)
 
 Msg( reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO"))
@@ -27,7 +48,7 @@ function FadeOutExists(item)
     else  return false
     end
 end -- function
-
+]]
 
 
 
