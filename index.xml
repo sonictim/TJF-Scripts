@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="d56af3d78fd8306e0d5fd361042dd4afe68f0083">
+<index version="1" name="TJF Scripts" commit="055c5ded7811e145dcf9e87ee34729a1aa3da2c3">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -681,6 +681,24 @@ v1.2 - Replacing razor edit with new subproject is now optional via Global Varia
 v1.3 - add EXPORT option to export the newly created subproject
 v1.4 - added optional user variable for picture track name]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/2d035706c32a6e6d63e7d656c910d5b2d490063c/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
+      <version name="1.5" author="Tim Farrell" time="2021-05-12T09:07:37Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option
+v1.0 - added option to sum final RPP-PROX to mono in original timeline
+v1.1 - bugfix for variable "PreserveRelativeTimelinePosition"
+v1.2 - Replacing razor edit with new subproject is now optional via Global Variable
+v1.3 - add EXPORT option to export the newly created subproject
+v1.4 - added optional user variable for picture track name
+v1.5 - bugfix]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/055c5ded7811e145dcf9e87ee34729a1aa3da2c3/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Right Edge of Razor Edits to Edit Cursor.lua" type="script" desc="TJF Move Right Edge of Razor Edits to Edit Cursor">
