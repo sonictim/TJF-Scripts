@@ -18,8 +18,19 @@ testpath = "/Users/tfarrell/TEMP/REAPER/SUB PROJECT TEST/carolina/carolina.RPP"
 
 
 
-reaper.InsertMedia( testpath, 0 )
-reaper.Main_OnCommandEx(40441,0, 0) 
+--reaper.InsertMedia( testpath, 0 )
+--reaper.Main_OnCommandEx(40441,0, 0) 
+
+
+                  reaper.SetProjectMarker( 1, false, 0, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
+                  reaper.SetProjectMarker( 2, false, 5, 0, "=END" )
+                  
+                  reaper.SetProjectMarkerByIndex2( -1, 0, false, 0, 0, 1, "=TIM", 0, 0 )
+                  
+                  reaper.AddProjectMarker( -1, false, 0, 0, "=Tim", 1 )
+                  
+                  Msg("wtf")
+
 
 
 --[[

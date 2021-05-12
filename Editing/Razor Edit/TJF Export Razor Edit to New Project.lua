@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 1.1
+--@version 1.2
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -34,6 +34,7 @@
 --@changelog
 --  v1.0 - initial version nothing to report
 --  v1.1 - bugfix
+--  v1.2 - more bugs
 
 
     --[[------------------------------[[---
@@ -129,7 +130,6 @@ function Main()
                   then
                       local _, str = reaper.GetTrackStateChunk( track, "", false )
                       table.insert(vtracks, str)
-                      video = video + 1
                       PreserveRelativeTimelinePosition = true                                                -- Overriding these variables ensures timecode match
                       TimecodeMatch = true
                   end
@@ -244,16 +244,15 @@ function Main()
                
               reaper.Main_OnCommandEx(40020, 0, dest_proj)                                                -- clear any time selection in subproject
               
-              
-              
+
               
               if  PreserveRelativeTimelinePosition 
               then
-                  reaper.SetProjectMarker( 1, false, startPos, 0, "=START" )                              -- Adjust Subproject Markers to match timecode
-                  reaper.SetProjectMarker( 2, false, endPos, 0, "=END" )
+                  reaper.AddProjectMarker(dest_proj, false, startPos, 0, "=START", 1 )                              -- Adjust Subproject Markers to match timecode
+                  reaper.AddProjectMarker(dest_proj, false, endPos, 0, "=END", 2 )
               else
-                  reaper.SetProjectMarker( 1, false, 0, 0, "=START" ) 
-                  reaper.SetProjectMarker( 2, false, endPos-startPos, 0, "=END" )                         -- Adjust end marker to length of items
+                  reaper.AddProjectMarker(dest_proj, false, 0, 0, "=START", 1 ) 
+                  reaper.AddProjectMarker(dest_proj, false, endPos-startPos, 0, "=END", 2 )                         -- Adjust end marker to length of items
               end
               
              
@@ -278,7 +277,10 @@ function Main()
               then 
                     reaper.SelectProjectInstance(dest_proj)                                               -- switch back to subproject if option is enabled
               end
-        
+              
+
+              
+              
       end
 
 end--Main()
