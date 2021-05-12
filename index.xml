@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="2d035706c32a6e6d63e7d656c910d5b2d490063c">
+<index version="1" name="TJF Scripts" commit="d56af3d78fd8306e0d5fd361042dd4afe68f0083">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -419,6 +419,27 @@ v1.01 - refresh arrange view after processing fades]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-11-07T21:33:13Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8139e1115f7c6584a687ec5d24e9693f2aad49ce/Editing/Razor%20Edit/TJF%20Adjust%20Razor%20Edit%20Start%20to%20Edit%20Cursor.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Export Razor Edit to New Project.lua" type="script" desc="TJF Export Razor Edit to New Project">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Export Razor Edit to New Project\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Will create a new Project and move your current razor edit selection to this new project. There are various options the user can set that affect how the razor edits are placed in the Destination Project Timecode copy and Video Track Copy are both supported. Option to RENDER AS SUBPROJECT If no razor selection is visible, no action will be taken\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ** REQUIRES SWS extension for complete feature compatibility. If you are experiencing issues, please make sure you have SWS installed and updated to latest version\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ** Thank you to Edgemeal for helping me solve how to set the project time offset\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Editable Options: Choose which project (source or subproject) is in view at the completion of the script Close new subproject upon completion of the script Copy all Track info into subproject (master too) or create blank tracks for the move Maintain Relative Positiion and Match Timecode start times in Timeline (will preserve timecode and embed into RPP-PROX) Ability to Copy a Video Track along with Items - ENABLED by default\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-05-12T08:54:00Z">
+        <changelog><![CDATA[v1.0 - initial version nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/d56af3d78fd8306e0d5fd361042dd4afe68f0083/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
