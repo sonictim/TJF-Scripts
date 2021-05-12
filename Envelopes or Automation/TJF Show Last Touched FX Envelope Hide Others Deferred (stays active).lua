@@ -46,7 +46,7 @@ function ReaSurround2(CurrentEnv, MasterEnvelope, speakers)
     speakers = tonumber(string.match(speakers, "%d+"))
     
     local _, MasterName = reaper.GetEnvelopeName( MasterEnvelope )
-    if string.find(MasterName, "ReaSurround2" )
+    if string.find(MasterName, "ReaSurroundPan" )
     then
         local channel = string.match(MasterName, "%d+")
         if channel
