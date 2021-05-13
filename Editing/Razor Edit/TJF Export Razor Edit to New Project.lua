@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.0
+--@version 2.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -34,21 +34,24 @@
 --@changelog
 --  v1.0 - initial version nothing to report
 --  v2.0 - logic rework for entire script
+--  v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
 
 
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
 
+RazorEditsOnly = false                    -- If no razor edits are found, should the script work with selected items instead?
 
 RenderSubproject = true                   -- If true, script will also render the subproject RPP-PROX.  False will just save as a regular project
 
-EndInSubproject = true                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
-CloseSubproject = false                    -- If true, the newly created subproject tab will be closed at the end of the script.  
+EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
+CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
                                           -- ***NOTE: if EndInSubproject is true, it will override this variable.
                                           
 CopyTrackInfo = true                      -- If true, track information from the source tracks (name, color, # of channels, plugins, envelopes,etc) will be copied into the subproject tracks
 CopyMaster = true                     -- If true, will also copy the master track info (#channels, plugins, envelopes) IF CopyTrackInfo is enabled
+CopyRenderMetadata = true
 
 TimecodeMatch = true                      -- If true, script will adjust the subproject session start time so your moved edits will be placed at the same timecode as the source project.
 PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in the subproject equidistant from the project start as they were in the original project.
@@ -67,6 +70,24 @@ UserVideoTrackName = "PIC CUT"            -- optional custom video track name fo
  reaper.ClearConsole()
  function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
  
+
+ function CheckVideo(track)
+ 
+       local _, name = reaper.GetTrackName( track )
+       if     string.upper(name) == "VIDEO" 
+           or string.upper(name) == "PIX" 
+           or string.upper(name) == string.upper(UserVideoTrackName)
+       then
+           TimecodeMatch = true
+           PreserveRelativeTimelinePosition = true
+           return true
+       end
+ 
+       return false
+ 
+ end
+ 
+ 
  
  function CountProjects() -- Returns Number of Projects Currently open in Tabs
  
@@ -84,28 +105,27 @@ UserVideoTrackName = "PIC CUT"            -- optional custom video track name fo
  
  end
 
-  function CheckVideo(track)
-  
-        local _, name = reaper.GetTrackName( track )
-        if     string.upper(name) == "VIDEO" 
-            or string.upper(name) == "PIX" 
-            or string.upper(name) == string.upper(UserVideoTrackName)
-        then
-            TimecodeMatch = true
-            PreserveRelativeTimelinePosition = true
-            return true
-        end
-  
-        return false
-  
-  end
+ function OKtoRun()
+    
+          for i=0, reaper.CountTracks(0)-1 do
+              local retval, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
+              if x ~= "" then return true end
+          end
+          
+          if not RazorEditsOnly and reaper.GetSelectedMediaItem(-1, 0) then return true end
 
-
+    return false
+ 
+ 
+ end
 
     --[[------------------------------[[---
                     MAIN              
     ---]]------------------------------]]--
 function Main()
+      
+      if not OKtoRun() then return end
+
                           --==//[[    DECLARE VARIABLES   ]]\\==--
 
       local startPos = nil  --will eventually be the subproject Start Time
@@ -116,7 +136,21 @@ function Main()
       
       local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )                             -- Save Current Project Start time to Variable
       
-      
+      local _, metadata1 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:Description", false )
+      local _, metadata2 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginationDate", false )
+      local _, metadata3 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginationTime", false )
+      local _, metadata4 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:Originator", false )
+      local _, metadata5 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginatorReference", false )
+      local _, metadata6 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:PROJECT", false )
+      local _, metadata7 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:SCENE", false )
+      local _, metadata8 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:NOTE", false )
+      local _, metadata9 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER:Name", false )
+      local _, metadata10 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER:REAPER", false )
+      local _, metadata11 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:CIRCLED", false )
+      local _, metadata12 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:TAPE", false )
+      local _, metadata13 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:TAKE", false )
+      local _, metadata14 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:FILE_UID", false )
+      local _, metadata15 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER", false )
       
       
       reaper.Main_OnCommandEx(41383, 0, source_proj)                                              -- COPY razor edits
@@ -137,7 +171,26 @@ function Main()
           reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
       end
       
-     
+      if CopyRenderMetadata
+      then
+          
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Description|"..metadata1, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginationDate|"..metadata2, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginationTime|"..metadata3, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Originator|"..metadata4, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginatorReference|"..metadata5, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:PROJECT|"..metadata6, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:SCENE|"..metadata7, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:NOTE|"..metadata8, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:Name|"..metadata9, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:REAPER|"..metadata10, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:CIRCLED|"..metadata11, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:TAPE|"..metadata12, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:TAKE|"..metadata13, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:FILE_UID|"..metadata14, true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER|"..metadata15, true )
+      end
+      
       
       
                         --==//[[    COPY SOURCE PROJECT DATA TO DESTINATION   ]]\\==--
@@ -187,6 +240,28 @@ function Main()
             end
       end
       
+                            --IF RAXOR EDITS DON"T EXIST COPY SELECTED REGIONS
+      
+      if pasteTrack == nil
+      then
+          
+          for i=0, reaper.CountSelectedMediaItems(source_proj)-1
+          do
+                local item = reaper.GetSelectedMediaItem( source_proj, i )
+                local itemStart =  reaper.GetMediaItemInfo_Value( item, "D_POSITION" )
+                if startPos == nil or itemStart < startPos then startPos = itemStart end
+                local itemEnd =  itemStart + reaper.GetMediaItemInfo_Value( item, "D_LENGTH" )
+                if endPos == nil or itemEnd > endPos then endPos = itemEnd end
+                
+                if i==0 then
+                      local itemtrack =  reaper.GetMediaItem_Track( item )
+                      pasteTrack =  reaper.GetMediaTrackInfo_Value( itemtrack, "IP_TRACKNUMBER" ) - 1
+                end
+
+          end
+
+      end
+      
       
                               --==//[[    ADJUST TIMELINE/TIMECODE   ]]\\==--
       
@@ -196,7 +271,7 @@ function Main()
             then
                 reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset)                       
             else
-                reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset+startPos)
+                    reaper.SNM_SetDoubleConfigVar("projtimeoffs",source_offset+startPos)
             end
             reaper.UpdateTimeline()
       end
@@ -240,10 +315,9 @@ function Main()
      end
       
 
-      
+   
                               --==//[[  SAVE AND CLOSE  ]]\\==--
-             
-             
+      
       if   RenderSubproject
       then
             reaper.Main_OnCommandEx( 42332, 0, dest_proj )                                          -- save and create rpp 
@@ -264,7 +338,6 @@ function Main()
       then 
             reaper.SelectProjectInstance(dest_proj)                                               -- switch back to subproject if option is enabled
       end
-        
 
 
 end--Main()

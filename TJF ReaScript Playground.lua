@@ -252,6 +252,22 @@ function VolEnvelopeMath()
 
 end
 
+function RenderMetadata()
+
+      source_proj, source_proj_fn = reaper.EnumProjects( 0 )
+      dest_proj, dest_proj_fn = reaper.EnumProjects( 1 )
+
+
+      Msg("metadata")
+      retval, metadata = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:Description", false) 
+      Msg(metadata)
+       retval, metadata = reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Description", false )
+          Msg(metadata)
+
+end
+
+
+
 
     --[[------------------------------[[---
                     MAIN              
@@ -262,8 +278,8 @@ function Main()
 --AddReaSurround2ToEverything()
 --RS2test2()
 --SelectTrackofLastTouchFX()
- VolEnvelopeMath()
- 
+-- VolEnvelopeMath()
+RenderMetadata() 
  
 end--Main()
 
