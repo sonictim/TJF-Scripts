@@ -254,8 +254,10 @@ end
 
 function RenderMetadata()
 
-      source_proj, source_proj_fn = reaper.EnumProjects( 0 )
-      dest_proj, dest_proj_fn = reaper.EnumProjects( 1 )
+      source_proj, source_proj_fn = reaper.EnumProjects( 1 )
+      dest_proj, dest_proj_fn = reaper.EnumProjects( 2 )
+
+      Msg(reaper.GetSetProjectInfo( 0, "RENDER_SETTINGS", 512, false ))
 
 
       Msg("metadata")

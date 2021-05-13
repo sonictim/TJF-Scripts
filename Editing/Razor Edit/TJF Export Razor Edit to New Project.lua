@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.1
+--@version 2.2
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -35,6 +35,7 @@
 --  v1.0 - initial version nothing to report
 --  v2.0 - logic rework for entire script
 --  v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
+--  v2.2 - additional metadata support
 
 
     --[[------------------------------[[---
@@ -61,6 +62,7 @@ CopyVideo = true                          -- If true, script will look for any t
 
 UserVideoTrackName = "PIC CUT"            -- optional custom video track name for user - NEEDS QUOTATION MARKS
 
+SoundminerFields = {"Description", "Designer", "Library", "Manufacturer", "Show", "URL"}
 
 
     --[[------------------------------[[---
@@ -119,6 +121,93 @@ UserVideoTrackName = "PIC CUT"            -- optional custom video track name fo
  
  end
 
+
+function CopyRenderMetadata(source_proj, dest_proj)
+    local BWF = { "Description", "OriginationDate", "OriginationTime", "Originator", "OriginatorReference" }
+    local BWFmetadata = {}
+    local IXML = { "PROJECT", "SCENE", "NOTE", "USER", "CIRCLED", "TAPE", "FILE_UID" }
+    local IXMLmetadata = {}
+    local CUSTOMmetadata = {}
+  
+    reaper.SelectProjectInstance(source_proj)  
+    
+    local settings = reaper.GetSetProjectInfo( source_proj, "RENDER_SETTINGS", 512, false )
+    local bounds = reaper.GetSetProjectInfo( source_proj, "RENDER_BOUNDSFLAG", 0, false )
+    local channels = reaper.GetSetProjectInfo( source_proj, "RENDER_CHANNELS", 2, false )
+    local srate = reaper.GetSetProjectInfo( source_proj, "RENDER_SRATE", 0, false )
+    local startpos = reaper.GetSetProjectInfo( source_proj, "RENDER_STARTPOS", 0, false )
+    local endpos = reaper.GetSetProjectInfo( source_proj, "RENDER_ENDPOS", 0, false )
+    local tailflag = reaper.GetSetProjectInfo( source_proj, "RENDER_TAILFLAG", 0, false )
+    local tailms = reaper.GetSetProjectInfo( source_proj, "RENDER_TAILMS", 0, false )
+    local addtoproj = reaper.GetSetProjectInfo( source_proj, "RENDER_ADDTOPROJ", 0, false )
+    local dither = reaper.GetSetProjectInfo( source_proj, "RENDER_DITHER", 0, false )
+    local psrate = reaper.GetSetProjectInfo( source_proj, "PROJECT_SRATE", 0, false )
+    local psrateuse = reaper.GetSetProjectInfo( source_proj, "PROJECT_SRATE_USE", 0, false )
+    
+    local _, recordpath = reaper.GetSetProjectInfo_String( source_proj, "RECORD_PATH", "", false )
+    local _, renderfile = reaper.GetSetProjectInfo_String( source_proj, "RENDER_FILE", "", false )
+    local _, renderpattern = reaper.GetSetProjectInfo_String( source_proj, "RENDER_PATTERN", "", false )
+    local _, renderformat = reaper.GetSetProjectInfo_String( source_proj, "RENDER_FORMAT", "", false )
+    local _, renderformat2 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_FORMAT2", "", false )
+    
+    for i=1, #BWF
+    do
+        local _, metadata = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:"..BWF[i], false )
+        table.insert(BWFmetadata, metadata)
+    end
+    
+    for i=1, #IXML
+    do
+        local _, metadata = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:"..IXML[i], false )
+        table.insert(IXMLmetadata, metadata)
+    end
+    
+    for i=1, #SoundminerFields
+    do
+        local _, metadata = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER:"..SoundminerFields[i], false )
+        table.insert(CUSTOMmetadata, metadata)
+    end
+  
+  
+    reaper.SelectProjectInstance(dest_proj)
+    
+    
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_SETTINGS", settings, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_BOUNDSFLAG", bounds, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_CHANNELS", channels, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_SRATE", srate, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_STARTPOS", startpos, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_ENDPOS", endpos, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_TAILFLAG", tailflag, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_TAILMS", tailms, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_ADDTOPROJ", addtoproj, true )
+    reaper.GetSetProjectInfo( dest_proj, "RENDER_DITHER", dither, true )
+    reaper.GetSetProjectInfo( dest_proj, "PROJECT_SRATE", psrate, true )
+    reaper.GetSetProjectInfo( dest_proj, "PROJECT_SRATE_USE", psrateuse, true )
+    
+    reaper.GetSetProjectInfo_String( source_proj, "RECORD_PATH", recordpath, true )
+    reaper.GetSetProjectInfo_String( source_proj, "RENDER_FILE", renderfile, true )
+    reaper.GetSetProjectInfo_String( source_proj, "RENDER_PATTERN", renderpattern, true )
+    reaper.GetSetProjectInfo_String( source_proj, "RENDER_FORMAT", renderformat, true )
+    reaper.GetSetProjectInfo_String( source_proj, "RENDER_FORMAT2", renderformat2, true )
+    
+    for i=1, #BWF
+    do
+        reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:"..BWF[i].."|"..BWFmetadata[i], true )
+    end
+    
+    for i=1, #IXML
+    do
+        reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:"..IXML[i].."|"..IXMLmetadata[i], true )
+    end
+    
+    for i=1, #SoundminerFields
+    do
+        reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:"..SoundminerFields[i].."|"..CUSTOMmetadata[i], true )
+    end
+    
+end
+
     --[[------------------------------[[---
                     MAIN              
     ---]]------------------------------]]--
@@ -136,59 +225,26 @@ function Main()
       
       local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )                             -- Save Current Project Start time to Variable
       
-      local _, metadata1 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:Description", false )
-      local _, metadata2 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginationDate", false )
-      local _, metadata3 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginationTime", false )
-      local _, metadata4 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:Originator", false )
-      local _, metadata5 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "BWF:OriginatorReference", false )
-      local _, metadata6 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:PROJECT", false )
-      local _, metadata7 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:SCENE", false )
-      local _, metadata8 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:NOTE", false )
-      local _, metadata9 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER:Name", false )
-      local _, metadata10 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER:REAPER", false )
-      local _, metadata11 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:CIRCLED", false )
-      local _, metadata12 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:TAPE", false )
-      local _, metadata13 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:TAKE", false )
-      local _, metadata14 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:FILE_UID", false )
-      local _, metadata15 = reaper.GetSetProjectInfo_String( source_proj, "RENDER_METADATA", "IXML:USER", false )
-      
-      
       reaper.Main_OnCommandEx(41383, 0, source_proj)                                              -- COPY razor edits
       
       reaper.Main_OnCommandEx(40859, 0, source_proj)                                              -- create new project
       
       local dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )                 -- get project info for new subproject
       
-      reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destination subproject      
-
-
       
+      if CopyRenderMetadata
+      then
+          CopyRenderMetadata(source_proj, dest_proj)
+      else
+          reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destination subproject   
+      end
       
+
       
       if  CopyMaster                                                                              -- match master track to source session
       then
           local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )     -- Store Current Master Track settings into a variable
           reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
-      end
-      
-      if CopyRenderMetadata
-      then
-          
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Description|"..metadata1, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginationDate|"..metadata2, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginationTime|"..metadata3, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Originator|"..metadata4, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:OriginatorReference|"..metadata5, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:PROJECT|"..metadata6, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:SCENE|"..metadata7, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:NOTE|"..metadata8, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:Name|"..metadata9, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:REAPER|"..metadata10, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:CIRCLED|"..metadata11, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:TAPE|"..metadata12, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:TAKE|"..metadata13, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:FILE_UID|"..metadata14, true )
-          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER|"..metadata15, true )
       end
       
       
@@ -338,7 +394,6 @@ function Main()
       then 
             reaper.SelectProjectInstance(dest_proj)                                               -- switch back to subproject if option is enabled
       end
-
 
 end--Main()
 
