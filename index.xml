@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="b33a989f98fe257f543a76049e3c27695a8d50d8">
+<index version="1" name="TJF Scripts" commit="ea5e0243405736154e72061d245e39bd418d1dc8">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -465,6 +465,14 @@ v2.0 - logic rework for entire script
 v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
 v2.2 - additional metadata support]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/b33a989f98fe257f543a76049e3c27695a8d50d8/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+      </version>
+      <version name="2.3" author="Tim Farrell" time="2021-05-14T07:08:05Z">
+        <changelog><![CDATA[v1.0 - initial version nothing to report
+v2.0 - logic rework for entire script
+v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
+v2.2 - additional metadata support
+v2.3 - added GUI Options Support and a ton of new features]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ea5e0243405736154e72061d245e39bd418d1dc8/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
