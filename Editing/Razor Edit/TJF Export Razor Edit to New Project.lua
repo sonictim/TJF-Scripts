@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.3
+--@version 2.4
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -37,6 +37,7 @@
 --  v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
 --  v2.2 - additional metadata support
 --  v2.3 - added GUI Options Support and a ton of new features
+--  v2.4 - added ability to remember last settings as well as GUI improvements
 
 
     --[[------------------------------[[---
@@ -65,7 +66,7 @@ PreserveRelativeTimelinePosition = false  -- If true, items will be pasted in th
 CopyVideo = true                          -- If true, script will look for any tracks with the name VIDEO or PIX (case insensitive) and copy them along with your selected media
                                           -- ***NOTE: If COPY VIDEO is enabled (TRUE), then if video is found, the PreserveRelativeTimelinePosition and TimecodeMatch variables will be overridden to match Video
 
-UserVideoTrackName = "PIC CUT"            -- optional custom video track name for user - NEEDS QUOTATION MARKS
+UserVideoTrackName = "PIX"            -- optional custom video track name for user - NEEDS QUOTATION MARKS
 
 SoundminerFields = {"Description", "Designer", "Library", "Manufacturer", "Show", "URL"}
 
@@ -77,13 +78,24 @@ SoundminerFields = {"Description", "Designer", "Library", "Manufacturer", "Show"
  reaper.ClearConsole()
  function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
  
+ function toboolean(value)
+    if value == "true" or value == true
+    then
+         return true
+    else
+        return false
+    end
+ end
+ 
 function LinkDefaults()
-  local copy = GUI.Val("Copy")
-  if copy[4] == true then copy[5] = true end
-  GUI.Val("Copy", copy)
+
+  --local copy = GUI.Val("Copy")
+  --if copy[4] == true then copy[5] = true end
+  --GUI.Val("Copy", copy)
   
   copy = GUI.Val("Subproject")
-  if copy[1] == true then copy[2] = false end
+ 
+  if copy[2] == true then copy[1] = false end
   if copy[3] == false then 
       copy[4] = false
       copy[5] = false
@@ -91,20 +103,17 @@ function LinkDefaults()
   if copy[5] == true then copy[4] = true end
   
   GUI.Val("Subproject", copy)
-
-
   
-
-end
+end 
 
  
  
  function CheckVideo(track)
  
        local _, name = reaper.GetTrackName( track )
-       if     string.upper(name) == "VIDEO" 
-           or string.upper(name) == "PIX" 
-           or string.upper(name) == string.upper(UserVideoTrackName)
+       if     string.upper(name) == string.upper(UserVideoTrackName)
+           --or string.upper(name) == "VIDEO" 
+           --or string.upper(name) == "PIX" 
        then
            TimecodeMatch = true
            PreserveRelativeTimelinePosition = true
@@ -142,6 +151,7 @@ end
           
           if not RazorEditsOnly and reaper.GetSelectedMediaItem(-1, 0) then return true end
 
+    reaper.MB("Nothing Selected!", "ERROR", 0)
     return false
  
  
@@ -258,6 +268,9 @@ function OK()
         CopyVideo = table[4]
         PreserveRelativeTimelinePosition = table[5]
         
+        local str = tostring(table[1])..","..tostring(table[2])..","..tostring(table[3])..","..tostring(table[4])..","..tostring(table[5])
+        reaper.SetExtState( "TJF Export", "Copy", str , true )       
+        
         table = GUI.Val("Subproject")
         EndInSubproject = table[1] 
         CloseSubproject = table[2]
@@ -265,13 +278,23 @@ function OK()
         ImportSubproject = table[4]
         ReplaceSelectionWithSubproject = table[5]
         
+        local str = tostring(table[1])..","..tostring(table[2])..","..tostring(table[3])..","..tostring(table[4])..","..tostring(table[5])
+        reaper.SetExtState( "TJF Export", "Subproject", str , true )
+        --reaper.SetExtState( "TJF Export", "Description", GUI.Val("Description") , true )
+        if GUI.Val("VideoTrack") == "" then GUI.Val("VideoTrack", UserVideoTrackName) end
+        reaper.SetExtState( "TJF Export", "PIX", GUI.Val("VideoTrack") , true )
+        reaper.SetExtState( "TJF Export", "Channels", tostring(GUI.Val("MasterChan")) , false )
+        --reaper.DeleteExtState( "TJF Export", "Channels", true )
+        
 
         GUI.quit = true
         gfx.quit()
         
+        
+        
         reaper.Undo_BeginBlock()
         reaper.PreventUIRefresh(1)
-               Main()
+        if OKtoRun() then  Main() end
         reaper.PreventUIRefresh(-1)
         reaper.Undo_EndBlock("TJF Export Razor Edit to New Project", -1)
 end
@@ -316,7 +339,7 @@ function Main()
       then
           local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )     -- Store Current Master Track settings into a variable
           reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
-          if GUI.Val("MasterChan")
+          if GUI.Val("MasterChan") ~= ""
           then
              reaper.SetMediaTrackInfo_Value(reaper.GetMasterTrack( 0 ), "I_NCHAN", GUI.Val("MasterChan")) 
           end
@@ -513,12 +536,13 @@ loadfile(lib_path .. "Core.lua")()
 GUI.req("Classes/Class - Textbox.lua")()
 GUI.req("Classes/Class - Options.lua")()
 GUI.req("Classes/Class - Button.lua")()
+GUI.req("Classes/Class - Label.lua")()
 -- If any of the requested libraries weren't found, abort the script.
 if missing_lib then return 0 end
 
 
 
-GUI.name = "EXPORT SELECTION TO NEW PROJECT"
+GUI.name = "EXPORT RAZOR EDIT OR SELECTION TO NEW PROJECT"
 GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 640, 200
 GUI.anchor, GUI.corner = "mouse", "C"
 
@@ -528,7 +552,7 @@ GUI.anchor, GUI.corner = "mouse", "C"
 GUI.New("Copy", "Checklist", {
     z = 11,
     x = 16,
-    y = 16,
+    y = 2,
     w = 180,
     h = 125,
     caption = "",
@@ -539,6 +563,7 @@ GUI.New("Copy", "Checklist", {
     font_b = 3,
     col_txt = "txt",
     col_fill = "elm_fill",
+    
     bg = "wnd_bg",
     frame = false,
     shadow = false,
@@ -549,11 +574,11 @@ GUI.New("Copy", "Checklist", {
 GUI.New("Subproject", "Checklist", {
     z = 11,
     x = 288,
-    y = 16,
+    y = 2,
     w = 250,
     h = 125,
     caption = "",
-    optarray = {"End with New Project Selected", "Close New Project", "Render as Subproject", "Import Subproject to Timeline (to new track)", "Replace Selection with Subproject Instead"},
+    optarray = {"End with New Project Selected", "Close New Project", "Render as Subproject", "Import Subproject to Timeline (to new track)", "Replace Selection with Imported Subproject"},
     dir = "v",
     pad = 4,
     font_a = 2,
@@ -570,7 +595,7 @@ GUI.New("Subproject", "Checklist", {
 GUI.New("MasterChan", "Textbox", {
     z = 11,
     x = 194.0,
-    y = 45.0,
+    y = 31,
     w = 90,
     h = 20,
     caption = "",
@@ -588,7 +613,7 @@ GUI.New("MasterChan", "Textbox", {
 GUI.New("VideoTrack", "Textbox", {
     z = 11,
     x = 194.0,
-    y = 94.0,
+    y = 80,
     w = 90,
     h = 20,
     caption = "",
@@ -606,7 +631,7 @@ GUI.New("VideoTrack", "Textbox", {
 GUI.New("Description", "Textbox", {
     z = 11,
     x = 93,
-    y = 153,
+    y = 160,
     w = 520,
     h = 20,
     caption = "Description: ",
@@ -624,7 +649,7 @@ GUI.New("Description", "Textbox", {
 GUI.New("CANCEL", "Button", {
     z = 11,
     x = 528,
-    y = 58,
+    y = 44,
     w = 100,
     h = 24,
     caption = "CANCEL",
@@ -637,7 +662,7 @@ GUI.New("CANCEL", "Button", {
 GUI.New("OK", "Button", {
     z = 11,
     x = 528,
-    y = 26,
+    y = 12,
     w = 100,
     h = 24,
     caption = "OK",
@@ -647,6 +672,32 @@ GUI.New("OK", "Button", {
     func = OK
 })
 
+GUI.New("Warning", "Label", {
+    z = 11,
+    x = 52,
+    y = 132,
+    w = 100,
+    h = 24,
+    --caption = "THE STATE OF SOME CHECKBOXES AFFECT THE ABILITY OF OTHERS TO BE MANIPULATED",
+    caption = "NOTE: The state of some checkboxes affect the ability of others to be manipulated",
+    font = 4,
+    --col_txt = "txt",
+    --col_fill = "elm_frame",
+    --func = OK
+})
+
+GUI.New("Optional", "Label", {
+    z = 15,
+    x = 94,
+    y = 180,
+    w = 100,
+    h = 24,
+    caption = "optional - this will embed ixml metadata useful for soundminer users",
+    font = 3,
+    --col_txt = "txt",
+    --col_fill = "elm_frame",
+    --func = OK
+})
 
 
 function GUI.Textbox:onupdate()
@@ -749,36 +800,65 @@ GUI.Main_Update_State = function()
     end
 
 end
+   
+  local str = reaper.GetExtState( "TJF Export", "Copy" )
+  if  str
+  then
+      CopyTrackInfo, CopyMaster, CopyRenderMetadata, CopyVideo, PreserveRelativeTimelinePosition = str:match("(.-),(.-),(.-),(.-),(.*)")
+     -- name, category, designer, project, number, renamefile  = userinput:match("(.-),(.-),(.-),(.-),(.-),(.*)")
+  end
+      
+  GUI.Val("Copy", {toboolean(CopyTrackInfo), toboolean(CopyMaster), toboolean(CopyRenderMetadata), toboolean(CopyVideo), toboolean(PreserveRelativeTimelinePosition)})
 
-
-
-  GUI.Val("Copy", {CopyTrackInfo, CopyMaster, CopyRenderMetadata, CopyVideo, PreserveRelativeTimelinePosition})
-  GUI.Val("Subproject", {EndInSubproject, CloseSubproject, RenderSubproject, ImportSubproject, ReplaceSelectionWithSubproject})
+  local str = reaper.GetExtState( "TJF Export", "Subproject" )
+  if  str
+  then
+      EndInSubproject, CloseSubproject, RenderSubproject, ImportSubproject, ReplaceSelectionWithSubproject = str:match("(.-),(.-),(.-),(.-),(.*)")
+     -- name, category, designer, project, number, renamefile  = userinput:match("(.-),(.-),(.-),(.-),(.-),(.*)")
+  end
+  
+  GUI.Val("Subproject", {toboolean(EndInSubproject), toboolean(CloseSubproject), toboolean(RenderSubproject), toboolean(ImportSubproject), toboolean(ReplaceSelectionWithSubproject)})
+  
+  
+  
+  if reaper.GetExtState( "TJF Export", "PIX" ) ~= "" then UserVideoTrackName = reaper.GetExtState( "TJF Export", "PIX" ) end
   GUI.Val("VideoTrack", UserVideoTrackName )
-  GUI.Val("MasterChan", reaper.GetMediaTrackInfo_Value(reaper.GetMasterTrack( 0 ), "I_NCHAN"))
- 
+  
+  chans = tonumber(reaper.GetExtState( "TJF Export", "Channels" ))
+  
+  if not chans
+  then 
+        chans =reaper.GetMediaTrackInfo_Value(reaper.GetMasterTrack( 0 ), "I_NCHAN")
+  end
 
-           GUI.elms.Description.focus = true
-           GUI.elms.Description.sel_s = 0
-           GUI.elms.Description.sel_e = string.len(GUI.elms.Description.retval)
-           GUI.elms.Description.caret = string.len(GUI.elms.Description.retval)
-
-
-      if not OKtoRun() 
-      then 
-            reaper.MB("Nothing Selected!", "ERROR", 0)
-            return
-      end
+  GUI.Val("MasterChan", chans, "I_NCHAN")
+  
+  
+  
+GUI.elms.Description.focus = true
+GUI.elms.Description.sel_s = 0
+GUI.elms.Description.sel_e = string.len(GUI.elms.Description.retval)
+GUI.elms.Description.caret = string.len(GUI.elms.Description.retval)
 
 GUI.func = LinkDefaults
-GUI.freq = 0
+GUI.freq = .3
 
-if OptionsDialog
-then
 
-    GUI.Init()
-    GUI.Main()
-    
-else
-    Main()
+
+
+
+
+if OKtoRun() 
+then 
+
+      
+      if OptionsDialog
+      then
+      
+          GUI.Init()
+          GUI.Main()
+          
+      else
+          Main()
+      end
 end
