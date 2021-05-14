@@ -542,7 +542,7 @@ if missing_lib then return 0 end
 
 
 
-GUI.name = "EXPORT RAZOR EDIT OR SELECTION TO NEW PROJECT"
+GUI.name = "EXPORT RAZOR EDIT OR SELECTED ITEMS TO NEW PROJECT"
 GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 640, 200
 GUI.anchor, GUI.corner = "mouse", "C"
 
