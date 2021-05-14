@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.2
+--@version 2.3
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -36,15 +36,20 @@
 --  v2.0 - logic rework for entire script
 --  v2.1 - added ability to export selected items if no razor edit present and COPY METADATA
 --  v2.2 - additional metadata support
+--  v2.3 - added GUI Options Support and a ton of new features
 
 
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
 
+OptionsDialog = true                      -- If true, a GUI will pop up giving script options before running
 RazorEditsOnly = false                    -- If no razor edits are found, should the script work with selected items instead?
 
 RenderSubproject = true                   -- If true, script will also render the subproject RPP-PROX.  False will just save as a regular project
+ImportSubproject = false
+ReplaceSelectionWithSubproject = false
+
 
 EndInSubproject = false                   -- If true, script will complete with the subproject tab selected (similar to reaper default subproject behavior).  If false, the original project will be selected 
 CloseSubproject = true                    -- If true, the newly created subproject tab will be closed at the end of the script.  
@@ -72,7 +77,28 @@ SoundminerFields = {"Description", "Designer", "Library", "Manufacturer", "Show"
  reaper.ClearConsole()
  function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
  
+function LinkDefaults()
+  local copy = GUI.Val("Copy")
+  if copy[4] == true then copy[5] = true end
+  GUI.Val("Copy", copy)
+  
+  copy = GUI.Val("Subproject")
+  if copy[1] == true then copy[2] = false end
+  if copy[3] == false then 
+      copy[4] = false
+      copy[5] = false
+  end
+  if copy[5] == true then copy[4] = true end
+  
+  GUI.Val("Subproject", copy)
 
+
+  
+
+end
+
+ 
+ 
  function CheckVideo(track)
  
        local _, name = reaper.GetTrackName( track )
@@ -122,7 +148,7 @@ SoundminerFields = {"Description", "Designer", "Library", "Manufacturer", "Show"
  end
 
 
-function CopyRenderMetadata(source_proj, dest_proj)
+function CopyRenderMetadataFunc(source_proj, dest_proj)
     local BWF = { "Description", "OriginationDate", "OriginationTime", "Originator", "OriginatorReference" }
     local BWFmetadata = {}
     local IXML = { "PROJECT", "SCENE", "NOTE", "USER", "CIRCLED", "TAPE", "FILE_UID" }
@@ -132,6 +158,7 @@ function CopyRenderMetadata(source_proj, dest_proj)
     reaper.SelectProjectInstance(source_proj)  
     
     local settings = reaper.GetSetProjectInfo( source_proj, "RENDER_SETTINGS", 512, false )
+    if settings < 512 then settings = settings + 512 end
     local bounds = reaper.GetSetProjectInfo( source_proj, "RENDER_BOUNDSFLAG", 0, false )
     local channels = reaper.GetSetProjectInfo( source_proj, "RENDER_CHANNELS", 2, false )
     local srate = reaper.GetSetProjectInfo( source_proj, "RENDER_SRATE", 0, false )
@@ -206,17 +233,59 @@ function CopyRenderMetadata(source_proj, dest_proj)
         reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:"..SoundminerFields[i].."|"..CUSTOMmetadata[i], true )
     end
     
+    if GUI.Val("Description")
+    then
+        reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:Description|"..GUI.Val("Description"), true )
+    end
+    
+    
 end
 
-    --[[------------------------------[[---
+function Cancel()
+        GUI.quit = true
+        gfx.quit()
+end
+
+
+function OK()
+
+        UserVideoTrackName = GUI.Val("VideoTrack")
+        
+        local table = GUI.Val("Copy")
+        CopyTrackInfo = table[1]
+        CopyMaster = table[2]
+        CopyRenderMetadata = table[3]
+        CopyVideo = table[4]
+        PreserveRelativeTimelinePosition = table[5]
+        
+        table = GUI.Val("Subproject")
+        EndInSubproject = table[1] 
+        CloseSubproject = table[2]
+        RenderSubproject = table[3]
+        ImportSubproject = table[4]
+        ReplaceSelectionWithSubproject = table[5]
+        
+
+        GUI.quit = true
+        gfx.quit()
+        
+        reaper.Undo_BeginBlock()
+        reaper.PreventUIRefresh(1)
+               Main()
+        reaper.PreventUIRefresh(-1)
+        reaper.Undo_EndBlock("TJF Export Razor Edit to New Project", -1)
+end
+
+
+
+   --[[------------------------------[[---
                     MAIN              
-    ---]]------------------------------]]--
+   ---]]------------------------------]]--
 function Main()
       
-      if not OKtoRun() then return end
+             --==//[[    DECLARE VARIABLES   ]]\\==--
 
-                          --==//[[    DECLARE VARIABLES   ]]\\==--
-
+      local curPos = reaper.GetCursorPosition()
       local startPos = nil  --will eventually be the subproject Start Time
       local endPos = nil    --will eventually be the subproject End Time
       local pasteTrack = nil
@@ -225,7 +294,9 @@ function Main()
       
       local source_offset =  reaper.GetProjectTimeOffset( source_proj, false )                             -- Save Current Project Start time to Variable
       
-      reaper.Main_OnCommandEx(41383, 0, source_proj)                                              -- COPY razor edits
+
+          reaper.Main_OnCommandEx(41383, 0, source_proj)                                              -- COPY razor edits
+
       
       reaper.Main_OnCommandEx(40859, 0, source_proj)                                              -- create new project
       
@@ -234,7 +305,7 @@ function Main()
       
       if CopyRenderMetadata
       then
-          CopyRenderMetadata(source_proj, dest_proj)
+          CopyRenderMetadataFunc(source_proj, dest_proj)
       else
           reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destination subproject   
       end
@@ -245,6 +316,11 @@ function Main()
       then
           local _, source_masterTrack = reaper.GetTrackStateChunk( reaper.GetMasterTrack( 0 ), "", false )     -- Store Current Master Track settings into a variable
           reaper.SetTrackStateChunk( reaper.GetMasterTrack( dest_proj ), source_masterTrack, true )
+          if GUI.Val("MasterChan")
+          then
+             reaper.SetMediaTrackInfo_Value(reaper.GetMasterTrack( 0 ), "I_NCHAN", GUI.Val("MasterChan")) 
+          end
+      
       end
       
       
@@ -296,7 +372,7 @@ function Main()
             end
       end
       
-                            --IF RAXOR EDITS DON"T EXIST COPY SELECTED REGIONS
+                            --IF RAZOR EDITS DON"T EXIST COPY SELECTED REGIONS
       
       if pasteTrack == nil
       then
@@ -381,7 +457,9 @@ function Main()
             reaper.Main_SaveProject( dest_proj, false )                                             -- Save Subproject
       end
              
-             
+      
+      dest_proj, dest_proj_fn = reaper.EnumProjects(CountProjects()-1, "" )
+      
              
       if not  EndInSubproject and CloseSubproject
       then
@@ -389,6 +467,23 @@ function Main()
       end
               
       reaper.SelectProjectInstance(source_proj)
+
+      
+      if RenderSubproject and ImportSubproject then
+      
+                reaper.SetEditCurPos2( source_proj, startPos, false, false )
+                
+                if ReplaceSelectionWithSubproject
+                then
+                   reaper.Main_OnCommandEx(41384, 0, source_proj)          -- CUT razor Edits
+                   reaper.InsertMedia( dest_proj_fn.."-PROX", 0 )
+                else
+                   reaper.InsertMedia( dest_proj_fn.."-PROX", 1 )
+                end
+                
+                reaper.SetEditCurPos2( source_proj, curPos, true, true )
+              
+      end        
               
       if    EndInSubproject 
       then 
@@ -398,14 +493,292 @@ function Main()
 end--Main()
 
 
-    --[[------------------------------[[---
-                CALL THE SCRIPT               
-    ---]]------------------------------]]--
 
+--[[------------------------------[[--
+                GUI         
+--]]------------------------------]]--
+
+
+
+local lib_path = reaper.GetExtState("Lokasenna_GUI", "lib_path_v2")
+if not lib_path or lib_path == "" then
+    reaper.MB("Couldn't load the Lokasenna_GUI library. Please install 'Lokasenna's GUI library v2 for Lua', available on ReaPack, then run the 'Set Lokasenna_GUI v2 library path.lua' script in your Action List.", "Whoops!", 0)
+    return
+end
+loadfile(lib_path .. "Core.lua")()
+
+
+
+
+GUI.req("Classes/Class - Textbox.lua")()
+GUI.req("Classes/Class - Options.lua")()
+GUI.req("Classes/Class - Button.lua")()
+-- If any of the requested libraries weren't found, abort the script.
+if missing_lib then return 0 end
+
+
+
+GUI.name = "EXPORT SELECTION TO NEW PROJECT"
+GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 640, 200
+GUI.anchor, GUI.corner = "mouse", "C"
+
+
+
+
+GUI.New("Copy", "Checklist", {
+    z = 11,
+    x = 16,
+    y = 16,
+    w = 180,
+    h = 125,
+    caption = "",
+    optarray = {"Copy Track Info                      # of channels", "Copy Master Track", "Copy Render Metadata", "Copy Video Track Named:", "Preserve Relative Position in New Project"},
+    dir = "v",
+    pad = 4,
+    font_a = 2,
+    font_b = 3,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = nil,
+    opt_size = 20
+})
+
+GUI.New("Subproject", "Checklist", {
+    z = 11,
+    x = 288,
+    y = 16,
+    w = 250,
+    h = 125,
+    caption = "",
+    optarray = {"End with New Project Selected", "Close New Project", "Render as Subproject", "Import Subproject to Timeline (to new track)", "Replace Selection with Subproject Instead"},
+    dir = "v",
+    pad = 4,
+    font_a = 2,
+    font_b = 3,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = nil,
+    opt_size = 20
+})
+
+GUI.New("MasterChan", "Textbox", {
+    z = 11,
+    x = 194.0,
+    y = 45.0,
+    w = 90,
+    h = 20,
+    caption = "",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 2
+})
+
+GUI.New("VideoTrack", "Textbox", {
+    z = 11,
+    x = 194.0,
+    y = 94.0,
+    w = 90,
+    h = 20,
+    caption = "",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 3
+})
+
+GUI.New("Description", "Textbox", {
+    z = 11,
+    x = 93,
+    y = 153,
+    w = 520,
+    h = 20,
+    caption = "Description: ",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 1
+})
+
+GUI.New("CANCEL", "Button", {
+    z = 11,
+    x = 528,
+    y = 58,
+    w = 100,
+    h = 24,
+    caption = "CANCEL",
+    font = 2,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = Cancel
+})
+
+GUI.New("OK", "Button", {
+    z = 11,
+    x = 528,
+    y = 26,
+    w = 100,
+    h = 24,
+    caption = "OK",
+    font = 2,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = OK
+})
+
+
+
+function GUI.Textbox:onupdate()
+  if self.focus then
+     if self.blink == 0 then
+      self.show_caret = true
+      self:redraw()
+    elseif self.blink == math.floor(GUI.txt_blink_rate / 2) then
+      self.show_caret = false
+      self:redraw()
+    end
+    self.blink = (self.blink + 1) % GUI.txt_blink_rate
+ else
+    self.sel_s = 0
+    self.sel_e = string.len(self.retval)
+    self.caret = string.len(self.retval)
+  end
+  
+end
+
+
+GUI.Main = function ()
+    xpcall( function ()
+
+        if GUI.Main_Update_State() == 0 then return end
+
+        GUI.Main_Update_Elms()
+
+        -- If the user gave us a function to run, check to see if it needs to be
+        -- run again, and do so.
+        if GUI.func then
+
+            local new_time = reaper.time_precise()
+            if new_time - GUI.last_time >= (GUI.freq or 1) then
+                GUI.func()
+                GUI.last_time = new_time
+
+            end
+        end
+
+
+        -- Maintain a list of elms and zs in case any have been moved or deleted
+        GUI.update_elms_list()
+
+
+        GUI.Main_Draw()
+
+    end, GUI.crash)
+end
+
+
+GUI.Main_Update_State = function()
+
+    -- Update mouse and keyboard state, window dimensions
+    if GUI.mouse.x ~= gfx.mouse_x or GUI.mouse.y ~= gfx.mouse_y then
+
+        GUI.mouse.lx, GUI.mouse.ly = GUI.mouse.x, GUI.mouse.y
+        GUI.mouse.x, GUI.mouse.y = gfx.mouse_x, gfx.mouse_y
+
+        -- Hook for user code
+        if GUI.onmousemove then GUI.onmousemove() end
+
+    else
+
+        GUI.mouse.lx, GUI.mouse.ly = GUI.mouse.x, GUI.mouse.y
+
+    end
+    GUI.mouse.wheel = gfx.mouse_wheel
+    GUI.mouse.cap = gfx.mouse_cap
+    GUI.char = gfx.getchar()
+
+    if GUI.cur_w ~= gfx.w or GUI.cur_h ~= gfx.h then
+        GUI.cur_w, GUI.cur_h = gfx.w, gfx.h
+
+        GUI.resized = true
+
+        -- Hook for user code
+        if GUI.onresize then GUI.onresize() end
+
+    else
+        GUI.resized = false
+    end
+
+    --  (Escape key)  (Window closed)    (User function says to close)
+    --if GUI.char == 27 or GUI.char == -1 or GUI.quit == true then
+    if GUI.char == 27 then Cancel() end
+    if GUI.char == 13 then OK() end
+    if (GUI.char == 27 and not (  GUI.mouse.cap & 4 == 4
+                                or   GUI.mouse.cap & 8 == 8
+                                or   GUI.mouse.cap & 16 == 16
+                                or  GUI.escape_bypass))
+            or GUI.char == -1
+            or GUI.quit == true then
+
+        GUI.cleartooltip()
+        return 0
+    else
+        if GUI.char == 27 and GUI.escape_bypass then GUI.escape_bypass = "close" end
+        reaper.defer(GUI.Main)
+    end
+
+end
+
+
+
+  GUI.Val("Copy", {CopyTrackInfo, CopyMaster, CopyRenderMetadata, CopyVideo, PreserveRelativeTimelinePosition})
+  GUI.Val("Subproject", {EndInSubproject, CloseSubproject, RenderSubproject, ImportSubproject, ReplaceSelectionWithSubproject})
+  GUI.Val("VideoTrack", UserVideoTrackName )
+  GUI.Val("MasterChan", reaper.GetMediaTrackInfo_Value(reaper.GetMasterTrack( 0 ), "I_NCHAN"))
+ 
+
+           GUI.elms.Description.focus = true
+           GUI.elms.Description.sel_s = 0
+           GUI.elms.Description.sel_e = string.len(GUI.elms.Description.retval)
+           GUI.elms.Description.caret = string.len(GUI.elms.Description.retval)
+
+
+      if not OKtoRun() 
+      then 
+            reaper.MB("Nothing Selected!", "ERROR", 0)
+            return
+      end
+
+GUI.func = LinkDefaults
+GUI.freq = 0
+
+if OptionsDialog
+then
+
+    GUI.Init()
+    GUI.Main()
     
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-       Main()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock("TJF Export Razor Edit to New Project", -1)
-
+else
+    Main()
+end
