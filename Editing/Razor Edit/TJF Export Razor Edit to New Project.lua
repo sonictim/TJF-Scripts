@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.4
+--@version 2.5
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -38,6 +38,7 @@
 --  v2.2 - additional metadata support
 --  v2.3 - added GUI Options Support and a ton of new features
 --  v2.4 - added ability to remember last settings as well as GUI improvements
+--  v2.5 - added BWF metadata to Description field
 
 
     --[[------------------------------[[---
@@ -243,10 +244,6 @@ function CopyRenderMetadataFunc(source_proj, dest_proj)
         reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:"..SoundminerFields[i].."|"..CUSTOMmetadata[i], true )
     end
     
-    if GUI.Val("Description")
-    then
-        reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:Description|"..GUI.Val("Description"), true )
-    end
     
     
 end
@@ -333,7 +330,13 @@ function Main()
           reaper.SelectProjectInstance(dest_proj)                                                     -- switch to destination subproject   
       end
       
-
+      if GUI.Val("Description")
+      then
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "BWF:Description|"..GUI.Val("Description"), true )
+          reaper.GetSetProjectInfo_String( dest_proj, "RENDER_METADATA", "IXML:USER:Description|"..GUI.Val("Description"), true )
+      end
+      
+      
       
       if  CopyMaster                                                                              -- match master track to source session
       then
@@ -692,7 +695,7 @@ GUI.New("Optional", "Label", {
     y = 180,
     w = 100,
     h = 24,
-    caption = "optional - this will embed ixml metadata useful for soundminer users",
+    caption = "optional - replaces BWF/IXML description field in render metadata of new project",
     font = 3,
     --col_txt = "txt",
     --col_fill = "elm_frame",
