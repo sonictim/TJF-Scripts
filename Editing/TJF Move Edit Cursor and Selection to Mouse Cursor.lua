@@ -1,5 +1,5 @@
 --@description TJF Move Edit Cursor and Selection to Mouse Cursor (hack for faster video updates)
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -19,6 +19,7 @@
 --  
 --@changelog
 --  v1.0 - nothing to report
+--  v1.1 - added snap offset support.  Will look for left most snap offset in your timeline.
 
     
     --[[------------------------------[[---
@@ -48,6 +49,9 @@ end--RazorEditSelectionExists()
     ---]]------------------------------]]--
 function Main()
         
+        
+        
+        
         local action = reaper.Undo_CanUndo2(0)
         action = tostring(action)
         if action ~= "TJF Move Edit Cursor and Selection to Mouse Cursor"
@@ -61,15 +65,45 @@ function Main()
         
         
         local items = {}
+        local syncitems = {}
+        
           for i = 1, reaper.CountSelectedMediaItems(0) 
           do 
                 local item = reaper.GetSelectedMediaItem(0,i-1)
                 local position = reaper.GetMediaItemInfo_Value( item, "D_POSITION")
-                if items[0] == nil or position < items[0] then items[0] = position end
-                items[i] = item
+                local offset = reaper.GetMediaItemInfo_Value( item, "D_SNAPOFFSET")
+                if offset > 0 then table.insert(syncitems, item) end
                 
+                if items[0] == nil or position < items[0] then items[0] = position + offset end
+                items[i] = item
           end
         
+        
+          if #syncitems > 0 then
+          
+                for i = 1, #syncitems do
+                        local position = reaper.GetMediaItemInfo_Value( syncitems[i], "D_POSITION")
+                        local offset = position + reaper.GetMediaItemInfo_Value( syncitems[i], "D_SNAPOFFSET")
+                        if i == 1 or offset < items[0] then items[0] = offset end
+                end
+          
+          
+          end
+          
+          
+          --Get and adjust for item under mouse
+          --[[
+          local retval, pos = reaper.BR_ItemAtMouseCursor()
+          
+          if retval then
+              if  reaper.IsMediaItemSelected( retval )  then
+              
+                      local position = reaper.GetMediaItemInfo_Value( retval, "D_POSITION")
+                      local offset = reaper.GetMediaItemInfo_Value( retval, "D_SNAPOFFSET")
+                      items[0] = position + offset
+              end
+          end
+        ]]--
         
         
         reaper.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
@@ -118,6 +152,7 @@ function Main()
                end
               
         end
+
 
 end
 
