@@ -1,6 +1,6 @@
 --[[
 Description: TJF Link Track and Item and Razor Selection
-Version: 1.0
+Version: 1.1
 Author: Lokasenna and Tim Farrell
 
 About:
@@ -23,6 +23,7 @@ About:
 
   It had a few bugs and I couldn't understand the original code
   well enough to fix them, so I opted to rewrite it from scratch.
+  
 
 Extensions:
 --]]
@@ -34,6 +35,7 @@ local function Msg(str)
 end
 
 local sel_items, sel_tracks, sel_razor = {}, {}, {}
+local firstselitemtrack = reaper.GetSelectedTrack(0,0)
 
 -- Very limited - no error checking, types, hash tables, etc
 local function shallow_equal(t1, t2)
@@ -132,34 +134,38 @@ local function Main()
             else
             
                   local num_items = reaper.CountSelectedMediaItems( 0 )
-              
-                  -- Grab their MediaItems into a table
-                  local cur_items = {}
-                  for i = 1, num_items do
-                    cur_items[i] = reaper.GetSelectedMediaItem( 0, i - 1 )
+                  
+                  if num_items > 0 then
+                  
+                              -- Grab their MediaItems into a table
+                              local cur_items = {}
+                              for i = 1, num_items do
+                                cur_items[i] = reaper.GetSelectedMediaItem( 0, i - 1 )
+                              end
+                          
+                              -- If all MediaItems have a partner then the selection hasn't changed
+                              if not shallow_equal(sel_items, cur_items) or  firstselitemtrack ~= reaper.GetMediaItem_Track(cur_items[1]) then
+                                sel_items = cur_items
+                                firstselitemtrack = reaper.GetMediaItem_Track(cur_items[1])
+                                
+                                
+                                local tracks = {}
+                                for i = 1, num_items do
+                                  tracks[i] = reaper.GetMediaItem_Track(sel_items[i])
+                                end
+                                
+                                ProcessTracks(tracks)
+                                
+                                ------------------------------------------
+                                -- Scroll the mixer to the first selected track
+                                -- Comment out the lines below if you want
+                                if num_items > 0 then
+                                  reaper.SetMixerScroll(reaper.GetSelectedTrack(0, 0))
+                                end
+                                ------------------------------------------
+                                
+                              end
                   end
-              
-                  -- If all MediaItems have a partner then the selection hasn't changed
-                  if not shallow_equal(sel_items, cur_items) then
-                    sel_items = cur_items
-              
-                    local tracks = {}
-                    for i = 1, num_items do
-                      tracks[i] = reaper.GetMediaItem_Track(sel_items[i])
-                    end
-                    
-                    ProcessTracks(tracks)
-                    
-                    ------------------------------------------
-                    -- Scroll the mixer to the first selected track
-                    -- Comment out the lines below if you want
-                    if num_items > 0 then
-                      reaper.SetMixerScroll(reaper.GetSelectedTrack(0, 0))
-                    end
-                    ------------------------------------------
-                    
-                  end
-            
             end
             
   
