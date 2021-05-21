@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="ef09ae17636a6529dce4f5fab8730b76c1ecf8f7">
+<index version="1" name="TJF Scripts" commit="bbf5fd2a0087e84dc124fbe4e466041a2b7bf954">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1853,6 +1853,9 @@ v1.1 - better programming on GetChildren]]></changelog>
       </version>
       <version name="1.1" author="Lokasenna and Tim Farrell" time="2021-05-19T05:30:20Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef09ae17636a6529dce4f5fab8730b76c1ecf8f7/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
+      </version>
+      <version name="1.2" author="Lokasenna and Tim Farrell" time="2021-05-21T16:45:05Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/bbf5fd2a0087e84dc124fbe4e466041a2b7bf954/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Minimize all tracks.lua" type="script" desc="TJF Minimize All Tracks">
