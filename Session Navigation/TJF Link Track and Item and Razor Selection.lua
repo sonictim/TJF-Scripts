@@ -1,6 +1,6 @@
 --[[
 Description: TJF Link Track and Item and Razor Selection
-Version: 1.1
+Version: 1.2
 Author: Lokasenna and Tim Farrell
 
 About:
@@ -92,19 +92,6 @@ end
 
 
 
-local function RazorEditSelectionExists()
-          for i=0, reaper.CountTracks(0)-1 do
-              local retval, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
-              if x ~= "" then return true end
-          end
-          return false
-    
-end--RazorEditSelectionExists()
-
-
-
-
-
 (function()
   local _, _, sectionId, cmdId = reaper.get_action_context()
 
@@ -135,13 +122,13 @@ local function Main()
             -- The track selection hasn't been changed, so we
             -- can move on to looking at the item selection
             
-            local cur_razor = GetRazorTracks()
+             cur_razor = GetRazorTracks()
             
             if not shallow_equal(sel_razor, cur_razor) then
                   sel_razor = cur_razor
                   ProcessTracks(sel_razor)
             
-            elseif not cur_razor
+            elseif #cur_razor == 0
             then
             
                   local num_items = reaper.CountSelectedMediaItems( 0 )
