@@ -46,8 +46,8 @@ local start_time, end_time = reaper.GetSet_LoopTimeRange2(0, false, false, 0, 0,
                                     then  
                             
                                         reaper.Main_OnCommand(40514, 0)  -- View: Move edit cursor to mouse cursor (no snapping)
-                                        --reaper.Main_OnCommand(40759, 0) -- Item: Split items at edit cursor (select right)
-                                        reaper.Main_OnCommand(40757, 0)  -- Item: Split items at edit cursor (no change selection)
+                                        reaper.Main_OnCommand(40759, 0) -- Item: Split items at edit cursor (select right)
+                                        --reaper.Main_OnCommand(40757, 0)  -- Item: Split items at edit cursor (no change selection)
                                         reaper.SetEditCurPos(current_pos, 1, 0)
                                     end--if
                             end--if

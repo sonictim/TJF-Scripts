@@ -37,6 +37,7 @@ end
 local sel_items, sel_tracks, sel_razor = {}, {}, {}
 local firstselitemtrack = reaper.GetSelectedTrack(0,0)
 
+
 -- Very limited - no error checking, types, hash tables, etc
 local function shallow_equal(t1, t2)
   if #t1 ~= #t2 then return false end
@@ -91,7 +92,14 @@ end
 
 
 
-
+local function RazorEditSelectionExists()
+          for i=0, reaper.CountTracks(0)-1 do
+              local retval, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
+              if x ~= "" then return true end
+          end
+          return false
+    
+end--RazorEditSelectionExists()
 
 
 
@@ -113,6 +121,8 @@ end)()
 
 
 
+
+
 local function Main()
   local num_tracks = reaper.CountSelectedTracks( 0 )
 
@@ -131,7 +141,8 @@ local function Main()
                   sel_razor = cur_razor
                   ProcessTracks(sel_razor)
             
-            else
+            elseif not cur_razor
+            then
             
                   local num_items = reaper.CountSelectedMediaItems( 0 )
                   
