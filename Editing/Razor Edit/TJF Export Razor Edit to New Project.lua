@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.5
+--@version 2.51
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -38,7 +38,7 @@
 --  v2.2 - additional metadata support
 --  v2.3 - added GUI Options Support and a ton of new features
 --  v2.4 - added ability to remember last settings as well as GUI improvements
---  v2.5 - added BWF metadata to Description field
+--  v2.51 - added BWF metadata to Description field + minor bugfix
 
 
     --[[------------------------------[[---
@@ -358,10 +358,12 @@ function Main()
             local track = reaper.GetTrack(source_proj,i)
             local _, str = reaper.GetTrackStateChunk( track, "", false )                            -- get all track info via chunk
             
+            
             if CopyVideo and CheckVideo(track) then 
             else
                   str =  string.gsub(str, "<ITEM.+>", "")               -- remove all items from track chunk leaving empty tracks with envelope information intact
-                  str =  string.gsub(str, "PT %d.+\n", "")              -- remove automation points
+                  str =  string.gsub(str, "PT %d.-\n", "")              -- remove automation points
+                
             end
             
             reaper.InsertTrackAtIndex( i, false )                       -- create a new track
