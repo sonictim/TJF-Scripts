@@ -1,5 +1,5 @@
 --@description TJF Rename and Format Items for SFX Library Cataloguing
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@about
 --  # TJF Rename and Format Items
@@ -7,7 +7,7 @@
 --  This will only affect the item, not the source file
 --  Script will remember the variables you place into it based on the project you are working in.
 --@changelog
---  none
+--  v1.1 - minor bugfix.  Will now work on active takes.
 
 
 
@@ -43,13 +43,6 @@ function main()
       
       local retval, name = reaper.GetSetMediaItemTakeInfo_String( reaper.GetMediaItemTake(item[1], 0), "P_NAME", "nothing", false) --get first selected item name
 
-      
- --[[ FORMATING STRING SEARCH TESTS
-      temp1 = name:match("_.*_*_")
-      temp2 = name:match("^.-_")
-      Msg(temp1)
-      Msg(temp2)
-]]--
       
       
       if project ~= "" then name = string.gsub(name, "_" .. project, "") end
@@ -102,7 +95,7 @@ function main()
           if designer ~= "" then FinalName = FinalName .. "_" .. designer end
           if project ~= "" then FinalName = FinalName .. "_" .. project end
       
-          reaper.GetSetMediaItemTakeInfo_String( reaper.GetMediaItemTake(item[i], 0), "P_NAME", FinalName, true)
+          reaper.GetSetMediaItemTakeInfo_String( reaper.GetActiveTake(item[i]), "P_NAME", FinalName, true)
           
           if number ~= "" then number = number + 1 end
           

@@ -1,7 +1,7 @@
 --@noindex
 --  NoIndex: true
 --@description TJF Simple UCS Format and Rename
---@version 3.1
+--@version 3.3
 --@author Tim Farrell
 --@about
 --  # TJF Simple UCS Format and Rename
@@ -22,6 +22,8 @@
 --  v3.0  Updated GUI
 --        Will update item based on selection
 --  v3.1  Added "ESCAPE KEY" and "ENTER KEY" functionality
+--  v3.2  Updated GUI with more options
+--  v3.3  lots of internal bug fixes
 
 
 --[[------------------------------[[--
@@ -29,13 +31,13 @@
 --]]------------------------------]]--
 
 
-    local defaultDesigner = "TJF"       -- Sets what you want the default "DESIGNER" Field to be
+    local defaultDesigner = "TJF"     -- Sets what you want the default "DESIGNER" Field to be
     local RemoveSpaces = true         -- Will Remove Spaces in your description field when creating final item/source name
     local ConvertToTitleCase = true   -- Will Convert your Description field to Title Case
     
-    local SourceRenameWarning = false  -- Tired of rename warning messages?  set this to false, but do so AT YOUR OWN RISK
+    local SourceRenameWarning = true  -- Tired of rename warning messages?  set this to false, but do so AT YOUR OWN RISK
 
-
+    local UCSfile = "/Volumes/TJF Library 8tb SSD/Soundminer V5 Support/_categorylist.csv"
 
 --[[------------------------------[[--
             GLOBAL VARIABLES         
@@ -60,11 +62,54 @@ function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end --Debug Mes
 
 function take(param) return reaper.GetActiveTake(item[param]) end  --can call take function to match take to item
 
+ function toboolean(value)
+    if value == "true" or value == true
+    then
+         return true
+    else
+        return false
+    end
+ end
+
 
 function titleCase( first, rest )
          return first:upper()..rest:lower()
          --function to call later:  STRING = string.gsub(STRING, "(%a)([%w_']*)", titleCase) 
 end
+
+function getUCSCatIDList()
+
+            local CatID = {}
+            
+            local file = io.open(UCSfile, "r") -- open in read mode
+            
+            
+            io.input(file)
+            
+            for line in io.lines() do
+                local  _, _, catid, _  = line:match("(.-),(.-),(.-),(.*)")
+                table.insert(CatID, catid)
+            end
+            
+            
+            io.close(file)
+            
+            return CatID
+end
+
+ 
+     
+function SearchTable(table, query)
+
+              for key, value in pairs(table) do
+                      if value == query then
+                        return true
+                      end
+              end
+              
+              return false
+end
+
 
 function GetFileExtension(url)
         local str = url
@@ -140,10 +185,15 @@ function filteruniqueitems()  -- THIS WILL FILL AN ARRAY WITH ONLY ITEMS WITH UN
 end
 
 
-
 function OK()
         reaper.Undo_BeginBlock()
         local items = {}
+        
+        
+        RemoveSpaces = GUI.Val("Spaces")
+        ConvertToTitlecase = GUI.Val("Titlecase")
+        
+        
         
         local RenameSource = GUI.Val("Rename")
         
@@ -153,8 +203,9 @@ function OK()
         
             if RenameSource == 2 then
                   if SourceRenameWarning then
+                    
                       
-                      local proceed = reaper.MB("If you want to undo, you'll have to rename any files back to their current names or your session will break.\n\nRenaming a file could break links in other sessions\n\nWould you like to continue?","Renaming Source File is NOT Undoable", 1)
+                      local proceed = reaper.MB("If you want to undo, you'll have to rename any files back to their current names or your session will break.\n\nRenaming a file could break links in other sessions or possibly THIS one\n\nWould you like to continue?","Renaming Source File is NOT Undoable", 1)
                       if proceed == 2 then return end 
                   
                   end
@@ -163,9 +214,10 @@ function OK()
             else for i=1, reaper.CountSelectedMediaItems(0) do items[i] = reaper.GetSelectedMediaItem(0,i-1) end
             end--if
             
+            if GUI.Val("Close") then
             gfx.quit()
             GUI.quit = true
-            
+            end
             
             local newNames = ProcessInput(items) -- Ask user for input and build new names
             
@@ -200,6 +252,140 @@ function Cancel()
 end
 
 function GetTakeNameInfo()
+      
+  local currentItem = reaper.GetSelectedMediaItem(0,0)
+
+  if currentItem ~= oldItem then
+  
+
+      
+      
+      
+      local name, category, fxname, designer, project, extra, number, _
+      local CatIDs = getUCSCatIDList()
+      
+      
+      if currentItem then
+           _, name = reaper.GetSetMediaItemTakeInfo_String(reaper.GetActiveTake(reaper.GetSelectedMediaItem(0,0)), "P_NAME", "nothing", false) --get first selected item name
+      else
+          name = ""
+      end
+      
+      
+      name = string.gsub(name, "-Glued", "")
+      name = string.gsub(name, "-glued", "")
+      name = string.gsub(name, ".wav", "")
+      name = string.gsub(name, ".flac", "")
+      
+              category = name:match("(.-)_")
+              
+              if not SearchTable(CatIDs, category) then
+              
+                    category = ""
+                    fxname = name
+                    
+              else
+                    fxname = name:match("_(.*)")
+                    if fxname then fxname = string.gsub(fxname, "_.*", "") end
+                    designer = name:match("_.-_(.*)")
+                    if designer then designer = string.gsub(designer, "_.*", "") end
+                    project  = name:match("_.-_.-_(.*)")
+                    extra    = name:match("_.-_.-_.-_(.*)")
+
+                    if extra then 
+                      
+                          project = string.gsub(project, extra)
+                          fxname = fxname .. " " .. extra
+                    end
+              
+              end
+
+              
+              
+              
+              ------------ GET/SET THE VARIABLE DEFAULTS STORED IN THE SESSION
+      if project == nil then
+            project = reaper.GetExtState("TJFRename", "Project")
+                if project == "" then 
+                    project = reaper.GetProjectName(0, 512) 
+                    project = string.gsub(project, ".RPP", "")
+                end
+      end
+      
+      
+      if designer == nil then
+            designer = reaper.GetExtState("TJFRename", "Designer")
+                if designer == "" then designer = defaultDesigner end
+      end
+      
+      
+      
+      if category == "" then category = reaper.GetExtState("TJFRename", "Category") end
+
+      
+      
+      
+      ------------ CLEAN UP UNDESIREABLE CHARACTERS
+      if project ~= nil then fxname = string.gsub(fxname, project, "") end
+      if designer ~= nil then fxname = string.gsub(fxname, designer, "") end
+      if category ~= nil then fxname = string.gsub(fxname, category .. "_", "") end
+      
+      if ConvertToTitleCase then fxname = string.gsub(fxname, "(%l)(%u)", "%1 %2") end -- expand title case
+      if ConvertToTitleCase then fxname = string.gsub(fxname, "(%s%u)(%u)", "%1 %2") end -- fix single letter words
+      if ConvertToTitleCase then fxname = string.gsub(fxname, "(%a)(%d)", "%1 %2") end
+      if ConvertToTitleCase then fxname = string.gsub(fxname, "(%d)(%a)", "%1 %2") end
+      fxname = string.gsub(fxname, ",", " ")
+      fxname = string.gsub(fxname, "_", " ")
+      fxname = string.gsub(fxname, "-", " ")
+      
+      
+      _, number = fxname:match("^(.+)%D(%d+).-$")
+      if number ~= "" and number ~= nil then fxname = string.gsub(fxname, "^(.*%D)%d+(.-)$" , "%1") end
+      if number == "" or number == nil then number = name:match("^.*(%d+).-$") end
+      number = tostring(number)
+      if number == "nil" then number = "" end
+      
+      fxname = string.gsub(fxname, "%s+", " ") -- removes excess spaces
+      
+      
+      GUI.Val("DESC", fxname )
+      GUI.Val("NUMB", number)
+      GUI.Val("CATID", category)
+      GUI.Val("DSGNR", designer)
+      GUI.Val("SHOW", project)
+
+             
+              
+              
+              
+              
+              
+        
+             
+             oldItem = currentItem
+        
+             if startflag ~= 1 then
+                   GUI.elms.CATID.focus = true
+                   GUI.elms.CATID.sel_s = 0
+                   GUI.elms.CATID.sel_e = string.len(GUI.elms.CATID.retval)
+                   GUI.elms.CATID.caret = string.len(GUI.elms.CATID.retval)
+                   
+                   startflag = 1
+             end
+     
+  
+  end--if
+  
+  if GUI.char == 13.0 then OK()           -- If the User presses the ENTER key, RUN the OK script
+  elseif GUI.char == 27.0 then Cancel()   -- If the User presses the ESCAPE key, Cancel
+  end  
+  
+  
+end
+
+
+--[[
+function GetTakeNameInfoOLD()
       
   local currentItem = reaper.GetSelectedMediaItem(0,0)
 
@@ -275,6 +461,8 @@ function GetTakeNameInfo()
   
   
 end
+]]
+
 
 function ProcessInput(items)
       newTakeName = {}
@@ -291,9 +479,9 @@ function ProcessInput(items)
       --designer = designer:upper()  -- SETS DESIGNER to uppercase
       --project = project:upper()    -- SETS PROJECT to uppercase
       
-      if project ~= "" then name = string.gsub(name, "_" .. project, "") end
-      if designer ~= "" then name = string.gsub(name, "_" .. designer, "") end
-      if category ~= "" then name = string.gsub(name, category .. "_", "") end
+      if project ~= "" and project ~= nil then name = string.gsub(name, "_" .. project, "") end
+      if designer ~= "" and designer ~= nil then name = string.gsub(name, "_" .. designer, "") end
+      if category ~= "" and category ~= nil then name = string.gsub(name, category .. "_", "") end
 
       if ConvertToTitleCase then name = string.gsub(name, "(%a)([%w_']*)", titleCase) end -- title case the name string
       if RemoveSpaces then name = string.gsub(name, " ", "") -- remove spaces if preferred
@@ -431,7 +619,7 @@ if missing_lib then return 0 end
 
 
 GUI.name = "Simple UCS Rename and Format Items"
-GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 700, 192
+GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 700, 200
 GUI.anchor, GUI.corner = "mouse", "C"
 
 
@@ -475,10 +663,10 @@ GUI.New("SHOW", "Textbox", {
 GUI.New("CANCEL", "Button", {
     z = 11,
     x = 578,
-    y = 128,
+    y = 130,
     w = 100,
     h = 24,
-    caption = "CANCEL",
+    caption = "QUIT",
     font = 2,
     col_txt = "txt",
     col_fill = "elm_frame",
@@ -488,10 +676,10 @@ GUI.New("CANCEL", "Button", {
 GUI.New("OK", "Button", {
     z = 11,
     x = 578,
-    y = 96,
+    y = 98,
     w = 100,
     h = 24,
-    caption = "OK",
+    caption = "PROCESS",
     font = 2,
     col_txt = "txt",
     col_fill = "elm_frame",
@@ -571,6 +759,72 @@ GUI.New("DESC", "Textbox", {
     undo_limit = 20,
     tab_idx = 2
 })
+
+
+GUI.New("Titlecase", "Checklist", {
+    z = 11,
+    x = 140,
+    y = 165,
+    w = 96,
+    h = 192,
+    caption = "",
+    optarray = {"Title Case Description"},
+    dir = "v",
+    pad = 4,
+    font_a = 2,
+    font_b = 3,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = false,
+    opt_size = 20
+})
+
+GUI.New("Spaces", "Checklist", {
+    z = 11,
+    x = 350,
+    y = 165,
+    w = 96,
+    h = 192,
+    caption = "",
+    optarray = {"Remove Spaces"},
+    dir = "v",
+    pad = 4,
+    font_a = 2,
+    font_b = 3,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = false,
+    opt_size = 20
+})
+
+GUI.New("Close", "Checklist", {
+    z = 11,
+    x = 555,
+    y = 165,
+    w = 96,
+    h = 192,
+    caption = "",
+    optarray = {"Process and Quit"},
+    dir = "v",
+    pad = 4,
+    font_a = 4,
+    font_b = 4,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = false,
+    opt_size = 20
+})
+
+
 
 function GUI.Textbox:onupdate()
   if self.focus then
@@ -672,9 +926,14 @@ GUI.Main_Update_State = function()
 
 end
 
+GUI.Val("Titlecase", toboolean(ConvertToTitleCase))
+GUI.Val("Spaces", toboolean(RemoveSpaces))
+GUI.Val("Close", true)
+
+
 GUI.func = GetTakeNameInfo
 GUI.freq = 0
-
+GUI.version = TJF
 
 GUI.Init()
 GUI.Main()
