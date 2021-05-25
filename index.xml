@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="2dbc2b7ac8d3f1c9d010ea6dde17312c91d8b8d9">
+<index version="1" name="TJF Scripts" commit="a15fdddaa9fb6175d180caa509c6a582bc4f9bf7">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1906,6 +1906,24 @@ v1.1 - better programming on GetChildren]]></changelog>
       </metadata>
       <version name="1.1" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20OPTION%20TAB%20function%20similar%20to%20Pro%20Tools.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Save all open dirty projects.lua" type="script" desc="TJF Save all open dirty projects">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Save all open dirty projects\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Script will check each open project and save only the ones that have had changes and need saving/updating if 'undo/prompt to save' is disabled in preferences, script will not save anything\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-05-25T19:28:44Z">
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a15fdddaa9fb6175d180caa509c6a582bc4f9bf7/Session%20Navigation/TJF%20Save%20all%20open%20dirty%20projects.lua</source>
       </version>
     </reapack>
     <reapack name="TJF Select PIX.lua" type="script" desc="TJF Select PIX">
