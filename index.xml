@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="a15fdddaa9fb6175d180caa509c6a582bc4f9bf7">
+<index version="1" name="TJF Scripts" commit="185ec353d9708f2f6490941929dad2de6b2d6e5c">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -524,7 +524,7 @@ v2.2 - additional metadata support
 v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements
 v2.51 - added BWF metadata to Description field + minor bugfix]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0f88d9abc3b6655518f7426dcde60671fdd6a763/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/185ec353d9708f2f6490941929dad2de6b2d6e5c/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
