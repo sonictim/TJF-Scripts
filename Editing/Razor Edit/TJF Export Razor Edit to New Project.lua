@@ -694,10 +694,10 @@ GUI.New("Warning", "Label", {
 GUI.New("Optional", "Label", {
     z = 15,
     x = 94,
-    y = 180,
+    y = 182,
     w = 100,
     h = 24,
-    caption = "optional - replaces BWF/IXML description field in render metadata of new project",
+    caption = "*optional - replaces BWF/IXML description field in render metadata of new project",
     font = 3,
     --col_txt = "txt",
     --col_fill = "elm_frame",
@@ -848,7 +848,7 @@ GUI.elms.Description.caret = string.len(GUI.elms.Description.retval)
 GUI.func = LinkDefaults
 GUI.freq = .3
 
-
+GUI.version = TJF
 
 
 
