@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="54d180a8f4c2b0d670f3ab2c08bcae22ae8beda6">
+<index version="1" name="TJF Scripts" commit="ea4cce96f593905f1a22c7f2fed9e0af03af53c3">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1606,6 +1606,9 @@ v2.3 bugfix for take envelopes]]></changelog>
       <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
+      <version name="2.3" author="Tim Farrell" time="2021-05-27T21:42:40Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fc6a4addc695e3cd989538745afe57887aa774cf/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Write Punch All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection">
       <metadata>
@@ -1634,6 +1637,22 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+      </version>
+      <version name="2.3" author="Tim Farrell" time="2021-05-27T21:42:40Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v2.0 - added razor edit support
+     - removed all BR_ENV/SWS functions as they are currently unstable
+v2.01- added option to disable edit cursor check
+v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
+v2.03- bugfix
+v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
+     - Added Smoothing Parameter to settings
+     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
+     - Bug fixes
+v2.2 - Added Automation Item Support
+       Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect
+v2.3 - Added option to always create 4 points]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fc6a4addc695e3cd989538745afe57887aa774cf/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
   </category>
