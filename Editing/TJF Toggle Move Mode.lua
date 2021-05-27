@@ -33,7 +33,7 @@ if locked == 1 then
   if rectify == 1 then 
     reaper.Main_OnCommand(42307,0) --rectify peaks
   end
-  reaper.Main_OnCommand(39029,0) --Set default mouse modifier action for "Media item left drag" to "Marquee select items and time ignoring snap"
+  --reaper.Main_OnCommand(39029,0) --Set default mouse modifier action for "Media item left drag" to "Marquee select items and time ignoring snap"
 else
   reaper.Main_OnCommand(40569,0) --enable locking
   reaper.Main_OnCommand(40595,0) -- set item edges lock
@@ -48,6 +48,6 @@ else
   reaper.Main_OnCommand(40578,0) --Locking: Clear left/right item locking mode
   reaper.Main_OnCommand(40581,0) --Locking: Clear up/down item locking mode
   
-  reaper.Main_OnCommand(39013,0) --Set default mouse modifier action for "Media item left drag" to "Move item ignoring time selection" (factory default)
+  --reaper.Main_OnCommand(39013,0) --Set default mouse modifier action for "Media item left drag" to "Move item ignoring time selection" (factory default)
 end
 

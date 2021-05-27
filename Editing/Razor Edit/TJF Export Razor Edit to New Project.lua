@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.51
+--@version 2.6
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -39,7 +39,7 @@
 --  v2.3 - added GUI Options Support and a ton of new features
 --  v2.4 - added ability to remember last settings as well as GUI improvements
 --  v2.51 - added BWF metadata to Description field + minor bugfix
-
+--  v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
@@ -458,7 +458,11 @@ function Main()
      do
          local track = reaper.GetTrack(dest_proj, i-1)
          local item = reaper.GetTrackMediaItem( track, 0 )
-         if item == nil then reaper.DeleteTrack( track ) end
+         local ret, area = reaper.GetSetMediaTrackInfo_String(track, 'P_RAZOREDITS', '', false)
+
+         if item == nil and area == ""
+         
+         then reaper.DeleteTrack( track ) end
          
      end 
       
