@@ -1,5 +1,5 @@
 --@description TJF Write Punch ALL envelopes to Time, RazorEdit, or Item Selection
---@version 2.2
+--@version 2.3
 --@author Tim Farrell
 --
 --@about
@@ -32,7 +32,7 @@
 --       - Bug fixes
 --  v2.2 - Added Automation Item Support
 --         Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect
-
+--  v2.3 - Added option to always create 4 points
 
 
 --[[------------------------------[[--
@@ -55,6 +55,11 @@
 
       Smoothing = .01
 --    Value in seconds of smoothing to adjust to the punch value
+
+      
+      AlwaysCreate4Points = true
+--    If true, wil always create 4 envelope points instead of 2
+      
       
 
 --[[------------------------------[[--
@@ -318,13 +323,13 @@ function ProcessEnvelope(envelope, pointstart, pointend, curpos, value)
            reaper.InsertEnvelopePointEx( envelope,  AutoItems[i], pointstart, value, 0, 1, 0, true )
            reaper.InsertEnvelopePointEx( envelope, AutoItems[i], pointend, value, 0, 1, 0, true )
            
-           if value ~= startvalue or #AutoItems > 1
+           if value ~= startvalue or #AutoItems > 1 or AlwaysCreate4Points
            then
               reaper.InsertEnvelopePointEx( envelope, AutoItems[i], pointstart-Smoothing, smoothstart, 0, 1, 0, true )
            end
            
            
-           if   value ~= endvalue or #AutoItems > 1
+           if   value ~= endvalue or #AutoItems > 1 or AlwaysCreate4Points
            then
                 reaper.InsertEnvelopePointEx( envelope, AutoItems[i], pointend+Smoothing, smoothend, 0, 1, 0, true )    
            end
