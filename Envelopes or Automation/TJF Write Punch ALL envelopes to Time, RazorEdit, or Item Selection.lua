@@ -57,7 +57,7 @@
 --    Value in seconds of smoothing to adjust to the punch value
 
       
-      AlwaysCreate4Points = true
+      AlwaysCreate4Points = false
 --    If true, wil always create 4 envelope points instead of 2
       
       
