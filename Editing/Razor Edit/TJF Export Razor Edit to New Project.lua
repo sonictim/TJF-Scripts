@@ -41,6 +41,7 @@
 --  v2.51 - added BWF metadata to Description field + minor bugfix
 --  v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 
+
     --[[------------------------------[[---
            GLOBAL SETTINGS VARIABLES               
     ---]]------------------------------]]--
@@ -459,10 +460,7 @@ function Main()
          local track = reaper.GetTrack(dest_proj, i-1)
          local item = reaper.GetTrackMediaItem( track, 0 )
          local ret, area = reaper.GetSetMediaTrackInfo_String(track, 'P_RAZOREDITS', '', false)
-
-         if item == nil and area == ""
-         
-         then reaper.DeleteTrack( track ) end
+         if item == nil and area == "" then reaper.DeleteTrack( track ) end
          
      end 
       

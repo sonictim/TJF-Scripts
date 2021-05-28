@@ -39,9 +39,10 @@ function Main()
       if reaper.CountSelectedMediaItems(0) < 1 then return end
       
       
-      local section = "TJF Item Clipboard"
+      --local section = "TJF Item Clipboard"
       local key = 1
       local loop = reaper.HasExtState(section, key)
+      local starttime, endtime = nil, nil
       
       while loop == true do
       
@@ -50,12 +51,38 @@ function Main()
             loop = reaper.HasExtState(section, key)
       end
       
-      for i = 1, reaper.CountSelectedMediaItems(0) do
-            local item = reaper.GetSelectedMediaItem(0, i-1)
-            local _, str = reaper.GetItemStateChunk( item, "", false )
-            reaper.SetExtState( section, i, str, false )
+      for t=1, reaper.CountTracks()
+      do
+            local track = reaper.GetTrack(0,t-1)
+            local section = "Track" .. t
+            local counter = 0
+            
+            for i = 1, reaper.CountTrackMediaItems(0) do
+                  local item = reaper.GetTrackMediaItem(0, i-1)
+                  if reaper.IsMediaItemSelected(item) then
+                        counter = counter + 1
+                        local itemstart = reaper.GetMediaItemInfo_Value( item, "D_POSITION" )
+                        local itemend = itemstart + reaper.GetMediaItemInfo_Value( item, "D_LENGTH" )
+                        if starttime == nil or itemstart < starttime then starttime = itemstart end
+                        if endtime == nil or itemend > endtime then endtime = itemend end
+                        
+                        local _, str = reaper.GetItemStateChunk( item, "", false )
+                        str = string.gsub(str, "GUID .-\n", "GUID " .. reaper.genGuid("") .. "\n" )
+                        reaper.SetExtState( section, "Item"..counter, str, false )
+                  end
+            end
+            
+            
+      
+      
+      
       end
       
+      
+      
+      
+      reaper.SetExtState( section, "StartTime", starttime, false )
+      reaper.SetExtState( section, "EndTime", endtime, false )
       
 end--Main()
 

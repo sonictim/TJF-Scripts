@@ -36,7 +36,10 @@ local function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
                     MAIN              
     ---]]------------------------------]]--
 local function Main()
-      if reaper.CountSelectedMediaItems(0) < 1 then return end
+      
+       
+       
+      
       
       items = {}
       
@@ -50,6 +53,24 @@ local function Main()
             key = key + 1
             loop = reaper.HasExtState(section, key)
       end
+      
+       starttime = reaper.GetExtState( section, "StartTime" )
+       endtime = reaper.GetExtState( section, "endTime" )
+      
+      
+      local pdif =  reaper.GetCursorPositionEx( 0 ) - starttime
+      
+      for i = 1, #items do
+          local item = reaper.AddMediaItemToTrack( reaper.GetTrack(0,0) )
+          reaper.SetItemStateChunk( item, items[i], false )
+          local itemstart = reaper.GetMediaItemInfo_Value( item, "D_POSITION" )
+          reaper.SetMediaItemInfo_Value( item, "D_POSITION", itemstart + pdif )
+
+      
+      end
+      
+      
+      
       
       
       
