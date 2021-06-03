@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="aa62a111773da2e0a7ed3b9ec4e4c519d110bce1">
+<index version="1" name="TJF Scripts" commit="c25a5190de133d9778e9e56aa221f7f6220ea7c1">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -1609,6 +1609,9 @@ v2.3 bugfix for take envelopes]]></changelog>
       <version name="2.3" author="Tim Farrell" time="2021-05-27T21:42:40Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fc6a4addc695e3cd989538745afe57887aa774cf/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
+      <version name="2.4" author="Tim Farrell" time="2021-06-03T00:06:18Z">
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c25a5190de133d9778e9e56aa221f7f6220ea7c1/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+      </version>
     </reapack>
     <reapack name="TJF Write Punch All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection">
       <metadata>
@@ -1653,6 +1656,24 @@ v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect
 v2.3 - Added option to always create 4 points]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fc6a4addc695e3cd989538745afe57887aa774cf/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+      </version>
+      <version name="2.4" author="Tim Farrell" time="2021-06-03T00:06:18Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v2.0 - added razor edit support
+     - removed all BR_ENV/SWS functions as they are currently unstable
+v2.01- added option to disable edit cursor check
+v2.02- added option to check if envelope is armed.  If unarmed, enevelope will be ignored
+v2.03- bugfix
+v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the session
+     - Added Smoothing Parameter to settings
+     - Fixed Logic for Time Selection if NO tracks are selected, then ALL tracks are processed
+     - Bug fixes
+v2.2 - Added Automation Item Support
+       Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect
+v2.3 - Added option to always create 4 points
+v2.4 - Added support for actively writing envelopes. This is still "in development" and can be disabled via a global variable
+     - Currently will Punch at all actively writing envelopes regardless of razor or item selection  (for now)]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c25a5190de133d9778e9e56aa221f7f6220ea7c1/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
   </category>
@@ -1920,6 +1941,27 @@ v1.1 - better programming on GetChildren]]></changelog>
     <reapack name="TJF Move Edit Cursor to Middle of Time Selection or Selection of Items.lua" type="script" desc="Move Edit Cursor To Middle of Time Selection or Selected Items">
       <version name="2.1" author="Claudiohbsantos and Tim Farrell" time="2020-10-24T18:23:59Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Session%20Navigation/TJF%20Move%20Edit%20Cursor%20to%20Middle%20of%20Time%20Selection%20or%20Selection%20of%20Items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Move Edit Cursor to start of items upon first selection (deferred).lua" type="script" desc="Track selection follows item selection">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Runs in the background and allows you to replicate a behavior from Cubase - when selecting items, the track selection is changed to match and the mixer view is scrolled to show the first selected track.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 To exit, open the Actions menu, and click on: Running script: Lokasenna_Track selection follows item selection.lua down at the bottom.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Note: This script is a rewrite of: tritonality_X-Raym_Cubase_Style_SelectTrack_On_ItemSelect.lua\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 It had a few bugs and I couldn't understand the original code well enough to fix them, so I opted to rewrite it from scratch.\par}
+}
+]]></description>
+        <link rel="website" href="http://forum.cockos.com/showthread.php?p=1583631">Forum Thread</link>
+        <link rel="website" href="http://forum.cockos.com/member.php?u=10417">Lokasenna's Website</link>
+        <link rel="donation">https://paypal.me/Lokasenna</link>
+      </metadata>
+      <version name="1.1.3" author="Lokasenna  --" time="2021-06-03T00:06:18Z">
+        <changelog><![CDATA[Fix: Setting the last touched track wasn't working -- TJF adjusted this again as an experiment]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c25a5190de133d9778e9e56aa221f7f6220ea7c1/Session%20Navigation/TJF%20Move%20Edit%20Cursor%20to%20start%20of%20items%20upon%20first%20selection%20(deferred).lua</source>
       </version>
     </reapack>
     <reapack name="TJF OPTION TAB function similar to Pro Tools.lua" type="script" desc="TJF OPTION TAB function similar to Protools">
