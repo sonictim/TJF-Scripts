@@ -28,61 +28,109 @@
     ---]]------------------------------]]--
 
 reaper.ClearConsole()
-function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
+local function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
 
+
+function RazorEditSelectionExists()
+          for i=0, reaper.CountTracks(0)-1 do
+              local retval, x = reaper.GetSetMediaTrackInfo_String(reaper.GetTrack(0,i), "P_RAZOREDITS", "string", false)
+              if x ~= "" then return true end
+          end
+          return false
+    
+end--RazorEditSelectionExists()
+
+
+local function ClearSection(section)
+
+    reaper.DeleteExtState( section, "Razor Edits", true )
+
+    local key = 1
+    local loop = reaper.HasExtState(section, "Item" .. key)
+    
+    while loop == true do
+    
+          reaper.DeleteExtState( section, "Item" .. key, true )
+          key = key + 1
+          loop = reaper.HasExtState(section, "Item" .. key)
+    end
+
+end
+
+
+local function GetTrackSelectedMediaItems(track)
+
+    local items = {}
+    
+    for i=1, reaper.CountTrackMediaItems(track) do
+            local item = reaper.GetTrackMediaItem(track, i-1)
+            if reaper.IsMediaItemSelected(item) then table.insert(items, item) end
+    end
+
+    if #items > 0 then return items end
+    
+    return false
+
+end
 
 
     --[[------------------------------[[---
                     MAIN              
     ---]]------------------------------]]--
-function Main()
-      if reaper.CountSelectedMediaItems(0) < 1 then return end
+local function Main()
       
+      if reaper.CountSelectedMediaItems(0) < 1 and not RazorEditSelectionExists() then return end
       
-      --local section = "TJF Item Clipboard"
-      local key = 1
-      local loop = reaper.HasExtState(section, key)
       local starttime, endtime = nil, nil
-      
-      while loop == true do
-      
-            reaper.DeleteExtState( section, key, true )
-            key = key + 1
-            loop = reaper.HasExtState(section, key)
-      end
       
       for t=1, reaper.CountTracks()
       do
+            ClearSection("Track"..t)
+            
             local track = reaper.GetTrack(0,t-1)
-            local section = "Track" .. t
-            local counter = 0
             
-            for i = 1, reaper.CountTrackMediaItems(0) do
-                  local item = reaper.GetTrackMediaItem(0, i-1)
-                  if reaper.IsMediaItemSelected(item) then
-                        counter = counter + 1
-                        local itemstart = reaper.GetMediaItemInfo_Value( item, "D_POSITION" )
-                        local itemend = itemstart + reaper.GetMediaItemInfo_Value( item, "D_LENGTH" )
-                        if starttime == nil or itemstart < starttime then starttime = itemstart end
-                        if endtime == nil or itemend > endtime then endtime = itemend end
-                        
-                        local _, str = reaper.GetItemStateChunk( item, "", false )
-                        str = string.gsub(str, "GUID .-\n", "GUID " .. reaper.genGuid("") .. "\n" )
-                        reaper.SetExtState( section, "Item"..counter, str, false )
-                  end
+            local _, area = reaper.GetSetMediaTrackInfo_String( track, "P_RAZOREDITS", "", false )
+            
+            reaper.SetExtState( "Track" .. t, "Razor Edits", area, false )
+            
+            
+            
+            local items = GetTrackSelectedMediaItems(track)
+            
+            if items then
+                    
+                    for i = 1, #items do
+                    
+                                local itemstart = reaper.GetMediaItemInfo_Value( items[i], "D_POSITION" )
+                                local itemend = itemstart + reaper.GetMediaItemInfo_Value( items[i], "D_LENGTH" )
+                                if starttime == nil or itemstart < starttime then starttime = itemstart end
+                                if endtime == nil or itemend > endtime then endtime = itemend end
+                                
+                                
+                                local _, str = reaper.GetItemStateChunk( items[i], "", false )
+                                str = string.gsub(str, "GUID .-\n", "GUID " .. reaper.genGuid("") .. "\n" )
+                                reaper.SetExtState( "Track" .. t, "Item"..i, str, false )
+                    end
+            
+            else
+            
+                          
+                    reaper.SetExtState( "Track" .. t, "Item1", "nil", false )
+            
+            
             end
-            
-            
       
       
       
       end
       
+      ClearSection("Track"..reaper.CountTracks()+1)
       
       
       
-      reaper.SetExtState( section, "StartTime", starttime, false )
-      reaper.SetExtState( section, "EndTime", endtime, false )
+      
+      reaper.SetExtState( "TJF Copy", "StartTime", starttime, false )
+      reaper.SetExtState( "TJF Copy", "EndTime", endtime, false )
       
 end--Main()
 

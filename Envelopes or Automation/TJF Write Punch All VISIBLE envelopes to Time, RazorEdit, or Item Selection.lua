@@ -1,5 +1,5 @@
 --@description TJF Write Punch all VISIBLE envelopes to Time, RazorEdit, or Item Selection
---@version 2.3
+--@version 2.4
 --@author Tim Farrell
 --
 --@about
@@ -32,6 +32,8 @@
 --  v2.2 - Added Automation Item Support
 --         Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect
 --  v2.3 - Added option to always create 4 points
+--  v2.4 - Added support for actively writing envelopes. This is still "in development" and can be disabled via a global variable
+--       - Currently will Punch at all actively writing envelopes regardless of razor or item selection  (for now)
 
 
 
@@ -58,7 +60,11 @@
 
 
       AlwaysCreate4Points = false
---    If true, wil always create 4 envelope points instead of 2
+--    If true, will always create 4 envelope points instead of 2
+
+
+      AlsoPunchActivelyWritingEnvelopes = true
+--    If true, will also punch actively writing envelopes for all tracks  
       
 
 --[[------------------------------[[--
@@ -470,7 +476,7 @@ function Main()
                   ProcessItemEnvelopes(items, starttime, endtime, curpos)
           end
           
-          
+          if AlsoPunchActivelyWritingEnvelopes then reaper.Main_OnCommand(42013, 0) end -- Automation: Write current values for actively-writing envelopes to time selection
       
                              -----SECOND PRIORITY: LOGIC AND PROCESSING FOR RAZOR EDITS
       
@@ -489,7 +495,13 @@ function Main()
       
                       ProcessEnvelope(areaData.envelope, areaData.areaStart, areaData.areaEnd, curpos)
                 end
-                      ProcessItemEnvelopes(areaData.items, areaData.areaStart, areaData.areaEnd, curpos)
+                
+                ProcessItemEnvelopes(areaData.items, areaData.areaStart, areaData.areaEnd, curpos)
+                
+                if AlsoPunchActivelyWritingEnvelopes then
+                    reaper.GetSet_LoopTimeRange2( 0, true, false, areaData.areaStart, areaData.areaEnd, false )
+                    reaper.Main_OnCommand(42013, 0) -- Automation: Write current values for actively-writing envelopes to time selection
+                end
           end
           
       
@@ -512,7 +524,13 @@ function Main()
                         for j=0, reaper.CountTrackEnvelopes(track)-1 do
                              ProcessEnvelope( reaper.GetTrackEnvelope( track, j ), itemstart, itemend, curpos)
                         end--for j
-              
+                        
+                        if AlsoPunchActivelyWritingEnvelopes then
+                              reaper.GetSet_LoopTimeRange2( 0, true, false, itemstart, itemend, false )
+                              reaper.Main_OnCommand(42013, 0) -- Automation: Write current values for actively-writing envelopes to time selection
+                        end
+                        
+                        
               end--for i
               
               ---------------------------------------------------ITERATE THROUGH TAKE ENVELOPES
@@ -520,6 +538,19 @@ function Main()
               ProcessItemEnvelopes(items, 1, 1, curpos)
       
       end--if
+      
+    
+    
+    if AlsoPunchActivelyWritingEnvelopes then
+      reaper.GetSet_LoopTimeRange2( 0, true, false, starttime, endtime, false )
+      
+      local mode =  reaper.GetGlobalAutomationOverride()
+      reaper.SetGlobalAutomationOverride( 1 )
+      reaper.SetGlobalAutomationOverride( mode )
+
+    end
+      
+      
 end--Main()
 
 

@@ -31,6 +31,56 @@ reaper.ClearConsole()
 local function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
 
 
+local function GetItems(section)
+      
+      local items = {}
+      
+      items.Razor = reaper.GetExtState( section, "Razor Edits")
+      
+      local key = 1
+      local loop = reaper.HasExtState(section, "Item" .. key)
+      
+      while loop == true do
+      
+            items[key] =  reaper.GetExtState( section, "Item" .. key )
+            if items[key] == "nil" then items[key] = nil end
+            key = key + 1
+            loop = reaper.HasExtState(section, "Item" .. key)
+      end
+      
+      
+      return items
+
+
+end
+
+
+function GetCopyData()
+
+  local tracks = {}
+
+  
+  local key = 1
+  local section = "Track" .. key
+  local loop = reaper.HasExtState(section, "Item1")
+  
+  while loop == true do
+  
+        table.insert(tracks, GetItems(section))
+        key = key + 1
+        section = "Track" .. key
+        loop = reaper.HasExtState(section, "Item1")
+  end
+  
+   tracks.starttime = reaper.GetExtState( "TJF Copy", "StartTime" )
+   tracks.endtime = reaper.GetExtState( "TJF Copy", "endTime" )
+
+
+    return tracks
+end
+
+
+
 
     --[[------------------------------[[---
                     MAIN              
@@ -41,25 +91,13 @@ local function Main()
        
       
       
-      items = {}
-      
-      local section = "TJF Item Clipboard"
-      local key = 1
-      local loop = reaper.HasExtState(section, key)
-      
-      while loop == true do
-      
-            items[key] =  reaper.GetExtState( section, key )
-            key = key + 1
-            loop = reaper.HasExtState(section, key)
-      end
-      
-       starttime = reaper.GetExtState( section, "StartTime" )
-       endtime = reaper.GetExtState( section, "endTime" )
+      track = GetCopyData()
       
       
-      local pdif =  reaper.GetCursorPositionEx( 0 ) - starttime
       
+      
+      local pdif =  reaper.GetCursorPositionEx( 0 ) - track.starttime
+      --[[
       for i = 1, #items do
           local item = reaper.AddMediaItemToTrack( reaper.GetTrack(0,0) )
           reaper.SetItemStateChunk( item, items[i], false )
@@ -68,9 +106,7 @@ local function Main()
 
       
       end
-      
-      
-      
+      ]]
       
       
       
