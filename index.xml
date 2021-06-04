@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="c25a5190de133d9778e9e56aa221f7f6220ea7c1">
+<index version="1" name="TJF Scripts" commit="a0479f9ddf936b9dbd2f52f9eeb1a7a85854032c">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -58,6 +58,24 @@ v2.0 - Added Support For Entire Project Chunk
        GUI updates
 v2.1 - Small Bug Fix on Set Chunk Timeline Refresh]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Developer%20Tools/TJF%20Chunk%20Editor.lua</source>
+      </version>
+    </reapack>
+    <reapack name="TJF Search UCS for CatID.lua" type="script" desc="TJF Search UCS for CatID">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TJF Search UCS for CatID\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 This script will help you search the UCS database for a CatID. After completion, the CatID will be saved to the clipboard NOTE: PLEASE SET THE PATH TO YOUR UCS DATADASE FILE IN THE GLOBAL VARIABLE BELOW\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 DISCLAIMER: This script was written for my own personal use and therefore I offer no support of any kind. Any feature requests/bug reports will be ignored entirely, unless of course they interest me and I want to pursue them. I strongly recommend never to run this or any other script I've written for any reason what so ever. Ignore this advice at your own peril!\par}
+}
+]]></description>
+        <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
+      </metadata>
+      <version name="1.0" author="Tim Farrell" time="2021-06-04T21:58:44Z">
+        <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a0479f9ddf936b9dbd2f52f9eeb1a7a85854032c/Developer%20Tools/TJF%20Search%20UCS%20for%20CatID.lua</source>
       </version>
     </reapack>
   </category>
