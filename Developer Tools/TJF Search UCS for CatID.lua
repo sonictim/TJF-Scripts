@@ -7,7 +7,8 @@
 --@about
 --  # TJF Search UCS for CatID
 --
---  This script will help you search the UCS database for a CatID.  After completion, the CatID will be saved to the clipboard
+--  This script will help you search the UCS database for a CatID.
+--  After completion, the CatID will be saved to the clipboard
 --  NOTE: PLEASE SET THE PATH TO YOUR UCS DATADASE FILE IN THE GLOBAL VARIABLE BELOW
 --
 --
