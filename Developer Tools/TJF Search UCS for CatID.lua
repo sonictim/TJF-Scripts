@@ -1,5 +1,5 @@
 --@description TJF Search UCS for CatID
---@version 1.0
+--@version 1.1
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -20,7 +20,7 @@
 --  
 --  
 --@changelog
---  v1.0 - nothing to report
+--  v1.1 - Added Select Button and option to doubleclick to select CatID.  Bugfixes
 
 
 --[[------------------------------[[--
@@ -51,8 +51,7 @@ function getUCS()
             io.input(file)
             
             for line in io.lines() do
-                
-                local Cat, Sub, ID, _  = line:match("(.-),(.-),(.-),(.*)")
+                Cat, Sub, ID, _  = line:match("(.-),(.-),(.-),(.*)")
                 table.insert(UCS, Cat .. "-" .. Sub .. "   " .. ID )
             end
             
@@ -100,8 +99,11 @@ function UpdateUI()
       
       --Set Selection to Clipboard
       local CatID = GUI.elms.Results.list[GUI.Val("Results")]
+      if CatID == nil then CatID = "" end
       CatID = CatID:match("%s%s%s(.*)")
-      if CatID ~= clipboard then
+      
+      
+      if CatID ~= clipboard and CatID ~= nil then
             clipboard = CatID
             reaper.CF_SetClipboard( CatID )
             reaper.SetExtState("TJFRename", "Category", CatID, true)
@@ -114,10 +116,14 @@ end
 function UpArrow()
 
     selection = selection - 1
-    if selection < 1 then selection = 1 end
-    --local val = GUI.Val("Results") - 1
-    --if val == nil or val == 0 then val = 1 end
+    if selection <= 1 then selection = 1 end
     GUI.Val("Results", selection)
+    
+    GUI.elms.Search.focus = true
+    GUI.elms.Search.sel_s = 0
+    GUI.elms.Search.sel_e = string.len(GUI.elms.Search.retval)
+    GUI.elms.Search.caret = string.len(GUI.elms.Search.retval)
+    
 
 end
 
@@ -125,11 +131,14 @@ end
 function DownArrow()
 
     selection = selection + 1
-    if selection >  #GUI.elms.Results.list then selection = #GUI.elms.Results.list end
-    --local val = GUI.Val("Results") + 1
-    --if val == nil then val = 1 end
-    --if val > #GUI.elms.Results.list then val = #GUI.elms.Results.list end
+    if selection >=  #GUI.elms.Results.list then selection = #GUI.elms.Results.list end
     GUI.Val("Results", selection)
+    
+    GUI.elms.Search.focus = true
+    GUI.elms.Search.sel_s = 0
+    GUI.elms.Search.sel_e = string.len(GUI.elms.Search.retval)
+    GUI.elms.Search.caret = string.len(GUI.elms.Search.retval)
+    
 
 end
 
@@ -202,7 +211,7 @@ GUI.New("Results", "Listbox", {
     h = 400,
     list = results,
     multi = false,
-    caption = "Results: ",
+    caption = "",
     font_a = 3,
     font_b = 4,
     color = "txt",
@@ -213,6 +222,18 @@ GUI.New("Results", "Listbox", {
     pad = 4
 })
 
+GUI.New("OK", "Button", {
+    z = 5,
+    x = 10,
+    y = 65,
+    w = 50,
+    h = 20,
+    caption = "Select:",
+    font = 3,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = OK
+})
 
 GUI.Main_Update_State = function()
 
@@ -276,6 +297,18 @@ GUI.elms.Search.caret = string.len(GUI.elms.Search.retval)
 GUI.func = UpdateUI
 GUI.freq = 0
 GUI.version = TJF
+
+
+function GUI.elms.Results:onmouseup()
+   GUI.Listbox.onmouseup(self)
+   selection = GUI.Val("Results")
+end
+
+
+
+function GUI.elms.Results:ondoubleclick()
+    OK()
+end
 
 
 GUI.Init()

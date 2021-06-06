@@ -622,6 +622,78 @@ GUI.name = "Simple UCS Rename and Format Items"
 GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 700, 200
 GUI.anchor, GUI.corner = "mouse", "C"
 
+GUI.New("CATID", "Textbox", {
+    z = 11,
+    x = 144,
+    y = 16,
+    w = 400,
+    h = 20,
+    caption = "",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 1
+})
+
+GUI.New("DESC", "Textbox", {
+    z = 11,
+    x = 144,
+    y = 48,
+    w = 400,
+    h = 20,
+    caption = "Description (FX Name) : ",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 2
+})
+
+GUI.New("DSGNR", "Textbox", {
+    z = 11,
+    x = 144,
+    y = 80,
+    w = 400,
+    h = 20,
+    caption = "Designer / Vendor : ",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 3
+})
+
+
+GUI.New("SHOW", "Textbox", {
+    z = 11,
+    x = 144,
+    y = 112,
+    w = 400,
+    h = 20,
+    caption = "Show / Library : ",
+    cap_pos = "left",
+    font_a = 3,
+    font_b = "monospace",
+    color = "txt",
+    bg = "wnd_bg",
+    shadow = true,
+    pad = 4,
+    undo_limit = 20,
+    tab_idx = 4
+})
 
 
 GUI.New("NUMB", "Textbox", {
@@ -642,67 +714,6 @@ GUI.New("NUMB", "Textbox", {
     tab_idx = 5
 })
 
-GUI.New("SHOW", "Textbox", {
-    z = 11,
-    x = 144,
-    y = 112,
-    w = 400,
-    h = 20,
-    caption = "Show / Library : ",
-    cap_pos = "left",
-    font_a = 3,
-    font_b = "monospace",
-    color = "txt",
-    bg = "wnd_bg",
-    shadow = true,
-    pad = 4,
-    undo_limit = 20,
-    tab_idx = 4
-})
-
-GUI.New("CANCEL", "Button", {
-    z = 11,
-    x = 578,
-    y = 130,
-    w = 100,
-    h = 24,
-    caption = "QUIT",
-    font = 2,
-    col_txt = "txt",
-    col_fill = "elm_frame",
-    func = Cancel
-})
-
-GUI.New("OK", "Button", {
-    z = 11,
-    x = 578,
-    y = 98,
-    w = 100,
-    h = 24,
-    caption = "PROCESS",
-    font = 2,
-    col_txt = "txt",
-    col_fill = "elm_frame",
-    func = OK
-})
-
-GUI.New("CATID", "Textbox", {
-    z = 11,
-    x = 144,
-    y = 16,
-    w = 400,
-    h = 20,
-    caption = "Category (CAT ID) : ",
-    cap_pos = "left",
-    font_a = 3,
-    font_b = "monospace",
-    color = "txt",
-    bg = "wnd_bg",
-    shadow = true,
-    pad = 4,
-    undo_limit = 20,
-    tab_idx = 1
-})
 
 GUI.New("Rename", "Radio", {
     z = 11,
@@ -724,41 +735,6 @@ GUI.New("Rename", "Radio", {
     opt_size = 20
 })
 
-GUI.New("DSGNR", "Textbox", {
-    z = 11,
-    x = 144,
-    y = 80,
-    w = 400,
-    h = 20,
-    caption = "Designer / Vendor : ",
-    cap_pos = "left",
-    font_a = 3,
-    font_b = "monospace",
-    color = "txt",
-    bg = "wnd_bg",
-    shadow = true,
-    pad = 4,
-    undo_limit = 20,
-    tab_idx = 3
-})
-
-GUI.New("DESC", "Textbox", {
-    z = 11,
-    x = 144,
-    y = 48,
-    w = 400,
-    h = 20,
-    caption = "Description (FX Name) : ",
-    cap_pos = "left",
-    font_a = 3,
-    font_b = "monospace",
-    color = "txt",
-    bg = "wnd_bg",
-    shadow = true,
-    pad = 4,
-    undo_limit = 20,
-    tab_idx = 2
-})
 
 
 GUI.New("Titlecase", "Checklist", {
@@ -824,7 +800,65 @@ GUI.New("Close", "Checklist", {
     opt_size = 20
 })
 
+GUI.New("UCS", "Checklist", {
+    z = 11,
+    x = 10,
+    y = 165,
+    w = 96,
+    h = 192,
+    caption = "",
+    optarray = {"Enable UCS"},
+    dir = "v",
+    pad = 4,
+    font_a = 4,
+    font_b = 4,
+    col_txt = "txt",
+    col_fill = "elm_fill",
+    bg = "wnd_bg",
+    frame = false,
+    shadow = false,
+    swap = false,
+    opt_size = 20
+})
 
+GUI.New("CANCEL", "Button", {
+    z = 11,
+    x = 578,
+    y = 130,
+    w = 100,
+    h = 24,
+    caption = "QUIT",
+    font = 2,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = Cancel
+})
+
+GUI.New("OK", "Button", {
+    z = 11,
+    x = 578,
+    y = 98,
+    w = 100,
+    h = 24,
+    caption = "PROCESS",
+    font = 2,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = OK
+})
+
+GUI.New("CatSearch", "Button", {
+    z = 11,
+    x = 30,
+    y = 16,
+    w = 110,
+    h = 24,
+    caption = "Category (CAT ID) :",
+    font = 3,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = SearchCatID
+})
 
 function GUI.Textbox:onupdate()
   if self.focus then
@@ -929,6 +963,7 @@ end
 GUI.Val("Titlecase", toboolean(ConvertToTitleCase))
 GUI.Val("Spaces", toboolean(RemoveSpaces))
 GUI.Val("Close", true)
+GUI.Val("UCS", true)
 
 
 GUI.func = GetTakeNameInfo
