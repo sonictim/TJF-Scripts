@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="ef8679ae9048c39d9ea50300125277098889cd1a">
+<index version="1" name="TJF Scripts" commit="0bd7b554e36990f55b46134722d91d2f846cb9e8">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -566,10 +566,10 @@ v2.1 - added ability to export selected items if no razor edit present and COPY 
 v2.2 - additional metadata support
 v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements
-v2.51 - added BWF metadata to Description field + minor bugfix
+v2.5 - added BWF metadata to Description field + minor bugfix
 v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 v2.7 - Improved Logic for GUI Selector Buttons]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef8679ae9048c39d9ea50300125277098889cd1a/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0bd7b554e36990f55b46134722d91d2f846cb9e8/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
