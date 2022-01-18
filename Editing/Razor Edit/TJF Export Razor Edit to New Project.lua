@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.8
+--@version 2.7
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -41,7 +41,6 @@
 --  v2.5 - added BWF metadata to Description field + minor bugfix
 --  v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 --  v2.7 - Improved Logic for GUI Selector Buttons
---  v2.8 - reapack bugfix
 
 
     --[[------------------------------[[---
