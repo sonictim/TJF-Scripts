@@ -38,7 +38,7 @@
 --  v2.2 - additional metadata support
 --  v2.3 - added GUI Options Support and a ton of new features
 --  v2.4 - added ability to remember last settings as well as GUI improvements
---  v2.51 - added BWF metadata to Description field + minor bugfix
+--  v2.5 - added BWF metadata to Description field + minor bugfix
 --  v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 --  v2.7 - Improved Logic for GUI Selector Buttons
 
