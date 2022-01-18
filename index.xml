@@ -75,11 +75,11 @@ v2.1 - Small Bug Fix on Set Chunk Timeline Refresh]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2021-06-04T21:58:44Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/23a53d2dbbdf4c1b53fe73c1d095d733cfc9580a/Developer%20Tools/TJF%20Search%20UCS%20for%20CatID.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/a0479f9ddf936b9dbd2f52f9eeb1a7a85854032c/Developer%20Tools/TJF%20Search%20UCS%20for%20CatID.lua</source>
       </version>
       <version name="1.1" author="Tim Farrell" time="2021-06-06T21:43:06Z">
         <changelog><![CDATA[v1.1 - Added Select Button and option to doubleclick to select CatID.  Bugfixes]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef8679ae9048c39d9ea50300125277098889cd1a/Developer%20Tools/TJF%20Search%20UCS%20for%20CatID.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/576793d53e66c3d54c152d6fab8b840c219bf39e/Developer%20Tools/TJF%20Search%20UCS%20for%20CatID.lua</source>
       </version>
     </reapack>
   </category>
@@ -279,7 +279,7 @@ v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0a1c77963dd332638de336d47cab75dc8e79c1d1/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
-      <version name="1.7" author="Tim Farrell" time="2021-01-19T01:21:36Z">
+      <version name="1.7" author="Tim Farrell" time="2021-01-25T19:03:07Z">
         <changelog><![CDATA[v1.0 - nothing to report
 v1.1 - bugfix - fixes error with default fade of last item in a series.
 v1.2 - bugfix - repeated use was creating undesirable behavior
@@ -289,7 +289,7 @@ v1.4 - bugfix - can now fade out length of item if time selection is set to exac
 v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
 v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f4f16f5c3055a7b99f890c1fb3dfc3619bb73099/Editing/Fades/TJF%20SmartFade.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3fd62f4510b12acf62bda6954a054334cbb98e79/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
@@ -526,7 +526,7 @@ v2.1 - added ability to export selected items if no razor edit present and COPY 
 v2.2 - additional metadata support
 v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/faf016f72dbf267b5ff5b097fbc251ee89c9d024/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/7411f82077ceea7290154d439e2d817af0db07ad/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
       <version name="2.5" author="Tim Farrell" time="2021-05-18T19:58:13Z">
         <changelog><![CDATA[v1.0 - initial version nothing to report
@@ -546,7 +546,7 @@ v2.2 - additional metadata support
 v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements
 v2.51 - added BWF metadata to Description field + minor bugfix]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/185ec353d9708f2f6490941929dad2de6b2d6e5c/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0f88d9abc3b6655518f7426dcde60671fdd6a763/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
       <version name="2.6" author="Tim Farrell" time="2021-05-27T00:53:01Z">
         <changelog><![CDATA[v1.0 - initial version nothing to report
@@ -557,7 +557,7 @@ v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements
 v2.51 - added BWF metadata to Description field + minor bugfix
 v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/aa62a111773da2e0a7ed3b9ec4e4c519d110bce1/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/54d180a8f4c2b0d670f3ab2c08bcae22ae8beda6/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
       <version name="2.7" author="Tim Farrell" time="2022-01-18T19:22:47Z">
         <changelog><![CDATA[v1.0 - initial version nothing to report
@@ -566,10 +566,10 @@ v2.1 - added ability to export selected items if no razor edit present and COPY 
 v2.2 - additional metadata support
 v2.3 - added GUI Options Support and a ton of new features
 v2.4 - added ability to remember last settings as well as GUI improvements
-v2.5 - added BWF metadata to Description field + minor bugfix
+v2.51 - added BWF metadata to Description field + minor bugfix
 v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
 v2.7 - Improved Logic for GUI Selector Buttons]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/0bd7b554e36990f55b46134722d91d2f846cb9e8/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef8679ae9048c39d9ea50300125277098889cd1a/Editing/Razor%20Edit/TJF%20Export%20Razor%20Edit%20to%20New%20Project.lua</source>
       </version>
     </reapack>
     <reapack name="TJF LINK Razor Edit and Item Selection.lua" type="script" desc="TJF LINK Razor Edit with Item Selection">
@@ -612,7 +612,7 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2021-02-18T07:50:18Z">
         <changelog><![CDATA[v1.0 - nothing to report]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6efe515d592c4bf8b8ce976903c6c168c249ff5a/Editing/Razor%20Edit/TJF%20Link%20Time%20Selection%20to%20Razor%20Edits%20(deferred%20script).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/add7d9e6e9ce3e5e577cf1ba59e9e4e630c39728/Editing/Razor%20Edit/TJF%20Link%20Time%20Selection%20to%20Razor%20Edits%20(deferred%20script).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Move Edit Cursor to End of Razor Edits.lua" type="script" desc="TJF Move Edit Cursor to End of Razor Edits">
@@ -685,6 +685,18 @@ v2.0 - added split functionality and cycle toggle]]></changelog>
 ]]></description>
         <link rel="website" href="https://github.com/sonictim/TJF-Scripts/raw/master/index.xml">TJF Reapack</link>
       </metadata>
+      <version name="0.9" author="Tim Farrell" time="2021-01-25T19:03:07Z">
+        <changelog><![CDATA[v0.1 - initial version nothing to report
+v0.2 - bugfixes and cleanup
+v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
+v0.4 - added option close subproject
+v0.5 - added support for master track copy
+v0.6 - added support to match timecode start of sessions
+v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
+v0.8 - added Prompt for Subproject Filename Option
+v0.9 - added render subproject option]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3fd62f4510b12acf62bda6954a054334cbb98e79/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+      </version>
       <version name="0.2" author="Tim Farrell" time="2021-01-17T22:50:19Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/70a314bbf3a926ad782138dd5fedd2510e854dad/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
@@ -708,7 +720,7 @@ v0.2 - bugfixes and cleanup
 v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocation"
 v0.4 - added option close subproject
 v0.5 - added support for master track copy]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/5c23cc9fd0bb92dfa6cf702408ddbcd2d0f266d9/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/882b0258e0e07d8d719dab9f6314a64bf6e6fa37/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
       <version name="0.6" author="Tim Farrell" time="2021-01-18T07:07:44Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report
@@ -717,7 +729,7 @@ v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeProjectLocatio
 v0.4 - added option close subproject
 v0.5 - added support for master track copy
 v0.6 - added support to match timecode start of sessions]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/32315c8c093abc3a65d7a53e8da50f0ed4765e1d/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/f8bd33bdafac0e1ad089efe18b5e4402f4f64841/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
       <version name="0.7" author="Tim Farrell" time="2021-01-18T16:25:50Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report
@@ -727,7 +739,7 @@ v0.4 - added option close subproject
 v0.5 - added support for master track copy
 v0.6 - added support to match timecode start of sessions
 v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/358467028c33480b418a6a38358c0f1553c6177c/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fbd1c5016ce23e42679aedac6b6105c4a988211e/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
       <version name="0.8" author="Tim Farrell" time="2021-01-18T21:29:23Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report
@@ -739,18 +751,6 @@ v0.6 - added support to match timecode start of sessions
 v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
 v.08 - added Prompt for Subproject Filename Option]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/e3d6c9554d04e62657b53291fad7a8be2b10d1f8/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
-      </version>
-      <version name="0.9" author="Tim Farrell" time="2021-01-20T19:06:44Z">
-        <changelog><![CDATA[v0.1 - initial version nothing to report
-v0.2 - bugfixes and cleanup
-v0.3 - new optional settings "CopyTrackInfo" and "PreserveRelativeTimelinePosition"
-v0.4 - added option close subproject
-v0.5 - added support for master track copy
-v0.6 - added support to match timecode start of sessions
-v0.7 - adjusted behavior of Timecode Match to be more intuiative. No longer necessary to Preserve Position for Timecode match
-v0.8 - added Prompt for Subproject Filename Option
-v0.9 - added render subproject option]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/c88bf9cb99fd1fd97db6cb3eda2b0e23461016a8/Editing/Razor%20Edit/TJF%20Move%20Razor%20Edits%20to%20New%20Subproject.lua</source>
       </version>
       <version name="1.0" author="Tim Farrell" time="2021-02-02T10:16:42Z">
         <changelog><![CDATA[v0.1 - initial version nothing to report
@@ -919,7 +919,7 @@ v1.5 - bugfix]]></changelog>
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/18a6ef02c22ffb3f7bcc0e3b0ef4c914f0bd5058/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Reverse/TJF%20Reverse%20Fades%20with%20Item.lua</source>
       </version>
     </reapack>
   </category>
@@ -1128,7 +1128,7 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
       <version name="1.0" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/cad14a1a257ab5c7cfb2083d255be0e93ef0ff9f/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Takes/TJF%20Toggle%20Take%20Channel%20stereo%20flip.lua</source>
       </version>
     </reapack>
   </category>
@@ -1196,7 +1196,7 @@ v2.5 - will now match if any item or track is muted.. not just first]]></changel
         <link rel="website">http://github.com/sonictim/TJF-Scripts/</link>
       </metadata>
       <version name="2.01" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef09ae17636a6529dce4f5fab8730b76c1ecf8f7/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Editing/Trim/TJF%20Split%20Item%20(Hover%20Mode%20Dependant).lua</source>
       </version>
     </reapack>
     <reapack name="TJF split item at time selection, otherwise mouse cursor.lua" type="script" desc="TJF Split Item at Time Selection, otherwise Mouse Cursor">
@@ -1417,7 +1417,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF GLIDE All VISIBLE envelopes to Time, RazorEdit, or Item Selection.lua" type="script" desc="TJF GLIDE Envelope Points to all VISIBLE Envelopes to Time Selection or Selected Items">
@@ -1447,7 +1447,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20GLIDE%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
     </reapack>
     <reapack name="TJF OPTIONS - Toggle Check Edit Cursor for Protools Sytle Automation Write and Glide Functions.lua" type="script" desc="TJF OPTION Toggle Check Edit Cursor for Protools Style Automation Write and Glide Functions">
@@ -1516,7 +1516,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
       <version name="1.5" author="Tim Farrell" time="2021-02-13T01:30:45Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/9e1e2b553090cbf81b16dc8317e52b065014acd7/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4443c6fe0a7dcf6a21388197b684b9af8ad97bc9/Envelopes%20or%20Automation/TJF%20Show%20Last%20Touched%20FX%20Envelope%20Hide%20Others%20Deferred%20(stays%20active).lua</source>
       </version>
     </reapack>
     <reapack name="TJF Toggle Item Pitch Envelope Visible.lua" type="script" desc="TJF Toggle Item Pitch Envelope Visible">
@@ -1638,7 +1638,7 @@ v2.3 bugfix for take envelopes]]></changelog>
 ]]></description>
       </metadata>
       <version name="2.2" author="Tim Farrell" time="2020-10-24T18:23:59Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
       <version name="2.3" author="Tim Farrell" time="2021-05-27T21:42:40Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/fc6a4addc695e3cd989538745afe57887aa774cf/Envelopes%20or%20Automation/TJF%20Write%20Punch%20ALL%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
@@ -1673,7 +1673,7 @@ v2.1 - If Enabled, will write the value at the edit cursor from anywhere in the 
      - Bug fixes
 v2.2 - Added Automation Item Support
        Known Issues:  Selecting cross the edges of Automation Items doesn't always work as you'd expect]]></changelog>
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/8106bebf8644f4df42e271c6ab0a5366f2dc3710/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/4398c8372f2629ba49c37d5ca824392fdc415b1b/Envelopes%20or%20Automation/TJF%20Write%20Punch%20All%20VISIBLE%20envelopes%20to%20Time,%20RazorEdit,%20or%20Item%20Selection.lua</source>
       </version>
       <version name="2.3" author="Tim Farrell" time="2021-05-27T21:42:40Z">
         <changelog><![CDATA[v1.0 - nothing to report
@@ -1951,7 +1951,7 @@ v1.1 - better programming on GetChildren]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/d5bb07420982950d3a6b0c75b43381a303c8a390/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
       </version>
       <version name="1.1" author="Lokasenna and Tim Farrell" time="2021-05-19T05:30:20Z">
-        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/ef09ae17636a6529dce4f5fab8730b76c1ecf8f7/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/34b4bc683fcc47c0b91a00aeffca1c9a23aa8916/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
       </version>
       <version name="1.2" author="Lokasenna and Tim Farrell" time="2021-05-21T16:45:05Z">
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/bbf5fd2a0087e84dc124fbe4e466041a2b7bf954/Session%20Navigation/TJF%20Link%20Track%20and%20Item%20and%20Razor%20Selection.lua</source>
