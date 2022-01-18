@@ -22,6 +22,7 @@
 // cl /nologo /O2 /Z7 /Zo /DUNICODE main.cpp /link /DEBUG /OPT:REF /PDBALTPATH:%_PDB% /DLL /OUT:reaper_barebone.dll
 
 #define REAPERAPI_IMPLEMENT
+//#include "reaper_plugin.h"
 #include "reaper_plugin_functions.h"
 
 #include <cstdio>

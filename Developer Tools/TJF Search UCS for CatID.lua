@@ -179,7 +179,7 @@ if missing_lib then return 0 end
 
 
 
-GUI.name = "Search UCS"
+GUI.name = "Search UCS and Copy to Clipboard"
 GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 512, 480
 GUI.anchor, GUI.corner = "mouse", "C"
 

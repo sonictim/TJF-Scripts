@@ -1,5 +1,5 @@
 --@description TJF Export Razor Edit to New Project
---@version 2.6
+--@version 2.7
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -40,6 +40,7 @@
 --  v2.4 - added ability to remember last settings as well as GUI improvements
 --  v2.51 - added BWF metadata to Description field + minor bugfix
 --  v2.6 - bugfix:  if a razor edit includes a track, that track will arrive in the new session, even if there are no items associated with it
+--  v2.7 - Improved Logic for GUI Selector Buttons
 
 
     --[[------------------------------[[---
@@ -96,13 +97,38 @@ function LinkDefaults()
   --GUI.Val("Copy", copy)
   
   copy = GUI.Val("Subproject")
- 
-  if copy[2] == true then copy[1] = false end
-  if copy[3] == false then 
+  
+  
+   if copy[2] and copy[1] then
+        CloseSubproject = not CloseSubproject
+        EndInSubproject = not EndInSubproject
+        copy[1] = EndInSubproject
+        copy[2] = CloseSubproject
+    end
+        
+    EndInSubproject = copy[1]
+    CloseSubproject = copy[2]
+  
+  
+
+  if copy[3] == false and ImportSubproject then 
       copy[4] = false
       copy[5] = false
   end
-  if copy[5] == true then copy[4] = true end
+  
+  if copy[4] == false and ReplaceSelectionWithSubproject then
+      copy[5] = false
+  end
+  
+  if copy[5] then copy[4] = true end
+  if copy[4] then copy[3] = true end
+  
+  
+  RenderSubproject = copy[3]
+  ImportSubproject = copy[4]
+  ReplaceSelectionWithSubproject = copy[5]
+  
+  
   
   GUI.Val("Subproject", copy)
   
@@ -848,7 +874,7 @@ GUI.elms.Description.sel_e = string.len(GUI.elms.Description.retval)
 GUI.elms.Description.caret = string.len(GUI.elms.Description.retval)
 
 GUI.func = LinkDefaults
-GUI.freq = .3
+GUI.freq = .01
 
 GUI.version = TJF
 
