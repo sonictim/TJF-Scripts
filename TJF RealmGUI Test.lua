@@ -3,7 +3,7 @@
 --]]------------------------------]]--
 
 
-    local UCSfile = "/Volumes/TJF Library 8tb SSD/Soundminer V5 Support/_categorylist.csv"
+    local UCSfile = "/Volumes/FLAC Library 8tb SSD/Soundminer V5 Support/8.1_categorylist.csv"
     local selected = 1
     local clipboard = nil
     local click_count, text = 0, ''

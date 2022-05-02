@@ -1,5 +1,5 @@
 --@description TJF Search UCS for CatID
---@version 1.1
+--@version 1.2
 --@author Tim Farrell
 --@links
 --  TJF Reapack https://github.com/sonictim/TJF-Scripts/raw/master/index.xml
@@ -21,6 +21,7 @@
 --  
 --@changelog
 --  v1.1 - Added Select Button and option to doubleclick to select CatID.  Bugfixes
+--  v1.2 - Arrow Keys now loop to bottom/top of list
 
 
 --[[------------------------------[[--
@@ -28,7 +29,7 @@
 --]]------------------------------]]--
 
 
-    local UCSfile = "/Volumes/TJF Library 8tb SSD/Soundminer V5 Support/_categorylist.csv"
+    local UCSfile = "/Volumes/FLAC Library 8tb SSD/Soundminer V5 Support/8.1_categorylist.csv"
     
     local UCS = {}
     
@@ -116,7 +117,7 @@ end
 function UpArrow()
 
     selection = selection - 1
-    if selection <= 1 then selection = 1 end
+    if selection < 1 then selection = #GUI.elms.Results.list end
     GUI.Val("Results", selection)
     
     GUI.elms.Search.focus = true
@@ -131,7 +132,7 @@ end
 function DownArrow()
 
     selection = selection + 1
-    if selection >=  #GUI.elms.Results.list then selection = #GUI.elms.Results.list end
+    if selection >  #GUI.elms.Results.list then selection = 1 end
     GUI.Val("Results", selection)
     
     GUI.elms.Search.focus = true
