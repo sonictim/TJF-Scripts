@@ -70,7 +70,7 @@ local function ProcessTracks(tracks)
         reaper.PreventUIRefresh(1)
 
         -- Unselect all tracks
-        reaper.Main_OnCommand(40297, 0)
+        reaper.Main_OnCommand(40297, 0) -- Track: Unselect all tracks
         
         reaper.SetOnlyTrackSelected( tracks[1] )
 
@@ -80,7 +80,7 @@ local function ProcessTracks(tracks)
 
         -- "Touch" the first track so we don't mess up things like pasting items
         -- over multiple tracks
-        reaper.Main_OnCommand(40914, 0)
+        reaper.Main_OnCommand(40914, 0) -- Track: Set first selected tracck as last touched track
 
 
         reaper.PreventUIRefresh(-1)

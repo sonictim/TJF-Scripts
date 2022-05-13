@@ -90,6 +90,7 @@ function extend_razor_edits()
   for i = 0, track_count - 1 do
     local track = reaper.GetTrack(0, i)
     local rv, edits = reaper.GetSetMediaTrackInfo_String(track, 'P_RAZOREDITS', '', false)
+    Msg(edits)
     if edits ~= "" and not edit_is_envelope(edits) then
       if reaper.GetToggleCommandState(1156) == 1 then --Checks if ITEM grouping is enabled or bypassed
           track = GetParent(track)

@@ -228,7 +228,7 @@ end--GetChildren()
 
 --=====SELECTION OPERATIONS=====--
 function stateChange(action)
-    if string.find(string.lower(action), "razor")-- == "Razor edit" or action == "Edit razor edit area" 
+    if string.find(string.lower(action), "razor") or string.find(string.lower(action), "folder")  -- == "Razor edit" or action == "Edit razor edit area" 
     then
         reaper.PreventUIRefresh(1)
 
