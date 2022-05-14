@@ -14,13 +14,13 @@ struct RazorEdit {
 
 
 void GetRazorEditTracks(std::vector<MediaTrack*>& v) {
+        v.clear();
         for (int i=0; i < CountTracks(0); i++) {
                 MediaTrack* track = GetTrack(0,i);
                 std::string str = (char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
                 if (str.size()) v.push_back(track);
         }
 }
-
 
 
 static void CopyRazorEdit(MediaTrack* source, MediaTrack* dest) {
@@ -32,10 +32,6 @@ static void CopyRazorEdit(MediaTrack* source, std::vector<MediaTrack*> &dest) {
     char* str = (char*)GetSetMediaTrackInfo(source, "P_RAZOREDITS_EXT", NULL);
     for (auto &x : dest) GetSetMediaTrackInfo(x, "P_RAZOREDITS_EXT", (void*)str);
 }
-
-
-
-
 
 
 //Link Razor Edits to Folders::::::::::::;
@@ -88,23 +84,94 @@ void TJF_LinkRazorEditToFolders() {
 }
 
 
-void TJF_LinkTrackandEditSelection() {
-    static std::vector<MediaTrack*> tracks;
-    std::vector<MediaTrack*> current;
-    GetRazorEditTracks(current);
-    if (tracks == current) return;
-    tracks = current;
 
-    if (tracks.size()) {
-        for (int i=0; i < CountTracks(0); i++) {
-                MediaTrack* track = GetTrack(0,i);
-                std::string str = (char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
-                SetTrackSelected(track, str.size());
-        }
-
+/*
+void GetSelectedTracks(std::vector<MediaTrack*>& v) {
+    v.clear();
+    for (int i=0; i < CountTracks(0); i++) {
+        MediaTrack* track = GetTrack(0,i);
+        if (IsTrackSelected(track)) v.push_back(track);
     }
-    Main_OnCommand(40914, 0); // Track: Set first selected tracck as last touched track
+}
 
+
+void GetFirstRazorEditString(std::string& s) {
+        for (int i=0; i < CountTracks(0); i++) {
+            MediaTrack* track = GetTrack(0,i);
+            s = (const char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
+            if (s.size()) return;
+        }
+}
+
+MediaTrack* GetFirstRazorEditTrack() {
+        MediaTrack* track;
+        for (int i=0; i < CountTracks(0); i++) {
+            track = GetTrack(0,i);
+            std::string s = (const char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
+            if (s.size()) return track;
+        }
+        return track;
+}
+*/
+void TJF_LinkTrackandEditSelection() {
+    
+    
+    static std::vector<MediaTrack*> tracks;
+    std::vector<MediaTrack*> curTracks;
+    GetSelectedTracks(curTracks);
+
+
+
+
+    if (tracks != curTracks && current.size()) {
+
+        tracks = curTracks;
+                msg("GO");
+
+        char* str = (char*)GetSetMediaTrackInfo(current[0], "P_RAZOREDITS_EXT", NULL);
+        for (int i=0; i < CountTracks(0); i++) {
+            MediaTrack* track = GetTrack(0,i);
+            if (IsTrackSelected(track)) GetSetMediaTrackInfo(track, "P_RAZOREDITS", (void*)str);
+            else GetSetMediaTrackInfo(track, "P_RAZOREDITS", (void*)"");
+        }
+        return;
+    }
+    
+
+    static std::vector<MediaTrack*> REtracks;
+    std::vector<MediaTrack*> currentRE;
+    GetRazorEditTracks(currentRE);
+
+    if (REtracks != currentRE) {
+        REtracks = currentRE;
+        if (REtracks.size())  {
+            for (int i=0; i < CountTracks(0); i++) {
+                MediaTrack* track = GetTrack(0,i);
+                std::string str = (const char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
+                SetTrackSelected(track, str.size());
+            }
+            Main_OnCommand(40914, 0); // Track: Set first selected track as last touched track
+            return;
+        }
+    }
+
+    static std::vector<MediaItem*> items;
+    std::vector<MediaItem*> currentItems;
+    for (int i=0; i < CountSelectedMediaItems(0); i++)  currentItems.push_back(GetSelectedMediaItem(0,i));
+
+    static MediaTrack* firstItemTrack = GetMediaItem_Track(GetSelectedMediaItem(0,0));
+    MediaTrack* currentFIT = GetMediaItem_Track(GetSelectedMediaItem(0,0)); 
+
+    
+    if (items != currentItems || firstItemTrack != currentFIT) {
+        items = currentItems;
+        firstItemTrack = currentFIT;
+
+        for (int i=0; i < CountTracks(0); i++) SetTrackSelected(GetTrack(0,i), false); //unselect all tracks
+        if (items.size()) for (int i=0; i < items.size(); i++) SetTrackSelected(GetMediaItem_Track(items[i]), true); //select tracks with selected items
+        Main_OnCommand(40914, 0); // Track: Set first selected track as last touched track
+        return;
+    }
 }
 
 
