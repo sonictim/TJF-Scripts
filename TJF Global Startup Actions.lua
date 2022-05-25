@@ -3,10 +3,10 @@
 
 
 --Script: TJF Link Track and Item Selection.lua
-reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RSbdc347119c70a305a6a018f142cb196cef36778e" ),0)
+--reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RSbdc347119c70a305a6a018f142cb196cef36778e" ),0)
 
 --Script: TJF Envelope Visibility Behavior.lua
-reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RSb9372a7fd9064136da92290be0a4643370dce4b5" ),0)
+--reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RSb9372a7fd9064136da92290be0a4643370dce4b5" ),0)
 
 --Script: TJF Hover Mode Toggle.lua
 reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RS7c63ddf7171c4cad70a2a5aa14943b5188b93d74" ),0)
@@ -15,7 +15,7 @@ reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RS7c63ddf7171c4cad70a2a5aa14
 --reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RS9718aefaaa9aed1aa31af67b861e9421cde02a38" ),0)
 
 --Script: TJF Razor Edit Behavior.lua
-reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RS73ee44425a6dd6efe25e16b73d9c1b5ac50a2666" ),0)
+--reaper.Main_OnCommand( reaper.NamedCommandLookup( "_RS73ee44425a6dd6efe25e16b73d9c1b5ac50a2666" ),0)
 
 
 --Script: TJF LINK Razor Edit and Item Selection.lua

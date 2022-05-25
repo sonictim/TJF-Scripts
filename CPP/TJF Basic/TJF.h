@@ -1,12 +1,19 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 
 void msg(const char* c) {
     ShowConsoleMsg(c);
     ShowConsoleMsg("\n");
 }
+
+void msg(char* c) {
+    ShowConsoleMsg(c);
+    ShowConsoleMsg("\n");
+}
+
 
 void msg(std::string s) {
     const char* c = s.c_str();
@@ -22,6 +29,37 @@ void msg(T x) {
     ShowConsoleMsg(c);
     ShowConsoleMsg("\n");
 }
+
+void GetSelectedItems(std::vector<MediaItem*>& v) {
+    v.clear();
+    for (int i=0; i < CountSelectedMediaItems(0); i++) v.push_back(GetSelectedMediaItem(0,i));
+}
+
+void GetAllItems(std::vector<MediaItem*>& v) {
+    v.clear();
+    for (int i=0; i < CountMediaItems(0); i++) v.push_back(GetMediaItem(0,i));
+}
+
+
+void GetSelectedTracks(std::vector<MediaTrack*>& v) {
+    v.clear();
+    for (int i=0; i < CountSelectedTracks(0); i++) v.push_back(GetSelectedTrack(0,i));
+}
+
+void GetAllTracks(std::vector<MediaTrack*>& v) {
+    v.clear();
+    for (int i=0; i < CountTracks(0); i++) v.push_back(GetTrack(0,i));
+}
+
+
+void SetFirstSelectedTrack() {
+    std::vector<MediaTrack*> tracks;
+    GetSelectedTracks(tracks);
+    if (!tracks.size()) return;
+    SetOnlyTrackSelected(tracks[0]);
+    for (auto & x : tracks) SetTrackSelected(x, true);
+}
+
 
 
 //  TEMPLATES FOR GET / SET MEDIA ITEM/TAKE/TRACK properties (alternative to GetMediaItemInfo_Value)

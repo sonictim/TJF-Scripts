@@ -49,4 +49,49 @@ void RegisterNewActions()
   	Register(TJF_ToggleMoveMode, "TJF_CPP_MOVEMODE", "TJF C++ Toggle Move Mode", 0);
     Register(TJF_LinkRazorEditToFolders, "TJF_CPP_LINKRAZOR2FOLDER", "TJF C++ Link Razor Edits to Folders", 1, defer);
     Register(TJF_LinkTrackandEditSelection, "TJF_CPP_LINKTRACKEDIT", "TJF C++ Link Track and Edit Selection", 1, defer);
+    Register(TJF_SaveAllDirtyProjects, "TJF_CPP_SAVEALLDIRTY", "TJF C++ Save All Open Dirty Projects");
+    Register(TJF_HideAllEnvelopes, "TJF_CPP_HIDEENVELOPES", "TJF C++ Hide All Envelopes");
+    Register(TJF_HideTrackEnvelopes, "TJF_CPP_HIDETRACKENVELOPES", "TJF C++ Hide All Track Envelopes");
+    Register(TJF_HideTakeEnvelopes, "TJF_CPP_HIDETAKEENVELOPES", "TJF C++ Hide All Take Envelopes");
+    Register(TJF_TrackChunkTest, "TJF_CPP_TRACKCHUNKTEST", "TJF C++ Track Chunk Test");
+
+} 
+
+/*
+void MenuHook(const char* menuidstr, HMENU menu, int flag)
+{
+    if (strcmp(menuidstr, "Main extensions") || flag != 0)
+        return;
+
+    if (!menu) {
+        menu = CreatePopupMenu();
+    }
+
+    int pos = GetMenuItemCount(menu);
+
+    MENUITEMINFO mii;
+    mii.cbSize = sizeof(mii);
+    mii.fMask = MIIM_TYPE | MIIM_ID;
+    mii.fType = MFT_STRING;
+    // menu name
+    mii.dwTypeData = (char*)"TJF Link Track and Edit Selection";
+    // menu command
+    mii.wID = NamedCommandLookup("_TJF_CPP_LINKTRACKEDIT");
+    // insert as next menu item
+    InsertMenuItem(menu, pos++, true, &mii);
+    return;
+}
+
+*/
+
+
+
+
+
+
+void RegisterNewMenus()
+{
+    //plugin_register("hookcustommenu", (void*)MenuHook);
+    //AddExtensionsMainMenu();
+    AddCustomizableMenu("TJF", "TJF Options", NULL, true);
 }

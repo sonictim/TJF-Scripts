@@ -42,7 +42,16 @@ static bool commandHook(KbdSectionInfo *sec, const int command,
 
 	if(ActionMap.find(command) == ActionMap.end()) return false;
 	
-	if (ActionMap[command].state > -1) ActionMap[command].state = !ActionMap[command].state;
+	if (ActionMap[command].state > -1) {
+        ActionMap[command].state = !ActionMap[command].state;
+        /*
+        char* str;
+        sprintf(str, "%d", command);
+
+        if (ActionMap[command].state) SetExtState("TJF", str, "on", true );
+        else SetExtState("TJF", str, "off", true);
+        */
+  }
   
 	if (ActionMap[command].defer) {
 			if (ActionMap[command].state) plugin_register("timer", reinterpret_cast<void *>(ActionMap[command].action));
@@ -69,6 +78,7 @@ extern "C" REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(
   plugin_register("toggleaction", (void*)ToggleActionCallback);
 
   RegisterNewActions();
+  RegisterNewMenus();
   
   
   return 1;
