@@ -57,7 +57,7 @@ void SetFirstSelectedTrack() {
     GetSelectedTracks(tracks);
     if (!tracks.size()) return;
     SetOnlyTrackSelected(tracks[0]);
-    for (auto & x : tracks) SetTrackSelected(x, true);
+    for (MediaTrack* &x : tracks) SetTrackSelected(x, true);
 }
 
 
@@ -156,3 +156,4 @@ void TJF_ReverseFadesWithItem() { // This shows how to use GetSetMediaItemInfo w
 }
 
 */
+

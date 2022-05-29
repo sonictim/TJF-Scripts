@@ -1,14 +1,28 @@
 # pragma once
 
-
 #include "TJF.h"
 #include "razoredits.h"
 
+#define ChunkSize 1000000
 
+void TJF_TestFunction() {
+	ClearConsole();
+	msg("Running Test Function");
 
-void TJF_HELLO() {
-    ShowConsoleMsg("Hello World!\n");
-    MB("Hello World!", "TITLE BAR", 0 );
+	MediaTrack* track = GetSelectedTrack(0,0);
+	char str[ChunkSize];
+	//char* result = str;
+	GetTrackStateChunk(track, str, ChunkSize, false);
+	//msg(str);
+	std::vector<RazorEdit> RE;
+	GetRazorEdits(RE);
+	msg(RE[0].start);
+	msg(RE[0].end);
+	msg(RE[0].items.size());
+
+	//TrackEnvelope* env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,0)), "Volume");
+	//msg(env);
+
 }
 
 
@@ -20,7 +34,7 @@ void TJF_ReverseFadesWithItem() {
       	int itemcount = CountSelectedMediaItems(0);
       	if (!itemcount) return;
 		for (int i = 0; i < itemcount; i++) {
-			auto item = GetSelectedMediaItem(0,i);
+			MediaItem* item = GetSelectedMediaItem(0,i);
 			double temp = GetMediaItemInfo_Value(item, "D_FADEINLEN");
             SetMediaItemInfo_Value(item,"D_FADEINLEN", GetMediaItemInfo_Value(item, "D_FADEOUTLEN") );
         	SetMediaItemInfo_Value(item,"D_FADEOUTLEN", temp);
@@ -47,10 +61,12 @@ void TJF_ReverseFadesWithItem() {
 }
 
 void TJF_LinkPlayAndEditCursor() {
+	PreventUIRefresh(1);
 	//if (GetPlayState()) 
 		Main_OnCommand(40434, 0);	
 	//double pos = GetPlayPosition();
-	//SetEditCurPos(pos, false, false )
+	//SetEditCurPos(pos, false, false );
+	PreventUIRefresh(-1);
 }
 
 void TJF_EditInsertionFollowsPlayback() {
@@ -89,9 +105,9 @@ void TJF_ToggleMoveMode() {
 
 void TJF_SaveAllDirtyProjects() {
 	PreventUIRefresh(1);
-	auto curProj = EnumProjects(-1, NULL, 0);
+	ReaProject* curProj = EnumProjects(-1, NULL, 0);
 	int i = 0;
-	auto proj = EnumProjects(i, NULL, 0);
+	ReaProject* proj = EnumProjects(i, NULL, 0);
 
 	while (proj) {
 		if (IsProjectDirty(proj)) Main_SaveProject(proj, false);
@@ -102,14 +118,14 @@ void TJF_SaveAllDirtyProjects() {
 	PreventUIRefresh(-1);
 }
 
-#define ChunkSize 1000000
+
 
 void TJF_HideTrackEnvelopes() {
 	for (int i = 0; i < CountTracks(0); i++) {
-		auto track = GetTrack(0,i);
+		MediaTrack* track = GetTrack(0,i);
 
 		for (int i = 0; i < CountTrackEnvelopes(track); i++) {
-			auto env = GetTrackEnvelope(track, i);
+			TrackEnvelope* env = GetTrackEnvelope(track, i);
 			char strNeedBig[ChunkSize];
 			char* result = strNeedBig;
 			GetEnvelopeStateChunk(env, strNeedBig, ChunkSize, false );
@@ -123,7 +139,7 @@ void TJF_HideTrackEnvelopes() {
 
 void TJF_HideTrackEnvelopes(MediaTrack* track) {
 		for (int i = 0; i < CountTrackEnvelopes(track); i++) {
-			auto env = GetTrackEnvelope(track, i);
+			TrackEnvelope* env = GetTrackEnvelope(track, i);
 			char strNeedBig[ChunkSize];
 			char* result = strNeedBig;
 			GetEnvelopeStateChunk(env, strNeedBig, ChunkSize, false );
@@ -135,23 +151,26 @@ void TJF_HideTrackEnvelopes(MediaTrack* track) {
 
 }
 
-void TJF_TrackChunkTest() {
-		auto track = GetSelectedTrack(0,0);
-		char str[ChunkSize];
-		//char* result = str;
-		GetTrackStateChunk(track, str, ChunkSize, false);
-		//msg(str);
-		std::vector<RazorEdit> RE;
-		GetRazorEdits(RE);
-		//auto env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,0)), "Volume");
-		//msg(env);
+void TJF_HideTrackEnvelopes(std::vector<MediaTrack*> tracks) {
+		for (auto track : tracks) {
+			
+			for (int i = 0; i < CountTrackEnvelopes(track); i++) {
+				TrackEnvelope* env = GetTrackEnvelope(track, i);
+				char strNeedBig[ChunkSize];
+				char* result = strNeedBig;
+				GetEnvelopeStateChunk(env, strNeedBig, ChunkSize, false );
+				result = strstr(strNeedBig, "VIS ");
+				result += 4;
+				*result = 48;
+				SetEnvelopeStateChunk(env, strNeedBig, true);
+			}
+		}
 }
-
 
 
 void TJF_HideAllEnvelopes() {
 	for (int i = 0; i < CountTracks(0); i++) {
-		auto track = GetTrack(0,i);
+		MediaTrack* track = GetTrack(0,i);
 		char str[ChunkSize];
 		char* result = str;
 		GetTrackStateChunk(track, str, ChunkSize, false);
@@ -166,7 +185,7 @@ void TJF_HideAllEnvelopes() {
 
 void TJF_HideTakeEnvelopes() {  // Hides all take envelopes for all items
 	for (int i = 0; i < CountMediaItems(0); i++) {
-		auto item = GetMediaItem(0,i);
+		MediaItem* item = GetMediaItem(0,i);
 		char str[ChunkSize];
 		char* result = str;
 		GetItemStateChunk(item, str, ChunkSize, false);
@@ -189,6 +208,20 @@ void TJF_HideTakeEnvelopes(MediaItem* item) {  // Hides take envelopes for just 
 			*result = 48;
 		} 
 		SetItemStateChunk(item, str, true);
+}
+
+void TJF_HideTakeEnvelopes(std::vector<MediaItem*> items) {  // Hides take envelopes for just the item submitted
+	for (auto item : items) {
+		char str[ChunkSize];
+		char* result = str;
+		GetItemStateChunk(item, str, ChunkSize, false);
+
+		while ((result = std::strstr(result, "VIS ")) != nullptr) {
+			result +=4;
+			*result = 48;
+		} 
+		SetItemStateChunk(item, str, true);
+	}
 }
 
 
@@ -227,7 +260,7 @@ void SetEnvelopeVis(TrackEnvelope* envelope, bool vis) {
 
 bool IsTakeEnvVisible(const char* name) {   // name is envelope to check ("Volume", "Pan", or "Pitch")
 	for (int i = 0; i < CountSelectedMediaItems(0); i++) {
-		auto env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,i)), name);
+		TrackEnvelope* env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,i)), name);
 		if (env && GetEnvelopeVis(env)) return true;
 	}
 	return false;
@@ -235,7 +268,7 @@ bool IsTakeEnvVisible(const char* name) {   // name is envelope to check ("Volum
 
 bool IsTrackEnvVisible(const char* name) {   // name is envelope to check ("Volume", "Pan", or "Pitch")
 	for (int i = 0; i < CountSelectedTracks(0); i++) {
-		auto env = GetTrackEnvelopeByName(GetSelectedTrack(0,i), name);
+		TrackEnvelope* env = GetTrackEnvelopeByName(GetSelectedTrack(0,i), name);
 		if (env && GetEnvelopeVis(env)) return true;
 	}
 	return false;
@@ -246,19 +279,14 @@ void ToggleTakeEnvelope(const char* name) {
 
 	char visible = IsTakeEnvVisible(name) + 48 ;
 	for (int i = 0; i < CountSelectedMediaItems(0); i++) {
-			auto item = GetSelectedMediaItem(0,i);
+			MediaItem* item = GetSelectedMediaItem(0,i);
 			TJF_HideTakeEnvelopes(item);
-			auto env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,0)), "Volume");
-
+			TrackEnvelope* env = GetTakeEnvelopeByName(GetActiveTake(GetSelectedMediaItem(0,0)), "Volume");
 
 			char str[ChunkSize];
 			char* result = str;
 			GetEnvelopeStateChunk(env, str, ChunkSize, false);
-
-
-	}
-
-}
+}	}
 
 
 /*
@@ -297,5 +325,104 @@ function ToggleTakeEnvelope(kind) -- Toggles the take envelope visibility Volume
       
 end--ToggleTakeEnvelope(param)
 */
+
+ 
+void LastTouchedFXTrack(int& tracknum, int& fxnum, int& paramnum) {
+	MediaTrack* track = GetTrack(0, tracknum-1);
+
+	double minvalOut, maxvalOut;
+	static double val;
+	double fxvalue = TrackFX_GetParam(track, fxnum, paramnum, &minvalOut, &maxvalOut);
+	if (val == fxvalue) return;
+	val = fxvalue;
+
+	TrackEnvelope* envelope = GetFXEnvelope( track, fxnum, paramnum, true );
+	TJF_HideTrackEnvelopes(track);
+	SetEnvelopeVis(envelope, true);
+	SetCursorContext( 2, envelope );
+	int numpoints = CountEnvelopePoints(envelope);
+	if (numpoints > 1) return;
+	if (!numpoints) InsertEnvelopePointEx(envelope, -1, 0, val, 0, 0, 1, 0);
+	
+	double timeOut, valueOut, tensionOut;
+	int shapeOut;
+	bool  selectedOut;
+	GetEnvelopePoint(envelope, 0, double* timeOut, double* valueOut, int* shapeOut, double* tensionOut, bool* selectedOut );
+	SetEnvelopePoint (envelope, 0, )
+
+	bool SetEnvelopePoint(TrackEnvelope* envelope, int ptidx, double* timeInOptional, double* valueInOptional, int* shapeInOptional, double* tensionInOptional, bool* selectedInOptional, bool* noSortInOptional )
+	
+
+
+
+}
+
+
+
+
+
+ void TJF_DisplayLastTouchedEnvelope() {
+
+	 static int tracknum, fxnum, paramnum;
+	 if (GetLastTouchedFX(&tracknum, &fxnum, &paramnum )) {
+		//if (tracknum == tracknumberOut && fxnum == fxnumberOut && paramnum == paramnumberOut) return;	 
+		if (tracknum >> 16) msg("TAKE");
+		else LastTouchedFXTrack(tracknum, fxnum, paramnum);
+
+
+	 }
+ }
+
+
+// function TrackFXLastTouched(tracknumber, fxnumber, paramnumber)
+//               local track = reaper.CSurf_TrackFromID(tracknumber, false)
+//               local fxvalue, minval, maxval = reaper.TrackFX_GetParam( track, fxnumber, paramnumber )
+//               local _, speakers = reaper.TrackFX_GetNamedConfigParm( track, fxnumber, "NUMSPEAKERS" )              
+              
+//               if fxvalue ~= oldvalue then
+             
+//                     envelope = reaper.GetFXEnvelope( track, fxnumber, paramnumber, true )
+//                     if envelope ~= nil then
+//                             for i=0,  reaper.CountTrackEnvelopes( track ) - 1 do
+                            
+//                                   local env = reaper.GetTrackEnvelope( track, i )
+//                                   local _, name = reaper.GetEnvelopeName( env )
+//                                   local _, trackname = reaper.GetTrackName(track)
+//                                   if env~=envelope  
+//                                   then 
+//                                         if (name == "Trim Volume" and reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH" ) == 1 and trackname ~= "PIX" ) or ReaSurround2(env, envelope, speakers)
+//                                         then
+//                                             SetEnvelopeVis(env, true)
+//                                         else
+//                                             SetEnvelopeVis(env, false)
+//                                         end
+//                                   else SetEnvelopeVis(env, true)
+//                                         if  reaper.CountEnvelopePoints( envelope ) < 2 then
+//                                                     if reaper.CountEnvelopePoints(envelope) < 1  
+//                                                     then  reaper.InsertEnvelopePointEx( envelope, -1, 0, fxvalue, 0, 0, 1, 0 )
+//                                                     end
+                                                    
+//                                                     local  retval, time, value, shape, tension, selected = reaper.GetEnvelopePoint( envelope, 0 )
+//                                                     reaper.SetEnvelopePoint( envelope, 0, time, fxvalue, shape, tension, selected, false )
+//                                         end--if
+                                  
+                                  
+                                  
+                                  
+//                                   end--if
+
+                                  
+//                             end--for
+//                         reaper.SetCursorContext( 2, envelope ) -- selects envelope
+//                         --reaper.Main_OnCommand(40332,0) -- Envelope:  Select all points
+//                     end--if
+
+//                     oldvalue = fxvalue
+//                     reaper.TrackList_AdjustWindows(false)
+                    
+//               end--if
+              
+
+// end--TrackFXLastTouched
 
 

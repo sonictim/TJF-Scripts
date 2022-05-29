@@ -1,0 +1,31 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ build active file",
+			"command": "/usr/bin/c++",
+			"args": [
+				"-fPIC",
+				"-O2",
+				"-std=c++14",
+				"-IWDL/WDL",
+				"-dynamiclib",
+				"${file}",
+				"-o",
+				"${fileDirname}/reaper_TJF.dylib"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/c++"
+		}
+	]
+}

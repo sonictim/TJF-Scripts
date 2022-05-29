@@ -13,7 +13,7 @@
 // macOS
 // =====
 //
-// c++ -fPIC -O2 -std=c++14 -IWDL/WDL -dynamiclib TJF_main.cpp -o reaper_TJF.dylib
+// c++ -fPIC -O2 -std=c++14 -IWDL/WDL -dynamiclib TJF_main.cpp -o /Users/tfarrell/Library/Application\ Support/REAPER/UserPlugins/reaper_TJF.dylib
 //
 // Windows
 // =======
@@ -43,14 +43,9 @@ static bool commandHook(KbdSectionInfo *sec, const int command,
 	if(ActionMap.find(command) == ActionMap.end()) return false;
 	
 	if (ActionMap[command].state > -1) {
-        ActionMap[command].state = !ActionMap[command].state;
-        /*
-        char* str;
-        sprintf(str, "%d", command);
-
-        if (ActionMap[command].state) SetExtState("TJF", str, "on", true );
-        else SetExtState("TJF", str, "off", true);
-        */
+        ActionMap[command].state = !ActionMap[command].state;        
+        if (ActionMap[command].state)  SetExtState("TJF", ActionMap[command].name, "on", true);
+        else SetExtState("TJF", ActionMap[command].name, "off", true);
   }
   
 	if (ActionMap[command].defer) {
