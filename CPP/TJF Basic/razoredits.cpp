@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "TJF.h"
+#include "reaper_plugin_functions.h"
 
 
 struct RazorEdit {
@@ -19,9 +20,9 @@ struct RazorEdit {
 
 void GetTrackItemsInRange(MediaTrack* track, double start, double end, std::vector<MediaItem*>& items) {
     for (int j=0; j < CountTrackMediaItems(track); j++) {
-                    auto item = GetTrackMediaItem(track, j);
-                    auto iStart = GetMediaItemInfo_Value(item, "D_POSITION");
-                    auto iEnd = iStart + GetMediaItemInfo_Value(item, "D_LENGTH");
+                    MediaItem* item = GetTrackMediaItem(track, j);
+                    double iStart = GetMediaItemInfo_Value(item, "D_POSITION");
+                    double iEnd = iStart + GetMediaItemInfo_Value(item, "D_LENGTH");
                     
                     if  ((iEnd > start && iEnd <= end) || (iStart >= start && iStart < end) || (iStart <= start && iEnd >= end)) items.push_back(item);
     }
@@ -34,7 +35,7 @@ void GetRazorEdits(std::vector<RazorEdit>& RazorEdits)
 {
     RazorEdits.clear();
     for (int i = 0; i < CountTracks(0); i++) {
-        auto track = GetTrack(0, i);
+        MediaTrack* track = GetTrack(0, i);
         char* area = (char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS_EXT", NULL);
         if (!strlen(area)) continue;
         RazorEdit RE;
@@ -219,7 +220,7 @@ void TJF_LinkTrackandEditSelection() {
     MediaTrack* currentFIT = GetMediaItem_Track(GetSelectedMediaItem(0,0));
 
     std::vector<MediaTrack*> curSelTracks;
-    GetSelectedTracks(curSelTracks);   
+    GetSelected(curSelTracks);   
     
 
 
@@ -260,75 +261,6 @@ void TJF_LinkTrackandEditSelection() {
 
 
 /*
-
-
-std::vector<RazorEdit> GetRazorEdits() 
-{
-    std::vector<RazorEdit> areaMap;
-    for (int i = 0; i < CountTracks(); i++) {
-
-    }
-        auto track = GetTrack(0, i)
-
-
-        std::string area = (const char*)GetSetMediaTrackInfo(track, "P_RAZOREDITS", NULL);
-        if (area != "") {
-            //PARSE STRING
-            local str = {}
-            for j in string.gmatch(area, "%S+") do
-                table.insert(str, j)
-            }
-        
-            //FILL AREA DATA
-            local j = 1
-            while j <= #str do
-                //area data
-                local areaStart = tonumber(str[j])
-                local areaEnd = tonumber(str[j+1])
-                local GUID = str[j+2]
-                local isEnvelope = GUID ~= '""'
-    
-                //get item data
-                local items = {}
-                if not isEnvelope then
-                    local itemCount = reaper.CountTrackMediaItems(track)
-                    for k = 0, itemCount - 1 do 
-                        local item = reaper.GetTrackMediaItem(track, k)
-                        local pos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-                        local length = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-                        local itemEndPos = pos+length
-    
-                        //check if item is in area bounds
-                        if (itemEndPos > areaStart and itemEndPos <= areaEnd) or
-                            (pos >= areaStart and pos < areaEnd) or
-                            (pos <= areaStart and itemEndPos >= areaEnd) then
-                                table.insert(items,item)
-                        end
-                    end
-                end
-    
-                local areaData = {
-                    areaStart = areaStart,
-                    areaEnd = areaEnd,
-                    track = track,
-                    items = items,
-                    isEnvelope = isEnvelope,
-                    GUID = GUID
-                }
-    
-                 table.insert(areaMap, areaData)
-    
-                j = j + 3
-            end
-        end
-    }
-    
-    return areaMap
-end
-
-	
-
-}
 
 
 

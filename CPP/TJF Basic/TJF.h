@@ -2,25 +2,15 @@
 
 #include <iostream>
 #include <vector>
+//#include <string>
+// #include "../SWS/Breeder/BR_Util.h"
+// #include "../SWS/Breeder/BR_Util.cpp"
 
+using namespace std;
 
-void msg(const char* c) {
-    ShowConsoleMsg(c);
-    ShowConsoleMsg("\n");
-}
-
-void msg(char* c) {
-    ShowConsoleMsg(c);
-    ShowConsoleMsg("\n");
-}
-
-
-void msg(std::string s) {
-    const char* c = s.c_str();
-    ShowConsoleMsg(c);
-    ShowConsoleMsg("\n");
-}
-
+// #ifndef ChunkSize
+#define ChunkSize 1000000
+// #endif
 
 template <typename T>
 void msg(T x) {
@@ -29,24 +19,34 @@ void msg(T x) {
     ShowConsoleMsg(c);
     ShowConsoleMsg("\n");
 }
+void msg(const char* c) {
+    ShowConsoleMsg(c);
+    ShowConsoleMsg("\n");
+}
+void msg(char* c) {
+    ShowConsoleMsg(c);
+    ShowConsoleMsg("\n");
+}
+void msg(std::string s) {
+    const char* c = s.c_str();
+    ShowConsoleMsg(c);
+    ShowConsoleMsg("\n");
+}
 
-void GetSelectedItems(std::vector<MediaItem*>& v) {
+
+void GetSelected(std::vector<MediaItem*>& v) {
     v.clear();
     for (int i=0; i < CountSelectedMediaItems(0); i++) v.push_back(GetSelectedMediaItem(0,i));
 }
-
-void GetAllItems(std::vector<MediaItem*>& v) {
-    v.clear();
-    for (int i=0; i < CountMediaItems(0); i++) v.push_back(GetMediaItem(0,i));
-}
-
-
-void GetSelectedTracks(std::vector<MediaTrack*>& v) {
+void GetSelected(std::vector<MediaTrack*>& v) {
     v.clear();
     for (int i=0; i < CountSelectedTracks(0); i++) v.push_back(GetSelectedTrack(0,i));
 }
-
-void GetAllTracks(std::vector<MediaTrack*>& v) {
+void GetAll(std::vector<MediaItem*>& v) {
+    v.clear();
+    for (int i=0; i < CountMediaItems(0); i++) v.push_back(GetMediaItem(0,i));
+}
+void GetAll(std::vector<MediaTrack*>& v) {
     v.clear();
     for (int i=0; i < CountTracks(0); i++) v.push_back(GetTrack(0,i));
 }
@@ -54,13 +54,11 @@ void GetAllTracks(std::vector<MediaTrack*>& v) {
 
 void SetFirstSelectedTrack() {
     std::vector<MediaTrack*> tracks;
-    GetSelectedTracks(tracks);
+    GetSelected(tracks);
     if (!tracks.size()) return;
     SetOnlyTrackSelected(tracks[0]);
     for (MediaTrack* &x : tracks) SetTrackSelected(x, true);
 }
-
-
 
 //  TEMPLATES FOR GET / SET MEDIA ITEM/TAKE/TRACK properties (alternative to GetMediaItemInfo_Value)
 //	usage:  double item_length=get_property<double>(item,"D_LENGTH");
@@ -81,8 +79,6 @@ void SetProperty(MediaItem* item, const char* propname,T value)
     GetSetMediaItemInfo(item,propname,&value);
 }
 
-
-
 template<typename T>
 T GetProperty(MediaItem_Take* take,const char* propname,T defval=T())
 {
@@ -98,8 +94,6 @@ void SetProperty(MediaItem_Take* take, const char* propname,T value)
 {
     GetSetMediaItemTakeInfo(take,propname,&value);
 }
-
-
 
 template<typename T>
 T GetProperty(MediaTrack* track,const char* propname,T defval=T())
@@ -155,5 +149,43 @@ void TJF_ReverseFadesWithItem() { // This shows how to use GetSetMediaItemInfo w
 		PreventUIRefresh(-1);
 }
 
+
 */
 
+
+struct Item {
+	MediaItem* item;
+    double start;
+    double length;
+    double end;
+
+    // bool select;
+    // bool mute;
+
+    // double volume;
+
+    // double fadeInLen;
+    // double fadeInLen_auto;
+    // double fadeInCurve;
+    // int fadeInShape;
+    // double fadeOutLen;
+    // double fadeOutLenAuto;
+    // double fadeOutCurve;
+    // int fadeOutshape;
+
+    	Item(MediaItem* i)  // Gets First Point of Selected Envelope
+		{
+			item = i;
+			start = GetMediaItemInfo_Value(item, "D_POSITION");
+			length = GetMediaItemInfo_Value(i, "D_LENGTH");
+			end = start + length;
+			 
+		}
+
+
+	    ~Item() 
+        {
+	        SetProperty(item, "D_POSITION", start);
+			SetProperty(item, "D_LENGTH", end-start);
+	    }
+};

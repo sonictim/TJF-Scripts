@@ -11,9 +11,9 @@
 				"-std=c++14",
 				"-IWDL/WDL",
 				"-dynamiclib",
-				"${file}",
+				"/Users/tfarrell/Library/Application Support/REAPER/Scripts/TJF Scripts/CPP/TJF Basic/TJF_main.cpp",
 				"-o",
-				"${fileDirname}/reaper_TJF.dylib"
+				"/Users/tfarrell/Library/Application Support/REAPER/UserPlugins/reaper_TJF.dylib"
 			],
 			"options": {
 				"cwd": "${fileDirname}"

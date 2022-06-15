@@ -1,5 +1,5 @@
 --@description TJF Smart Fade (similar behavior to Protools)
---@version 1.7
+--@version 1.8
 --@author Tim Farrell
 --
 --@about
@@ -24,6 +24,7 @@
 --  v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 --  v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
 --  v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items
+--  v1.8 - attempted fix for Vijay
 
 
 
@@ -45,8 +46,6 @@ local removeSelection = false -- if true will remove the time selection/razor ed
 
 reaper.ClearConsole()
 function Msg(param) reaper.ShowConsoleMsg(tostring(param).."\n") end
-
-
 
 
 
@@ -150,6 +149,7 @@ function ApplyDefaultFades(item)
       if  not FadeInExists(item)
       then
           reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", defaultfade )
+          reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", defaultfade )
           reaper.SetMediaItemInfo_Value( item, "C_FADEINSHAPE", defaultFadeShape )
       end
       
@@ -157,6 +157,7 @@ function ApplyDefaultFades(item)
       if  not FadeOutExists(item)
       then
           reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO", defaultfade)
+          reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", defaultfade)
           reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultFadeShape )
           
       end
@@ -186,6 +187,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                   if    not FadeInExists(item) --  if item still doesn't have a fadein
                   then
                         reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", defaultfade )   --apply defauilt fadein
+                        reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", defaultfade )   --apply defauilt fadein
                   end
             end
             
@@ -198,6 +200,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                   if     not FadeOutExists(item)  -- if there still isn't a fade out
                   then
                         reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO", defaultfade)  -- apply default fadeout
+                        reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", defaultfade)  -- apply default fadeout
                   end
             end
             
@@ -209,9 +212,11 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                   if    fadeoutlen > itemend - endtime
                   then  
                         reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO", itemend - endtime )  -- .....then adjust the fadeout
+                        reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN", itemend - endtime )  -- .....then adjust the fadeout
                   end--if
                   
                   reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", endtime - itemstart )  --  fade item from start to end boundry 
+                  reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", endtime - itemstart )  --  fade item from start to end boundry 
             
             elseif itemstart < starttime and itemend > starttime and itemend <= endtime and #items == 1  -- if the item starts outside of bounds, but ends within them  *** commented section allows multiple files on same lane to adjust to razor edit
             then
@@ -219,6 +224,7 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                  if    fadeinlen > starttime - itemstart
                  then  
                        reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO", starttime - itemstart ) -- ..... then adjust the fadein
+                       reaper.SetMediaItemInfo_Value( item, "D_FADEINLEN", starttime - itemstart ) -- ..... then adjust the fadein
                  end--if 
                   reaper.SetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO", itemend - starttime)  -- fade out item from start of bounds to end of item
             end
@@ -290,7 +296,6 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
                       reaper.SetMediaItemInfo_Value( item, "C_FADEOUTSHAPE", defaultCrossfadeShape )
                       reaper.SetMediaItemInfo_Value( nextitem, "C_FADEINSHAPE", defaultCrossfadeShape )
               
-
               end
               
         end -- if    
@@ -299,32 +304,12 @@ function ProccessFades(items, starttime, endtime) -- items should be a table
 end -- ProcessFades ()
 
 
-function DisplayFadeInfo()
-
-
-for i=0, reaper.CountSelectedMediaItems(0)-1 do
-    local item = reaper.GetSelectedMediaItem(0,i)
-    Msg(" Item #" .. i+1)
-    Msg("D_FADEINLEN: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN" ))
-    Msg("D_FADEINLEN_AUTO: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINLEN_AUTO" ))
-    Msg("D_FADEINDIR: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEINDIR" ))
-    Msg("C_FADEINSHAPE: " ..  reaper.GetMediaItemInfo_Value( item, "C_FADEINSHAPE" ))
-    Msg("D_FADEOUTLEN: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTLEN" ))
-    Msg("D_FADEOUTLEN_AUTO: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTLEN_AUTO" ))
-    Msg("D_FADEOUTDIR: " ..  reaper.GetMediaItemInfo_Value( item, "D_FADEOUTDIR" ))
-    Msg("C_FADEOUTSHAPE: " ..  reaper.GetMediaItemInfo_Value( item, "C_FADEOUTSHAPE" ))
-end
-
-
-end
-
 
 --[[------------------------------[[--
            MAIN FUNCTION       
 --]]------------------------------]]--
 
 function Main()
-      DisplayFadeInfo()
 
       -------------------------------------------------------------------------++=<{[ CHECK TRIM/AutoCrossfade STATE ]]--
       

@@ -52,7 +52,11 @@ static bool commandHook(KbdSectionInfo *sec, const int command,
 			if (ActionMap[command].state) plugin_register("timer", reinterpret_cast<void *>(ActionMap[command].action));
 			else plugin_register("-timer", reinterpret_cast<void *>(ActionMap[command].action));	
 	}
-	else ActionMap[command].action();
+	else { 
+        PreventUIRefresh(1);
+        ActionMap[command].action();
+        PreventUIRefresh(-1);
+       }
 	
 	return true;
 }
@@ -73,7 +77,7 @@ extern "C" REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(
   plugin_register("toggleaction", (void*)ToggleActionCallback);
 
   RegisterNewActions();
-  RegisterNewMenus();
+  //RegisterNewMenus();
   
   
   return 1;
