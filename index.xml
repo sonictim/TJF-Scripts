@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="TJF Scripts" commit="e581cc808e11dfa9ae7da310e61f21f42092a145">
+<index version="1" name="TJF Scripts" commit="6dc6b9830ff6f099c7155e78a3c39d1f13136247">
   <category name="AAF">
     <reapack name="TJF AAF Remove Fades after AAF Conversion.lua" type="script" desc="TJF Remove Excess Fades after AAF conversion">
       <metadata>
@@ -295,6 +295,19 @@ v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
 v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
 v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items]]></changelog>
         <source main="main">https://github.com/sonictim/TJF-Scripts/raw/3fd62f4510b12acf62bda6954a054334cbb98e79/Editing/Fades/TJF%20SmartFade.lua</source>
+      </version>
+      <version name="1.8" author="Tim Farrell" time="2022-06-15T18:45:23Z">
+        <changelog><![CDATA[v1.0 - nothing to report
+v1.1 - bugfix - fixes error with default fade of last item in a series.
+v1.2 - bugfix - repeated use was creating undesirable behavior
+v1.3 - logic rework - time selection is now processed per track for better crossfade manipulation
+     - new feature - Crossfade size can now be decreased.
+v1.4 - bugfix - can now fade out length of item if time selection is set to exactly the end of the item
+v1.5 - added GLOBAL VARIABLE option to remove selection after processing fades
+v1.6 - added GLOBAL VARIABLE option for crossfaces to occur "presplice"
+v1.7 - bugfix - corrected error where tradition (non auto) fades were being removed from items
+v1.8 - bugfix - autocrossfade removes regular fades set by previous version of this script]]></changelog>
+        <source main="main">https://github.com/sonictim/TJF-Scripts/raw/6dc6b9830ff6f099c7155e78a3c39d1f13136247/Editing/Fades/TJF%20SmartFade.lua</source>
       </version>
     </reapack>
   </category>
